@@ -1,9 +1,12 @@
 package com.cartrackers.baseplate_persistence.model
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @Entity(tableName = DBUser.tableName)
 data class DBUser(
+    @PrimaryKey
+    val uid: String,
     val id: Int? = 0,
     val name: String? = "",
     val username: String? = "",
@@ -17,5 +20,5 @@ data class DBUser(
     companion object {
         const val tableName = "users"
     }
-    constructor(): this(0, "", "", "", "", "", "", "", "")
+    constructor(): this("",0, "", "", "", "", "", "", "", "")
 }
