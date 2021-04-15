@@ -1,4 +1,24 @@
 package com.cartrackers.baseplate_persistence
 
-class AppDatabase {
+import androidx.room.Database
+import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.cartrackers.baseplate_persistence.dao.UserDao
+import com.cartrackers.baseplate_persistence.model.DBAddress
+import com.cartrackers.baseplate_persistence.model.DBCompany
+import com.cartrackers.baseplate_persistence.model.DBCoordinates
+import com.cartrackers.baseplate_persistence.model.DBUser
+
+@Database(
+    entities = [
+        DBAddress::class,
+        DBCompany::class,
+        DBCoordinates::class,
+        DBUser::class],
+    version = 5,
+    exportSchema = false
+)
+@TypeConverters
+abstract class AppDatabase : RoomDatabase() {
+    abstract fun userDao(): UserDao
 }

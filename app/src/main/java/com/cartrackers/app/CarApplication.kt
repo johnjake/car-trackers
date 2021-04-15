@@ -5,6 +5,7 @@ import androidx.paging.ExperimentalPagingApi
 import com.cartrackers.app.di.networkModule
 import com.cartrackers.app.di.repositoryModule
 import com.cartrackers.app.di.viewModelModule
+import com.cartrackers.baseplate_persistence.module.databaseModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -19,7 +20,8 @@ class CarApplication: Application() {
             modules(listOf(
                 networkModule,
                 repositoryModule,
-                viewModelModule
+                viewModelModule,
+                databaseModule
                 /**storageModule,
                 appModule
                 mapperModule,
@@ -31,7 +33,7 @@ class CarApplication: Application() {
                 mediatorModule**/
                 /**mapperModule,
                 schedulerModule,
-                databaseModule,
+
                 viewModelModule,
                 implementationModule,
                 repositoryModule,
