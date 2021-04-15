@@ -1,7 +1,6 @@
 package com.cartrackers.app.di
 
 import com.cartrackers.app.BuildConfig
-import com.cartrackers.app.BuildConfig.BASE_URL
 import com.cartrackers.app.api.ApiServices
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -26,8 +25,7 @@ val networkModule = module {
 }
 
 const val API = "api"
-const val VERSION = 3
-const val CATEGORY = "movie"
+const val baseUrl = BuildConfig.BASE_URL
 
 fun providesOkHttpClient(): OkHttpClient {
     val logging = HttpLoggingInterceptor()
@@ -47,17 +45,7 @@ fun providesGson(): Gson {
 }
 
 fun providesBaseUrl(): String {
-    return "$BASE_URL/$VERSION/"
-}
-
-fun providesApiKey(): String = BuildConfig.API_KEY
-
-fun providesBaseUrlImagePoster(): String {
-    return BuildConfig.BASE_URL_POSTER
-}
-
-fun providesBaseUrlImageOriginal(): String {
-    return BuildConfig.BASE_URL_ORIGINAL
+    return baseUrl
 }
 
 fun providesRetrofit(@Named("BASE_URL") url: String, okHttpClient: OkHttpClient, gson: Gson): Retrofit {
