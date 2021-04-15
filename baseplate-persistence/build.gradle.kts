@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("kotlin-android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -36,9 +37,17 @@ android {
 
 dependencies {
 
+    val archCompVersion = "2.3.0-alpha03"
+
     implementation("androidx.core:core-ktx:1.3.2")
     implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("com.google.android.material:material:1.3.0")
+
+    implementation ("androidx.room:room-ktx:$archCompVersion")
+    implementation ("androidx.room:room-runtime:$archCompVersion")
+    implementation ("androidx.room:room-rxjava2:$archCompVersion")
+    kapt ("androidx.room:room-compiler:$archCompVersion")
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
