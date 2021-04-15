@@ -6,4 +6,5 @@ object Config {
     const val androidTargetSdk = 30
     const val androidVerCode = 1
     const val androidVerName = "1.0"
+    const val advancedEncrypted = "AES"
 }
