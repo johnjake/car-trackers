@@ -1,6 +1,9 @@
 package com.cartrackers.app.utils
 
 import android.annotation.SuppressLint
+import androidx.room.TypeConverter
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import java.security.Key
 import javax.crypto.Cipher
 import javax.crypto.spec.SecretKeySpec
@@ -21,4 +24,16 @@ inline fun<reified T: Any?> ByteArray.decryptText(key: String): String {
     return String(cipher.doFinal(this)).trim()
 }
 
+@TypeConverter
+inline fun<reified T: Any?> List<T>.toStringType(): String {
+    require(this.isNotEmpty()) { throwListException }
+    return Gson().toJson(this)
+}
+
+@TypeConverter
+inline fun<reified T: Any?> String.toListType(): List<T> {
+    return Gson().fromJson(this, object : TypeToken<List<T?>?>() {}.type)
+}
+
+const val throwListException = "Not a valid Array"
 const val advancedEncrypted = "AES"
