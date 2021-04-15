@@ -92,5 +92,6 @@ class HomeUnitTest: KoinTest {
         user.name shouldBe "Leanne Graham"
         user.company.name shouldBe "Romaguera-Crona"
         println(user)
+
     }
 }

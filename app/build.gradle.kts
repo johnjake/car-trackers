@@ -121,7 +121,6 @@ dependencies {
     implementation ("org.koin:koin-androidx-viewmodel:2.0.1")
     implementation ("org.koin:koin-androidx-scope:2.0.1")
 
-
     //retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:adapter-rxjava2:2.9.0")
