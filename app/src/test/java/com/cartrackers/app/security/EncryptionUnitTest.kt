@@ -4,7 +4,7 @@ import org.junit.jupiter.api.*
 import org.testcontainers.junit.jupiter.Testcontainers
 import javax.crypto.*
 import javax.crypto.spec.SecretKeySpec
-import com.cartrackers.app.utils.advancedEncrypted
+import com.cartrackers.app.utils.advancedEncryption
 import com.cartrackers.app.utils.decryptText
 import com.cartrackers.app.utils.encryptText
 import org.amshove.kluent.shouldBeEqualTo
@@ -22,8 +22,8 @@ class EncryptionUnitTest {
     @Test
     @Order(1)
     fun `encryption simple string`() {
-        val aesKey: Key = SecretKeySpec(key.toByteArray(), advancedEncrypted)
-        val cipher = Cipher.getInstance(advancedEncrypted)
+        val aesKey: Key = SecretKeySpec(key.toByteArray(), advancedEncryption)
+        val cipher = Cipher.getInstance(advancedEncryption)
         cipher.init(Cipher.ENCRYPT_MODE, aesKey)
         val encrypted = cipher.doFinal(plainText.toByteArray())
         encryptedText = encrypted
@@ -33,8 +33,8 @@ class EncryptionUnitTest {
     @Test
     @Order(2)
     fun `decrypt bytearray to plain text`() {
-        val aesKey: Key = SecretKeySpec(key.toByteArray(), advancedEncrypted)
-        val cipher = Cipher.getInstance(advancedEncrypted)
+        val aesKey: Key = SecretKeySpec(key.toByteArray(), advancedEncryption)
+        val cipher = Cipher.getInstance(advancedEncryption)
         cipher.init(Cipher.DECRYPT_MODE, aesKey)
         val decrypted = String(cipher.doFinal(encryptedText)).trim()
         plainText shouldBeEqualTo decrypted
