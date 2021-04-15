@@ -10,16 +10,16 @@ import javax.crypto.spec.SecretKeySpec
 
 @SuppressLint("GetInstance")
 inline fun<reified T: Any?> String.encryptText(key: String): ByteArray {
-    val aesKey: Key = SecretKeySpec(key.toByteArray(), advancedEncrypted)
-    val cipher = Cipher.getInstance(advancedEncrypted)
+    val aesKey: Key = SecretKeySpec(key.toByteArray(), advancedEncryption)
+    val cipher = Cipher.getInstance(advancedEncryption)
     cipher.init(Cipher.ENCRYPT_MODE, aesKey)
     return cipher.doFinal(this.toByteArray())
 }
 
 @SuppressLint("GetInstance")
 inline fun<reified T: Any?> ByteArray.decryptText(key: String): String {
-    val aesKey: Key = SecretKeySpec(key.toByteArray(), advancedEncrypted)
-    val cipher = Cipher.getInstance(advancedEncrypted)
+    val aesKey: Key = SecretKeySpec(key.toByteArray(), advancedEncryption)
+    val cipher = Cipher.getInstance(advancedEncryption)
     cipher.init(Cipher.DECRYPT_MODE, aesKey)
     return String(cipher.doFinal(this)).trim()
 }
@@ -36,4 +36,4 @@ inline fun<reified T: Any?> String.toListType(): List<T> {
 }
 
 const val throwListException = "Not a valid Array"
-const val advancedEncrypted = "AES"
+const val advancedEncryption = "AES"
