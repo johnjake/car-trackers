@@ -7,7 +7,7 @@ import com.cartrackers.baseplate_persistence.domain.DomainUser
 import com.cartrackers.baseplate_persistence.model.DBUser
 
 class Mapper: MapperSource {
-    override fun mapFromDomain(from: User): Map<String, Any> {
+    override fun toHashMap(from: User): Map<String, Any> {
         val map = mutableMapOf<String, Any>()
         map[MAPPER_KEY] = DomainUser(id = from.id,
         name = from.name,
@@ -33,6 +33,21 @@ class Mapper: MapperSource {
            website = from.website,
            company = from.company.toClassType()
        )
+    }
+
+    override fun mapFromDomain(from: User): DBUser {
+        return DBUser(
+            uid = from.id.toString(),
+            id = from.id,
+            name = from.name,
+            username = from.username,
+            password = from.password,
+            email = from.email,
+            address = from.address.toJsonType(),
+            phone = from.phone,
+            website = from.website,
+            company = from.company.toJsonType()
+        )
     }
 
     companion object {
