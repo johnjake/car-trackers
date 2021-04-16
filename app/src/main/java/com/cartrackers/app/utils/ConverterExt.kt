@@ -7,6 +7,7 @@ import com.google.gson.reflect.TypeToken
 import java.security.Key
 import javax.crypto.Cipher
 import javax.crypto.spec.SecretKeySpec
+import kotlin.reflect.KClass
 
 @SuppressLint("GetInstance")
 inline fun<reified T: Any?> String.encryptText(key: String): ByteArray {
@@ -33,6 +34,16 @@ inline fun<reified T: Any?> List<T>.toStringType(): String {
 @TypeConverter
 inline fun<reified T: Any?> String.toListType(): List<T> {
     return Gson().fromJson(this, object : TypeToken<List<T?>?>() {}.type)
+}
+
+@TypeConverter
+inline fun<reified T: Any?> T.toJsonType(): String {
+    return Gson().toJson(this)
+}
+
+@TypeConverter
+inline fun<reified T: Any?> String.toClassType(): T {
+    return Gson().fromJson(this, T::class.java)
 }
 
 const val throwListException = "Not a valid Array"

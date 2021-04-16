@@ -2,6 +2,8 @@ package com.cartrackers.app.utils
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.cartrackers.app.CoroutineTestRule
+import com.cartrackers.app.data.vo.Address
+import com.cartrackers.app.data.vo.Coordinates
 import com.cartrackers.app.data.vo.State
 import com.cartrackers.app.data.vo.User
 import com.cartrackers.app.di.networkModule
@@ -29,6 +31,7 @@ import org.koin.core.context.stopKoin
 import org.koin.test.KoinTest
 import org.koin.test.inject
 import org.testcontainers.junit.jupiter.Testcontainers
+import kotlin.reflect.KClass
 
 @Testcontainers
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -108,5 +111,23 @@ class TypeConverterUnitTest: KoinTest {
         val resultList = userString.toListType<User>()
         println(resultList.count())
         userList.size shouldBeExactly resultList.size
+    }
+
+    @Test
+    @Order(5)
+    fun `type converter from object class to string`() {
+        val expected = "{\"lat\":7.6576,\"lng\":56.4456}"
+        val coordinates = Coordinates(lat = 7.6576, lng = 56.4456)
+        val json = coordinates.toJsonType()
+        json shouldBeEqualTo expected
+    }
+
+    @Test
+    @Order(6)
+    fun `type converter from json type to object class`() {
+        val coordinates = Coordinates(lat = 7.6576, lng = 56.4456)
+        val json = coordinates.toJsonType()
+        val classType = json.toClassType<Coordinates>()
+        println(classType.lat)
     }
 }
