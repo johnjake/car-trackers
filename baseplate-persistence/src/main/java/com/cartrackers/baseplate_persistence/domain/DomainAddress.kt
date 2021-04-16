@@ -1,9 +1,9 @@
 package com.cartrackers.baseplate_persistence.domain
 
-data class Address(
+data class DomainAddress(
     val street : String,
     val suite : String,
     val city : String,
     val zipcode : String,
-    val geo : Coordinates
+    val geo : DomainCoordinates
 )
