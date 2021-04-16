@@ -145,4 +145,12 @@ class TypeConverterUnitTest: KoinTest {
         classType.geo.lat shouldBe -37.3159
         println(json)
     }
+
+    @Test
+    @Order(8)
+    fun `determined the type of class`() {
+        val addressType: KClass<Address> = Address::class
+        val type = addressType.toCheckClassType()
+        type shouldBeEqualTo "Data"
+    }
 }

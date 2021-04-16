@@ -46,5 +46,20 @@ inline fun<reified T: Any?> String.toClassType(): T {
     return Gson().fromJson(this, T::class.java)
 }
 
+/** determined object class type using reflection **/
+inline fun<reified T: Any> KClass<T>.toCheckClassType(): String {
+    val generic = T::class
+    return when {
+        generic.isAbstract -> "Abstract"
+        generic.isCompanion -> "Abstract"
+        generic.isData -> "Data"
+        generic.isFinal -> "Final"
+        generic.isInner -> "Inner"
+        generic.isSealed -> "Sealed"
+        else -> "Unknown Type"
+    }
+}
+
+
 const val throwListException = "Not a valid Array"
 const val advancedEncryption = "AES"
