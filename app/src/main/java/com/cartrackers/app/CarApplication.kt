@@ -2,6 +2,7 @@ package com.cartrackers.app
 
 import android.app.Application
 import androidx.paging.ExperimentalPagingApi
+import com.cartrackers.app.di.mapperModule
 import com.cartrackers.app.di.networkModule
 import com.cartrackers.app.di.repositoryModule
 import com.cartrackers.app.di.viewModelModule
@@ -21,7 +22,8 @@ class CarApplication: Application() {
                 networkModule,
                 repositoryModule,
                 viewModelModule,
-                databaseModule
+                databaseModule,
+                mapperModule
                 /**storageModule,
                 appModule
                 mapperModule,

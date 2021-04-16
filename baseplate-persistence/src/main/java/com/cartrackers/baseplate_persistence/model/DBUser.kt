@@ -20,5 +20,5 @@ data class DBUser(
     companion object {
         const val tableName = "users"
     }
-    constructor(): this("",0, "", "", "", "", "", "", "", "")
+
 }
