@@ -130,4 +130,19 @@ class TypeConverterUnitTest: KoinTest {
         val classType = json.toClassType<Coordinates>()
         println(classType.lat)
     }
+
+    @Test
+    @Order(7)
+    fun `type converter address to string type then to class`() {
+        val address = Address(
+            street= "Kulas Light",
+            suite= "Apt. 556",
+            city= "Gwenborough",
+            zipcode= "92998-3874",
+            Coordinates (lat= -37.3159,lng= 81.1496))
+        val json = address.toJsonType()
+        val classType = json.toClassType<Address>()
+        classType.geo.lat shouldBe -37.3159
+        println(json)
+    }
 }
