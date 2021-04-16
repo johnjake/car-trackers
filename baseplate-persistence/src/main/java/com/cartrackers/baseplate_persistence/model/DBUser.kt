@@ -12,7 +12,7 @@ data class DBUser(
     val username: String? = "",
     val password: String? = "",
     val email: String? = "",
-    val address: String?,
+    val address: String,
     val phone: String,
     val website: String,
     val company: String

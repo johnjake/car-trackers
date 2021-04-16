@@ -1,6 +1,7 @@
 package com.cartrackers.app.data.mapper
 
 import com.cartrackers.app.data.vo.User
+import com.cartrackers.app.utils.toClassType
 import com.cartrackers.app.utils.toJsonType
 import com.cartrackers.baseplate_persistence.domain.DomainUser
 import com.cartrackers.baseplate_persistence.model.DBUser
@@ -22,7 +23,16 @@ class Mapper: MapperSource {
     }
 
     override fun mapFromRoom(from: DBUser): User {
-        TODO("Not yet implemented")
+       return User(id = from.id,
+           name = from.name,
+           username = from.username,
+           password = from.password,
+           email = from.email,
+           address = from.address.toClassType(),
+           phone = from.phone,
+           website = from.website,
+           company = from.company.toClassType()
+       )
     }
 
     companion object {
