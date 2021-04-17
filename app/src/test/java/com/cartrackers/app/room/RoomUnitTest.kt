@@ -36,7 +36,7 @@ class RoomUnitTest: KoinTest {
     val coroutineTestRule = CoroutineTestRule()
 
     @get:Rule
-    var rule: TestRule = InstantTaskExecutorRule()
+    val instantExecutorRule = InstantTaskExecutorRule()
 
     private val dispatcher = TestCoroutineDispatcher()
 
@@ -97,28 +97,14 @@ class RoomUnitTest: KoinTest {
         println(user)
    }
 
-    /**
-     * TODO mock room unit test
-     * **/
-
     @Test
-    @Order(4) @Disabled
-    fun `insert elements to userDao`() {
-        for(i in 1..userList.count()) {
-            val user = userList[i]
-            val password = "password$i"
-            viewModel.insertUserToDB(user, password)
-        }
-    }
-
-    @Test
-    @Order(5) @Disabled
+    @Order(4)
     fun `retrieve all user from userDao`() {
         viewModel.getUserFromDb()
     }
 
     @Test
-    @Order(6) @Disabled
+    @Order(5)
     fun `start collecting data from userDao`() = runBlocking {
         viewModel.listModelState.take(2).collect { result ->
             if(result is State.Data) {
