@@ -35,4 +35,13 @@ class Repository(
             return null
         }
     }
+
+    override suspend fun getListOfDBUser(): List<User> {
+        var list: List<User> = emptyList()
+         userDao.getUserList().map {
+            val user = mapper.mapFromRoom(it)
+             list = listOf(user)
+         }
+         return list
+    }
 }

@@ -21,7 +21,6 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
-import org.amshove.kluent.`should be instance of`
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Rule
 import org.junit.jupiter.api.*
@@ -78,13 +77,13 @@ class TypeConverterUnitTest: KoinTest {
     @Test
     @Order(1)
     fun `initialized viewModel get all user`() = runBlocking {
-        viewModel.getAllUser()
+        viewModel.getUserFromDomain()
     }
 
     @Test
     @Order(2)
     fun `start collect user data`() = runBlocking {
-        viewModel.allUserState.take(2).collect { result ->
+        viewModel.listDomainState.take(2).collect { result ->
             if(result is State.Data) {
                 val data = result.data
                 if(data.isNotEmpty()) {

@@ -4,9 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.cartrackers.app.CoroutineTestRule
 import com.cartrackers.app.data.vo.State
 import com.cartrackers.app.data.vo.User
-import com.cartrackers.app.di.networkModule
-import com.cartrackers.app.di.repositoryModule
-import com.cartrackers.app.di.viewModelModule
+import com.cartrackers.app.di.*
 import com.cartrackers.app.features.home.HomeViewModel
 import com.cartrackers.baseplate_persistence.module.databaseModule
 import io.kotlintest.shouldBe
@@ -19,11 +17,9 @@ import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import org.junit.Rule
-import org.junit.jupiter.api.AfterEach
-import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Order
-import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.*
 import org.junit.rules.TestRule
+import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
 import org.koin.test.KoinTest
@@ -50,9 +46,11 @@ class RoomUnitTest: KoinTest {
         /** for dependency injection **/
         startKoin {
             printLogger()
+            androidContext(provideAndroidContext())
             modules(listOf(
                 networkModule,
                 repositoryModule,
+                mapperModule,
                 viewModelModule,
                 databaseModule
             ))
@@ -70,13 +68,13 @@ class RoomUnitTest: KoinTest {
     @Test
     @Order(1)
     fun `initialized viewModel get all user`() = runBlocking {
-        viewModel.getAllUser()
+        viewModel.getUserFromDomain()
     }
 
     @Test
     @Order(2)
     fun `start collect user data`() = runBlocking {
-        viewModel.allUserState.take(2).collect { result ->
+        viewModel.listDomainState.take(2).collect { result ->
             if(result is State.Data) {
                 val data = result.data
                 if(data.isNotEmpty()) {
@@ -98,12 +96,33 @@ class RoomUnitTest: KoinTest {
     }
 
     @Test
-    @Order(4)
+    @Order(4) @Disabled
     fun `insert elements to userDao`() {
          for(i in 1..userList.count()) {
              val user = userList[i]
              val password = "password$i"
-             viewModel.insertUser(user, password)
+             viewModel.insertUserToDB(user, password)
          }
+    }
+
+    @Test
+    @Order(5) @Disabled
+    fun `retrieve all user from userDao`() {
+        viewModel.getUserFromDb()
+    }
+
+    @Test
+    @Order(6) @Disabled
+    fun `start collecting data from userDao`() = runBlocking {
+        viewModel.listModelState.take(2).collect { result ->
+            if(result is State.Data) {
+                val data = result.data
+                if(data.isNotEmpty()) {
+                    userList = data
+                }
+                data.count() shouldBe 10
+                println(data)
+            }
+        }
     }
 }

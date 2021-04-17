@@ -14,19 +14,29 @@ class HomeViewModel(
     private val repository: Repository
 ): ViewModel() {
 
-    private val allUserFlow = MutableStateFlow<State<List<User>>>(State.Empty)
+    private val listDomainFlow = MutableStateFlow<State<List<User>>>(State.Empty)
+    private val listModelFlow = MutableStateFlow<State<List<User>>>(State.Empty)
 
-    val allUserState: StateFlow<State<List<User>>> = allUserFlow
+    val listDomainState: StateFlow<State<List<User>>> = listDomainFlow
+    val listModelState: StateFlow<State<List<User>>> = listModelFlow
 
-    fun getAllUser() {
+    fun getUserFromDomain() {
         viewModelScope.launch {
             val data = repository.getListOfUsers()
             val stateData = State.Data(data)
-            allUserFlow.value = stateData
+            listDomainFlow.value = stateData
         }
     }
 
-    fun insertUser(user: User, password: String) {
+    fun getUserFromDb() {
+        viewModelScope.launch {
+            val data = repository.getListOfDBUser()
+            val stateData = State.Data(data)
+            listModelFlow.value = stateData
+        }
+    }
+
+    fun insertUserToDB(user: User, password: String) {
         val encrypted = password.toEncryptedString<String>(encryptionKey)
         viewModelScope.launch {
             repository.insertUserToDao(user, String(encrypted))
