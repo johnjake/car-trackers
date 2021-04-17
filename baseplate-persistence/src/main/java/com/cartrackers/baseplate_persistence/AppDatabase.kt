@@ -10,12 +10,8 @@ import com.cartrackers.baseplate_persistence.model.DBCoordinates
 import com.cartrackers.baseplate_persistence.model.DBUser
 
 @Database(
-    entities = [
-        DBAddress::class,
-        DBCompany::class,
-        DBCoordinates::class,
-        DBUser::class],
-    version = 5,
+    entities = [DBUser::class],
+    version = 3,
     exportSchema = false
 )
 @TypeConverters
