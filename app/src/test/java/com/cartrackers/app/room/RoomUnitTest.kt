@@ -24,7 +24,12 @@ import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
 import org.koin.test.KoinTest
 import org.koin.test.inject
+import org.testcontainers.junit.jupiter.Testcontainers
 
+@Testcontainers
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@TestMethodOrder(MethodOrderer.OrderAnnotation::class)
+@ExperimentalCoroutinesApi
 class RoomUnitTest: KoinTest {
     @ExperimentalCoroutinesApi
     @get:Rule
@@ -33,14 +38,12 @@ class RoomUnitTest: KoinTest {
     @get:Rule
     var rule: TestRule = InstantTaskExecutorRule()
 
-    @ExperimentalCoroutinesApi
     private val dispatcher = TestCoroutineDispatcher()
 
     private val viewModel: HomeViewModel by inject()
 
     private lateinit var userList: List<User>
 
-    @ExperimentalCoroutinesApi
     @BeforeEach
     fun initialized() {
         /** for dependency injection **/
@@ -58,7 +61,6 @@ class RoomUnitTest: KoinTest {
         Dispatchers.setMain(dispatcher)
     }
 
-    @ExperimentalCoroutinesApi
     @AfterEach
     fun endTest(){
         stopKoin()
@@ -73,7 +75,7 @@ class RoomUnitTest: KoinTest {
 
     @Test
     @Order(2)
-    fun `start collect user data`() = runBlocking {
+    fun `start collect all user data from domain`() = runBlocking {
         viewModel.listDomainState.take(2).collect { result ->
             if(result is State.Data) {
                 val data = result.data
@@ -88,21 +90,25 @@ class RoomUnitTest: KoinTest {
 
     @Test
     @Order(3)
-    fun `get first element of user list`() {
+    fun `get first element of user list from domain`() {
         val user = userList.first()
         user.name shouldBe "Leanne Graham"
         user.company.name shouldBe "Romaguera-Crona"
         println(user)
-    }
+   }
+
+    /**
+     * TODO mock room unit test
+     * **/
 
     @Test
     @Order(4) @Disabled
     fun `insert elements to userDao`() {
-         for(i in 1..userList.count()) {
-             val user = userList[i]
-             val password = "password$i"
-             viewModel.insertUserToDB(user, password)
-         }
+        for(i in 1..userList.count()) {
+            val user = userList[i]
+            val password = "password$i"
+            viewModel.insertUserToDB(user, password)
+        }
     }
 
     @Test
@@ -117,9 +123,6 @@ class RoomUnitTest: KoinTest {
         viewModel.listModelState.take(2).collect { result ->
             if(result is State.Data) {
                 val data = result.data
-                if(data.isNotEmpty()) {
-                    userList = data
-                }
                 data.count() shouldBe 10
                 println(data)
             }
