@@ -7,4 +7,34 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="darkGray">#1c1c1c</color>
+    <color name="colorAccent">#ff3d67</color>
+
+    <!-- transparency -->
+    <color name="transparent_100_white">#00FFFFFF</color>
+    <color name="white_alpha_00">#00FFFFFF</color>
+    <color name="white_alpha_10">#1AFFFFFF</color>
+    <color name="white_alpha_30">#4DFFFFFF</color>
+    <color name="white_alpha_60">#99FFFFFF</color>
+    <color name="white_alpha_70">#B3FFFFFF</color>
+
+    <color name="black_alpha_00">#00000000</color>
+    <color name="black_alpha_10">#1A000000</color>
+    <color name="black_alpha_30">#4D000000</color>
+    <color name="black_alpha_60">#99000000</color>
+    <color name="black_alpha_70">#B3000000</color>
+    <color name="black_alpha_90">#E6000000</color>
+    <color name="black_alpha_95">#F2000000</color>
+
+    <!--https://en.wikipedia.org/wiki/Shades_of_pink-->
+    <color name="bright_pink">#FF0058</color>
+    <color name="bright_pink_alpha_10">#1AFF0058</color>
+    <color name="bright_pink_alpha_20">#33FF0058</color>
+    <color name="bright_pink_alpha_30">#4DFF0058</color>
+    <color name="bright_pink_alpha_60">#99FF0058</color>
+    <color name="bright_pink_alpha_70">#B3FF0058</color>
+    <color name="barbie_pink">#DA1884</color>
+    <color name="piggy_pink">#f786a6</color>
+
 </resources>

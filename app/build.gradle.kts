@@ -171,6 +171,8 @@ dependencies {
     //paging
     implementation ("androidx.paging:paging-runtime-ktx:3.0.0-beta03")
 
+    implementation("com.sdsmdg.harjot:rotatingtext:1.0.2")
+
     //testImplementation("junit:junit:4.13.2")
     testImplementation("junit:junit:4.13.2")
     testImplementation("io.mockk:mockk:1.10.0")
