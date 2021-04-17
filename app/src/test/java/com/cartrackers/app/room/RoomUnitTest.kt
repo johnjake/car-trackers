@@ -18,7 +18,6 @@ import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import org.junit.Rule
 import org.junit.jupiter.api.*
-import org.junit.rules.TestRule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
@@ -100,7 +99,7 @@ class RoomUnitTest: KoinTest {
     @Test
     @Order(4)
     fun `retrieve all user from userDao`() {
-        viewModel.getUserFromDb()
+        viewModel.getListFromRoom()
     }
 
     @Test
