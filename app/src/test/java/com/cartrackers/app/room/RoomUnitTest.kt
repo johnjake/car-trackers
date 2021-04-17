@@ -95,6 +95,15 @@ class RoomUnitTest: KoinTest {
         user.name shouldBe "Leanne Graham"
         user.company.name shouldBe "Romaguera-Crona"
         println(user)
+    }
 
+    @Test
+    @Order(4)
+    fun `insert elements to userDao`() {
+         for(i in 1..userList.count()) {
+             val user = userList[i]
+             val password = "password$i"
+             viewModel.insertUser(user, password)
+         }
     }
 }

@@ -16,11 +16,7 @@ class HomeViewModel(
 
     private val allUserFlow = MutableStateFlow<State<List<User>>>(State.Empty)
 
-    private val insertFlow = MutableStateFlow<State<User>>(State.Empty)
-
     val allUserState: StateFlow<State<List<User>>> = allUserFlow
-
-    val insertState: StateFlow<State<User>> = insertFlow
 
     fun getAllUser() {
         viewModelScope.launch {
@@ -33,9 +29,7 @@ class HomeViewModel(
     fun insertUser(user: User, password: String) {
         val encrypted = password.toEncryptedString<String>(encryptionKey)
         viewModelScope.launch {
-            val data = repository.insertUserToDao(user, String(encrypted))
-            val stateData = State.Data(data)
-            insertFlow.value = stateData as State<User>
+            repository.insertUserToDao(user, String(encrypted))
         }
     }
 }
