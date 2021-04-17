@@ -5,8 +5,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = DBCompany.tableName)
 data class DBCompany(
-    @PrimaryKey
-    val uid: String,
+    @PrimaryKey(autoGenerate = true)
+    val uid: Int = 0,
     val name : String,
     val catchPhrase : String,
     val bs : String
@@ -14,5 +14,5 @@ data class DBCompany(
     companion object {
         const val tableName = "company"
     }
-    constructor(): this("","", "", "")
+    constructor(): this(0,"", "", "")
 }

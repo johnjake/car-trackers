@@ -5,13 +5,13 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = DBCoordinates.tableName)
 data class DBCoordinates(
-    @PrimaryKey
-    val uid: String,
+    @PrimaryKey(autoGenerate = true)
+    val uid: Int = 0,
     val lat : Double,
     val lng : Double
 ) {
     companion object {
         const val tableName = "coordinates"
     }
-    constructor(): this("",0.0, 0.0)
+    constructor(): this(0,0.0, 0.0)
 }

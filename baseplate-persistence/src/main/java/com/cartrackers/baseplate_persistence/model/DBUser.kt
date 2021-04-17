@@ -5,12 +5,12 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = DBUser.tableName)
 data class DBUser(
-    @PrimaryKey
-    val uid: String,
+    @PrimaryKey(autoGenerate = true)
+    val uid: Int = 0,
     val id: Int = 0,
     val name: String? = "",
     val username: String,
-    val password: String,
+    var password: String,
     val email: String? = "",
     val address: String,
     val phone: String,
@@ -20,5 +20,4 @@ data class DBUser(
     companion object {
         const val tableName = "users"
     }
-
 }

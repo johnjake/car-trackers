@@ -36,10 +36,9 @@ class HomeViewModel(
         }
     }
 
-    fun insertUserToDB(user: User, password: String) {
-        val encrypted = password.toEncryptedString<String>(encryptionKey)
+    fun insertUserToDB(user: User) {
         viewModelScope.launch {
-            repository.insertUserToDao(user, String(encrypted))
+            repository.insertUserToDao(user)
         }
     }
 }

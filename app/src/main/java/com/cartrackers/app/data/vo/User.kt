@@ -8,7 +8,7 @@ data class User(
     val id: Int = 0,
     val name: String? = "",
     val username: String,
-    val password: String,
+    var password: String,
     val email: String? = "",
     val address: Address?,
     val phone: String,
