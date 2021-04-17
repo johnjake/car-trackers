@@ -5,8 +5,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = DBAddress.tableAddress)
 data class DBAddress(
-    @PrimaryKey
-    val uid: String,
+    @PrimaryKey(autoGenerate = true)
+    val uid: Int = 0,
     val street : String? = "",
     val suite : String? = "",
     val city : String? = "",
@@ -16,5 +16,5 @@ data class DBAddress(
     companion object {
         const val tableAddress = "address"
     }
-    constructor(): this("", "", "", "", "", "")
+    constructor(): this(0, "", "", "", "", "")
 }

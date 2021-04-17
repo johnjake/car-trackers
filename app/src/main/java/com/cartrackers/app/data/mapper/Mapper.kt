@@ -37,7 +37,6 @@ class Mapper: MapperSource {
 
     override fun mapFromDomain(from: User): DBUser {
         return DBUser(
-            uid = from.id.toString(),
             id = from.id,
             name = from.name,
             username = from.username,
