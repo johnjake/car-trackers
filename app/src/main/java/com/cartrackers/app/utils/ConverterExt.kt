@@ -10,7 +10,7 @@ import javax.crypto.spec.SecretKeySpec
 import kotlin.reflect.KClass
 
 @SuppressLint("GetInstance")
-inline fun<reified T: Any?> String.encryptText(key: String): ByteArray {
+inline fun<reified T: Any?> String.toEncryptedString(key: String): ByteArray {
     val aesKey: Key = SecretKeySpec(key.toByteArray(), advancedEncryption)
     val cipher = Cipher.getInstance(advancedEncryption)
     cipher.init(Cipher.ENCRYPT_MODE, aesKey)
@@ -18,7 +18,7 @@ inline fun<reified T: Any?> String.encryptText(key: String): ByteArray {
 }
 
 @SuppressLint("GetInstance")
-inline fun<reified T: Any?> ByteArray.decryptText(key: String): String {
+inline fun<reified T: Any?> ByteArray.toDecryptedString(key: String): String {
     val aesKey: Key = SecretKeySpec(key.toByteArray(), advancedEncryption)
     val cipher = Cipher.getInstance(advancedEncryption)
     cipher.init(Cipher.DECRYPT_MODE, aesKey)
@@ -63,3 +63,4 @@ inline fun<reified T: Any> KClass<T>.toCheckClassType(): String {
 
 const val throwListException = "Not a valid Array"
 const val advancedEncryption = "AES"
+const val encryptionKey = "#$657LgJi_45%^"

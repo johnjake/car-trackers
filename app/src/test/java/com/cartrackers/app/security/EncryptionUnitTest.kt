@@ -5,8 +5,8 @@ import org.testcontainers.junit.jupiter.Testcontainers
 import javax.crypto.*
 import javax.crypto.spec.SecretKeySpec
 import com.cartrackers.app.utils.advancedEncryption
-import com.cartrackers.app.utils.decryptText
-import com.cartrackers.app.utils.encryptText
+import com.cartrackers.app.utils.toDecryptedString
+import com.cartrackers.app.utils.toEncryptedString
 import org.amshove.kluent.shouldBeEqualTo
 import org.amshove.kluent.shouldBeGreaterThan
 import java.security.Key
@@ -44,14 +44,14 @@ class EncryptionUnitTest {
     @Test
     @Order(3)
     fun `string extension for encryption`() {
-      val encryptedText =  plainText.encryptText<String>(key)
+      val encryptedText =  plainText.toEncryptedString<String>(key)
       encryptedText.size shouldBeGreaterThan 0
     }
 
     @Test
     @Order(4)
     fun `string extension for decryption`() {
-       val decryptedText = encryptedText.decryptText<ByteArray>(key)
+       val decryptedText = encryptedText.toDecryptedString<ByteArray>(key)
         plainText shouldBeEqualTo decryptedText
         println(decryptedText)
     }

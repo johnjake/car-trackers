@@ -7,10 +7,10 @@ import androidx.room.PrimaryKey
 data class DBUser(
     @PrimaryKey
     val uid: String,
-    val id: Int? = 0,
+    val id: Int = 0,
     val name: String? = "",
-    val username: String? = "",
-    val password: String? = "",
+    val username: String,
+    val password: String,
     val email: String? = "",
     val address: String,
     val phone: String,
