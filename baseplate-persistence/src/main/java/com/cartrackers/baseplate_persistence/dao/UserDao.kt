@@ -12,6 +12,9 @@ abstract class UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract suspend fun insertUser(user: DBUser)
 
+    @Query("insert into users( id, name, username, password, email, address, phone, website, company ) select :id, :name, :username, :password, :email, :address, :phone, :website, :company  where not exists ( select id from users where id = :id)")
+    abstract suspend fun insertUserQuery(id: Int, name: String, username: String, password: String, email: String, address: String, phone: String, website: String, company: String)
+
     @Query("select * from users where id = :userId")
     abstract suspend fun getUserDetails(userId: Int): DBUser
 
