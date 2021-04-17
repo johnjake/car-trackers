@@ -7,7 +7,6 @@ import androidx.lifecycle.lifecycleScope
 import com.cartrackers.app.data.vo.State
 import com.cartrackers.app.data.vo.User
 import com.cartrackers.app.databinding.ActivityMainBinding
-import com.cartrackers.app.utils.toStringType
 import com.cartrackers.app.features.home.HomeViewModel as HomeModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
@@ -26,17 +25,37 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel.getUserFromDomain()
+       // viewModel.getUserFromDomain()
+        viewModel.getListFromRoom()
     }
 
     override fun onStart() {
         super.onStart()
         /** collect */
         stateJob = lifecycleScope.launch {
-            viewModel.listDomainState.take(2).collect { state ->
-                handleDomainListResult(state)
+           /* viewModel.listDomainState.take(2).collect { state ->
+                //handleDomainListResult(state)
+            } */
+            viewModel.listModelState.take(2).collect { state ->
+                handleListFromRoom(state)
             }
         }
+    }
+
+    private fun handleListFromRoom(state: State<List<User>>) {
+        when(state) {
+            is State.Data -> handleModelSuccess(state.data)
+            is State.Error -> handleModelFailed(state.error)
+            else -> Timber.e("An error occurred during query request!")
+        }
+    }
+
+    private fun handleModelFailed(error: Throwable) {
+        TODO("Not yet implemented")
+    }
+
+    private fun handleModelSuccess(data: List<User>) {
+        binding.helloWorld.text = data[0].password
     }
 
     private fun handleDomainListResult(state: State<List<User>>) {

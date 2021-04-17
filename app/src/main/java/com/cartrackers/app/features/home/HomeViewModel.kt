@@ -28,7 +28,7 @@ class HomeViewModel(
         }
     }
 
-    fun getUserFromDb() {
+    fun getListFromRoom() {
         viewModelScope.launch {
             val data = repository.getListOfDBUser()
             val stateData = State.Data(data)

@@ -183,7 +183,6 @@ dependencies {
     testImplementation ("com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0")
     testImplementation ("org.mockito:mockito-inline:3.0.0")
     testImplementation ("org.amshove.kluent:kluent:1.51")
-    testImplementation ("androidx.arch.core:core-testing:2.1.0")
 
     testImplementation ("org.junit.jupiter:junit-jupiter-api:5.7.0")
     testRuntimeOnly ("org.junit.jupiter:junit-jupiter-engine:5.7.0")
