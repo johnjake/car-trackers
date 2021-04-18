@@ -1,5 +1,6 @@
 package com.cartrackers.app.features.intro
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.animation.AnimationUtils
@@ -11,6 +12,7 @@ import com.cartrackers.app.data.vo.User
 import com.cartrackers.app.databinding.ActivityIntroBinding
 import com.cartrackers.app.di.providesSharedPrefGetStorage
 import com.cartrackers.app.di.providesSharedPrefStored
+import com.cartrackers.app.features.country.CountryActivity
 import com.cartrackers.app.utils.shared_room
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
@@ -42,6 +44,11 @@ class IntroActivity : AppCompatActivity() {
                  handleDomainListResult(state)
              }
         }
+
+        binding.userSplashNextButton.setOnClickListener {
+            launchActivity()
+        }
+
     }
 
     override fun onStop() {
@@ -89,4 +96,13 @@ class IntroActivity : AppCompatActivity() {
     private fun handleDomainFailed(error: Throwable) {
         Timber.e("error on ${error.message}")
     }
+
+    private fun launchActivity() {
+        startActivity(Intent(this, CountryActivity::class.java).apply {
+            putExtra("INTERNET", "1")
+        })
+    }
+
+    /**TODO: login layout **/
+
 }

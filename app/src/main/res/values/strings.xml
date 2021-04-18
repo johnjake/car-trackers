@@ -4,9 +4,13 @@
     <string name="terms_of_use">Terms of Use</string>
 
     <string name="ready_lets_go">Ready?\nLet\'s Go</string>
+    <string name="lets_go">Let\'s Go</string>
     <string name="upgrade">Upgrade</string>
     <string name="your">your</string>
     <string name="security_system">car security with</string>
     <string name="internet_problem">Internet Problem</string>
     <string name="would_you_like_to_use_offline">Would you like to use offline?</string>
+    <string name="country">Select your Country</string>
+    <string name="select_country">Country</string>
+    <string name="sign_in_with_facebook">Sign in with Facebook</string>
 </resources>

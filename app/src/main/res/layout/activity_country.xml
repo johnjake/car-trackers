@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/containerScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".features.country.CountryActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/signInContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/black_gradient_background"
+        android:minHeight="620dp">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/leftGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/rightGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="32dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/middleGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="385dp" />
+
+        <TextView
+            android:id="@+id/letsGoTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="17dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:text="@string/lets_go"
+            android:textAppearance="@style/TitleTextStyle"
+            app:layout_constraintBottom_toTopOf="@id/startWithYourEmail"
+            app:layout_constraintStart_toStartOf="@+id/leftGuideline" />
+
+        <TextView
+            android:id="@+id/startWithYourEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="28dp"
+            android:text="@string/country"
+            android:textAppearance="@style/SubTitleTextStyle"
+            app:layout_constraintBottom_toTopOf="@+id/email"
+            app:layout_constraintStart_toStartOf="@+id/leftGuideline" />
+
+        <EditText
+            android:id="@+id/email"
+            style="@style/StyleEditText"
+            android:layout_width="0dp"
+            android:layout_marginBottom="38dp"
+            android:drawableEnd="@drawable/ic_globe"
+            android:hint="@string/select_country"
+            android:inputType="textEmailAddress"
+            app:layout_constraintBottom_toTopOf="@+id/middleGuideline"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+            app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+            tools:ignore="Autofill" />
+
+        <Button
+            android:id="@+id/userEmailNextButton"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/next_button"
+            app:layout_constraintEnd_toStartOf="@id/rightGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/middleGuideline" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/facebookLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="32dp"
+            android:textAllCaps="false"
+            android:background="@android:color/transparent"
+            android:drawableStart="@drawable/ic_facebook_colored"
+            android:gravity="center_vertical"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/inter_regular"
+            android:text="@string/sign_in_with_facebook"
+            android:textSize="16sp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/inputGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="letsGoTitle,startWithYourEmail,email" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
