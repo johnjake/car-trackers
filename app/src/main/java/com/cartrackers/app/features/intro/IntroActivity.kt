@@ -9,6 +9,9 @@ import com.cartrackers.app.R
 import com.cartrackers.app.data.vo.State
 import com.cartrackers.app.data.vo.User
 import com.cartrackers.app.databinding.ActivityIntroBinding
+import com.cartrackers.app.di.providesSharedPrefGetStorage
+import com.cartrackers.app.di.providesSharedPrefStored
+import com.cartrackers.app.utils.shared_room
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.take
@@ -26,7 +29,10 @@ class IntroActivity : AppCompatActivity() {
         binding = ActivityIntroBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupLogoAnimate()
-        viewModel.getUserFromDomain()
+        val storageRoom = providesSharedPrefGetStorage(this, shared_room)
+        if(storageRoom == false) {
+            viewModel.getUserFromDomain()
+        }
     }
 
     override fun onStart() {
@@ -36,6 +42,20 @@ class IntroActivity : AppCompatActivity() {
                  handleDomainListResult(state)
              }
         }
+    }
+
+    override fun onStop() {
+        stateJob?.cancel()
+        super.onStop()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        exitApp()
+    }
+
+    private fun exitApp() {
+        finishAndRemoveTask()
     }
 
     private fun setupLogoAnimate() {
@@ -53,11 +73,16 @@ class IntroActivity : AppCompatActivity() {
 
     private fun handleDomainSuccess(data: List<User>) {
         /** map it to insert user password **/
-        data.map { user ->
-            val userId = user.id
-            user.password = "password$userId"
-            Log.d("handleDomainSuccess", "$user")
-            viewModel.insertUserToDB(user)
+        if(data.isNotEmpty()) {
+            data.map { user ->
+                val userId = user.id
+                user.password = "password$userId"
+                Log.d("handleDomainSuccess", "$user")
+                viewModel.insertUserToDB(user)
+            }
+            providesSharedPrefStored(this, shared_room, true)
+        } else {
+            providesSharedPrefStored(this, shared_room, false)
         }
     }
 

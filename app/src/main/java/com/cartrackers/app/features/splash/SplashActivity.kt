@@ -1,17 +1,14 @@
 package com.cartrackers.app.features.splash
 
 import android.content.Intent
-import android.graphics.Typeface
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.cartrackers.app.BuildConfig
+import com.cartrackers.app.comms.CarDialog
 import com.cartrackers.app.databinding.ActivitySplashBinding
+import com.cartrackers.app.di.providesSharedPrefStored
 import com.cartrackers.app.features.intro.IntroActivity
-import com.cartrackers.app.utils.alert_dialog.ListenerCallBack
-import com.cartrackers.app.utils.alert_dialog.TrackerAlertDialog
 import com.cartrackers.app.utils.isOnline
-import com.cartrackers.app.utils.local_storage
-import com.cartrackers.app.utils.shared_pref
+import com.cartrackers.app.utils.net_connectivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -43,36 +40,20 @@ class SplashActivity: AppCompatActivity() {
     }
 
     private fun launchActivity() {
-        val packageName = BuildConfig.APPLICATION_ID
         startActivity(Intent(this, IntroActivity::class.java).apply {
             putExtra("INTERNET", "1")
         })
     }
 
     private fun verifyConnection() {
-        val alertDialog = TrackerAlertDialog()
-        alertDialog.alertInitialize(
-            this,
-            "No Internet",
-            "Would you like to switch to offline?",
-            Typeface.SANS_SERIF,
-            Typeface.DEFAULT_BOLD,
-            isCancelable = true,
-            isNegativeBtnHide = false)
-        alertDialog.setPositive("YES", object : ListenerCallBack {
-            override fun onClick(dialog: TrackerAlertDialog) {
+        val value = CarDialog.build(this, "No Internet", "Would you like to switch to offline?")
+        when {
+            value -> {
                 saveInternetStatePref(true)
                 launchActivity()
-                dialog.dismiss()
             }
-        })
-        alertDialog.setNegative("NO", object : ListenerCallBack {
-            override fun onClick(dialog: TrackerAlertDialog) {
-                dialog.dismiss()
-                exitApp()
-            }
-        })
-        alertDialog.show()
+            else -> exitApp()
+        }
     }
 
     private fun exitApp() {
@@ -80,12 +61,6 @@ class SplashActivity: AppCompatActivity() {
     }
 
     private fun saveInternetStatePref(storage: Boolean) {
-        val pref = this.getSharedPreferences(
-            shared_pref,
-            AppCompatActivity.MODE_PRIVATE
-        )
-        val editor = pref?.edit()
-        editor?.putBoolean(local_storage, storage)
-        editor?.apply()
+        providesSharedPrefStored(this, net_connectivity, storage)
     }
 }

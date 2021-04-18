@@ -1,42 +1,35 @@
 package com.cartrackers.app.di
 
 import android.app.Application
+import android.content.Context
 import android.content.SharedPreferences
+import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceManager
+import com.cartrackers.app.utils.shared_pref
 import org.koin.dsl.module
 
 val storageModule = module(override = true) {
     single { providesSharedPreferences(get()) }
-    /** single { providesSharedPrefTheme(get()) }
-    single { providesSharedOnline(get()) }
-    single { providesSaveInternetStatePref(context = get(), storage = get()) } **/
+    single { providesSharedPrefStored(context = get(), storageName = get(), value = get()) }
+    single { providesSharedPrefGetStorage(context = get(), storageName = get()) }
 }
 
 fun providesSharedPreferences(application: Application): SharedPreferences {
     return PreferenceManager.getDefaultSharedPreferences(application.applicationContext)
 }
 
-/**fun providesSharedPrefTheme(context: Context): Boolean? {
-    val pref = context.getSharedPreferences(UsersFragment.SHARED_PREF,
-        AppCompatActivity.MODE_PRIVATE
-    )
-    return pref?.getBoolean(UsersFragment.DARK_MODE, false)
-}
-
-fun providesSharedOnline(context: Context): Boolean? {
-    val shardPreferencesKey = "myData"
-    val localSharedKey = "members.directory.room"
-    val pref = context.getSharedPreferences(shardPreferencesKey,
-        AppCompatActivity.MODE_PRIVATE
-    )
-    return pref?.getBoolean(localSharedKey, false)
-}
-
-fun providesSaveInternetStatePref(context: Context, storage: Boolean) {
-    val pref = context.getSharedPreferences(SplashActivity.SHARED_PREF,
+fun providesSharedPrefStored(context: Context, storageName: String, value: Boolean) {
+    val pref = context.getSharedPreferences(shared_pref,
         AppCompatActivity.MODE_PRIVATE
     )
     val editor = pref?.edit()
-    editor?.putBoolean(SplashActivity.PERSIST_LOCAL, storage)
+    editor?.putBoolean(storageName, value)
     editor?.apply()
-}**/
+}
+
+fun providesSharedPrefGetStorage(context: Context, storageName: String): Boolean? {
+    val pref = context.getSharedPreferences(shared_pref,
+        AppCompatActivity.MODE_PRIVATE
+    )
+    return pref?.getBoolean(storageName, false)
+}

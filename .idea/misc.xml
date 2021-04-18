@@ -6,6 +6,7 @@
         <entry key="..\:/car-trackers/app/src/main/res/drawable/bg_corner_alert_dialog.xml" value="0.5583333333333333" />
         <entry key="..\:/car-trackers/app/src/main/res/drawable/bg_corner_cancel.xml" value="0.5583333333333333" />
         <entry key="..\:/car-trackers/app/src/main/res/drawable/button_style.xml" value="0.5583333333333333" />
+        <entry key="..\:/car-trackers/app/src/main/res/drawable/ic_car_logo.xml" value="0.5583333333333333" />
         <entry key="..\:/car-trackers/app/src/main/res/drawable/ic_github.xml" value="0.5583333333333333" />
         <entry key="..\:/car-trackers/app/src/main/res/drawable/next_button.xml" value="0.5583333333333333" />
         <entry key="..\:/car-trackers/app/src/main/res/drawable/next_button_default.xml" value="0.5583333333333333" />
@@ -14,6 +15,7 @@
         <entry key="..\:/car-trackers/app/src/main/res/layout/activity_login.xml" value="0.5421875" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/activity_main.xml" value="0.5421875" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/activity_splash.xml" value="0.5421875" />
+        <entry key="..\:/car-trackers/app/src/main/res/layout/tracker_alert_layout.xml" value="0.5" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/vello_alert_layout.xml" value="0.5421875" />
         <entry key="..\:/dev/trackers/app/src/main/res/layout/activity_main.xml" value="0.490036231884058" />
       </map>
