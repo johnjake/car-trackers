@@ -56,6 +56,11 @@ class IntroActivity : AppCompatActivity() {
         super.onStop()
     }
 
+    override fun onResume() {
+        super.onResume()
+        overridePendingTransition(R.anim.slide_in_top, R.anim.slide_out_top)
+    }
+
     override fun onBackPressed() {
         super.onBackPressed()
         exitApp()
