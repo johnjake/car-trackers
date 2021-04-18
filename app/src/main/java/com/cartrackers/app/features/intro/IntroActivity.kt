@@ -38,6 +38,11 @@ class IntroActivity : AppCompatActivity() {
         }
     }
 
+    override fun onStop() {
+        stateJob?.cancel()
+        super.onStop()
+    }
+
     private fun setupLogoAnimate() {
         val rotation = AnimationUtils.loadAnimation(this, R.anim.anim_rotation)
         binding.imgLogo.startAnimation(rotation)

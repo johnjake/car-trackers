@@ -6,11 +6,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.cartrackers.app.BuildConfig
 import com.cartrackers.app.databinding.ActivitySplashBinding
+import com.cartrackers.app.di.providesSharedPrefStored
 import com.cartrackers.app.features.intro.IntroActivity
 import com.cartrackers.app.utils.alert_dialog.ListenerCallBack
 import com.cartrackers.app.utils.alert_dialog.TrackerAlertDialog
 import com.cartrackers.app.utils.isOnline
-import com.cartrackers.app.utils.local_storage
+import com.cartrackers.app.utils.net_connectivity
 import com.cartrackers.app.utils.shared_pref
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -80,12 +81,6 @@ class SplashActivity: AppCompatActivity() {
     }
 
     private fun saveInternetStatePref(storage: Boolean) {
-        val pref = this.getSharedPreferences(
-            shared_pref,
-            AppCompatActivity.MODE_PRIVATE
-        )
-        val editor = pref?.edit()
-        editor?.putBoolean(local_storage, storage)
-        editor?.apply()
+        providesSharedPrefStored(this, net_connectivity, storage)
     }
 }

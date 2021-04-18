@@ -98,5 +98,6 @@ fun isOnline(context: Context): Boolean {
 const val throwListException = "Not a valid Array"
 const val advancedEncryption = "AES"
 const val encryptionKey = "#$657LgJi_45%^"
-const val local_storage = "car.tracker.room"
-const val shared_pref = "track_data"
+const val net_connectivity = "car.tracker.net"
+const val shared_room = "car.tracker.room"
+const val shared_pref = "car_track"
