@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/signInContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context=".features.login.LoginActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/leftGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/pixels_16" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/rightGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/pixels_32" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/centerGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.74" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/splashBackgroundImage"
+        android:layout_width="@dimen/pixel_0"
+        android:layout_height="@dimen/pixel_0"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_car_blue_print"
+        app:layout_constraintBottom_toTopOf="@+id/centerGuideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="1.0" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout_upgrade"
+        android:layout_width="@dimen/pixels_140"
+        android:layout_height="@dimen/pixels_35"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/pixels_15"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/backgroundScrim"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.542"
+        app:layout_constraintStart_toStartOf="@+id/splashBackgroundImage"
+        app:layout_constraintTop_toTopOf="@+id/splashBackgroundImage"
+        app:layout_constraintVertical_bias="0.255">
+
+        <TextView
+            android:id="@+id/title_upgrade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_bold"
+            android:includeFontPadding="false"
+            android:singleLine="true"
+            android:text="@string/upgrade"
+            android:textColor="@color/bright_pink"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/title_your"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/pixels_4"
+            android:fontFamily="@font/inter_bold"
+            android:includeFontPadding="false"
+            android:singleLine="true"
+            android:text="@string/your"
+            android:textColor="@color/white_alpha_70"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_media"
+        android:layout_width="180dp"
+        android:layout_height="@dimen/pixels_35"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:layout_marginStart="@dimen/pixels_15"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/backgroundScrim"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.549"
+        app:layout_constraintStart_toStartOf="@+id/splashBackgroundImage"
+        app:layout_constraintTop_toTopOf="@+id/splashBackgroundImage"
+        app:layout_constraintVertical_bias="0.306">
+
+        <TextView
+            android:id="@+id/title_social"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_bold"
+            android:includeFontPadding="false"
+            android:singleLine="true"
+            android:text="@string/security_system"
+            android:textColor="@color/white_alpha_70"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/img_logo"
+        android:layout_width="70dp"
+        android:layout_height="64dp"
+        android:src="@drawable/ic_tracker_splash"
+        app:layout_constraintBottom_toTopOf="@+id/backgroundScrim"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintStart_toStartOf="@+id/splashBackgroundImage"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout_media"
+        app:layout_constraintVertical_bias="0.146" />
+
+    <View
+        android:id="@+id/backgroundScrim"
+        android:layout_width="@dimen/pixel_0"
+        android:layout_height="@dimen/pixels_100"
+        android:background="@drawable/picture_scrim"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/splashBackgroundImage"
+        app:layout_constraintVertical_bias="0.763" />
+
+    <TextView
+        android:id="@+id/readyLetsGoTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ready_lets_go"
+        android:textAppearance="@style/TitleTextStyle"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toTopOf="@+id/centerGuideline" />
+
+    <Button
+        android:id="@+id/privacyPolicy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:paddingStart="@dimen/pixels_8"
+        android:paddingEnd="@dimen/pixels_8"
+        android:text="@string/privacy_policy"
+        android:textAppearance="@style/FooterTextStyle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/termsOfUse"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/readyLetsGoTitle" />
+
+    <Button
+        android:id="@+id/termsOfUse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:text="@string/terms_of_use"
+        android:textAppearance="@style/FooterTextStyle"
+        app:layout_constraintBottom_toBottomOf="@+id/privacyPolicy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/privacyPolicy"
+        app:layout_constraintTop_toTopOf="@+id/privacyPolicy" />
+
+    <Button
+        android:id="@+id/userSplashNextButton"
+        android:layout_width="@dimen/pixels_60"
+        android:layout_height="@dimen/pixels_60"
+        android:background="@drawable/next_button"
+        app:layout_constraintBottom_toBottomOf="@+id/readyLetsGoTitle"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintTop_toTopOf="@+id/readyLetsGoTitle" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

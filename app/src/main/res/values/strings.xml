@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Car Trackers</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="terms_of_use">Terms of Use</string>
+
+    <string name="ready_lets_go">Ready?\nLet\'s Go</string>
+    <string name="upgrade">Upgrade</string>
+    <string name="your">your</string>
+    <string name="security_system">car security with</string>
 </resources>

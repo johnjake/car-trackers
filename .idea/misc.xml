@@ -3,7 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/car-trackers/app/src/main/res/drawable/next_button.xml" value="0.5583333333333333" />
+        <entry key="..\:/car-trackers/app/src/main/res/drawable/next_button_default.xml" value="0.5583333333333333" />
+        <entry key="..\:/car-trackers/app/src/main/res/drawable/next_button_pressed.xml" value="0.5583333333333333" />
+        <entry key="..\:/car-trackers/app/src/main/res/drawable/picture_scrim.xml" value="0.5583333333333333" />
+        <entry key="..\:/car-trackers/app/src/main/res/layout/activity_login.xml" value="0.5421875" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/activity_main.xml" value="0.5421875" />
+        <entry key="..\:/car-trackers/app/src/main/res/layout/activity_splash.xml" value="0.5421875" />
         <entry key="..\:/dev/trackers/app/src/main/res/layout/activity_main.xml" value="0.490036231884058" />
       </map>
     </option>
