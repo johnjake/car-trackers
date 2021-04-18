@@ -1,19 +1,14 @@
 package com.cartrackers.app.features.splash
 
 import android.content.Intent
-import android.graphics.Typeface
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.cartrackers.app.BuildConfig
 import com.cartrackers.app.comms.CarDialog
 import com.cartrackers.app.databinding.ActivitySplashBinding
 import com.cartrackers.app.di.providesSharedPrefStored
 import com.cartrackers.app.features.intro.IntroActivity
-import com.cartrackers.app.utils.alert_dialog.ListenerCallBack
-import com.cartrackers.app.utils.alert_dialog.TrackerAlertDialog
 import com.cartrackers.app.utils.isOnline
 import com.cartrackers.app.utils.net_connectivity
-import com.cartrackers.app.utils.shared_pref
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -45,7 +40,6 @@ class SplashActivity: AppCompatActivity() {
     }
 
     private fun launchActivity() {
-        val packageName = BuildConfig.APPLICATION_ID
         startActivity(Intent(this, IntroActivity::class.java).apply {
             putExtra("INTERNET", "1")
         })
