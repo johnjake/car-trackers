@@ -1,9 +1,15 @@
 package com.cartrackers.app.utils
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.widget.Toast
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import timber.log.Timber
 import java.security.Key
 import javax.crypto.Cipher
 import javax.crypto.spec.SecretKeySpec
@@ -60,7 +66,37 @@ inline fun<reified T: Any> KClass<T>.toCheckClassType(): String {
     }
 }
 
+fun Activity.toast(message: String) {
+    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+}
+
+fun Context.isOnline(context: Context): Boolean {
+    val connectivityManager =
+        context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    val capabilities =
+        connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+    if (capabilities != null) {
+        when {
+            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> {
+                Timber.d( "NetworkCapabilities.TRANSPORT_CELLULAR")
+                return true
+            }
+            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> {
+                Timber.d( "NetworkCapabilities.TRANSPORT_WIFI")
+                return true
+            }
+            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> {
+                Timber.d( "NetworkCapabilities.TRANSPORT_ETHERNET")
+                return true
+            }
+        }
+    }
+    return false
+}
+
 
 const val throwListException = "Not a valid Array"
 const val advancedEncryption = "AES"
 const val encryptionKey = "#$657LgJi_45%^"
+const val local_storage = "car.tracker.room"
+const val shared_pref = "track_data"

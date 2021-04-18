@@ -7,4 +7,6 @@
     <string name="upgrade">Upgrade</string>
     <string name="your">your</string>
     <string name="security_system">car security with</string>
+    <string name="internet_problem">Internet Problem</string>
+    <string name="would_you_like_to_use_offline">Would you like to use offline?</string>
 </resources>
