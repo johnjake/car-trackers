@@ -1,8 +1,10 @@
 package com.cartrackers.app.di
 
-import com.cartrackers.app.features.home.Repository
+import com.cartrackers.app.features.home.Repository as Home
+import com.cartrackers.app.features.intro.Repository as Intro
 import org.koin.dsl.module
 
 val repositoryModule = module {
-    factory { Repository(apiServices = get(), userDao = get(), mapper = get()) }
+    factory { Home(apiServices = get(), userDao = get(), mapper = get()) }
+    factory { Intro(apiServices = get(), userDao = get(), mapper = get()) }
 }

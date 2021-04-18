@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.cartrackers.app.BuildConfig
 import com.cartrackers.app.databinding.ActivitySplashBinding
-import com.cartrackers.app.features.login.LoginActivity
+import com.cartrackers.app.features.intro.IntroActivity
 import com.cartrackers.app.utils.alert_dialog.ListenerCallBack
 import com.cartrackers.app.utils.alert_dialog.TrackerAlertDialog
 import com.cartrackers.app.utils.isOnline
@@ -30,7 +30,7 @@ class SplashActivity: AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        when(this.isOnline(this)) {
+        when(isOnline(this)) {
             true -> {
                 scope.launch {
                     delay(5000)
@@ -44,7 +44,7 @@ class SplashActivity: AppCompatActivity() {
 
     private fun launchActivity() {
         val packageName = BuildConfig.APPLICATION_ID
-        startActivity(Intent(this, LoginActivity::class.java).apply {
+        startActivity(Intent(this, IntroActivity::class.java).apply {
             putExtra("INTERNET", "1")
         })
     }

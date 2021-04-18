@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".features.login.LoginActivity" />
+        <activity android:name=".features.intro.IntroActivity" />
 
     </application>
 
