@@ -37,4 +37,7 @@
     <color name="barbie_pink">#DA1884</color>
     <color name="piggy_pink">#f786a6</color>
 
+    <color name="colorPrimary">@android:color/black</color>
+    <color name="colorPrimaryDark">@android:color/black</color>
+
 </resources>
