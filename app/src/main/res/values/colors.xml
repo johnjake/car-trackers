@@ -55,5 +55,6 @@
     <color name="color_shimmer">#75757B</color>
 
     <color name="normal_text_color">#9f9f9f</color>
+    <color name="bg_color_bottom_nav">#F2222229</color>
 
 </resources>
