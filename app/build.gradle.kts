@@ -133,6 +133,9 @@ dependencies {
     //cardView
     implementation("androidx.cardview:cardview:1.0.0")
 
+    //circleView
+    implementation("de.hdodenhof:circleimageview:3.0.0")
+
     //images
     implementation ("com.makeramen:roundedimageview:2.3.0")
 

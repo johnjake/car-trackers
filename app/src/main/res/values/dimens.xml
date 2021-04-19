@@ -124,4 +124,14 @@
     <dimen name="pixels_268">268dp</dimen>
     <dimen name="pixels_480">480dp</dimen>
 
+    <dimen name="text_size_large">40sp</dimen>
+    <dimen name="text_size_medium">26sp</dimen>
+    <dimen name="text_size_normal">22sp</dimen>
+    <dimen name="text_size_small">20sp</dimen>
+    <dimen name="text_size_smaller">18sp</dimen>
+    <dimen name="text_size_smallest">16sp</dimen>
+    <dimen name="text_size_tiny">14sp</dimen>
+    <dimen name="text_size_tinier">12sp</dimen>
+    <dimen name="text_size_tiniest">11sp</dimen>
+
 </resources>

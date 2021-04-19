@@ -45,4 +45,15 @@
     <color name="dirtyWhite">#4a4a4a</color>
     <color name="disabled_color">#474a4e</color>
 
+    <!-- Ripple Colors  -->
+    <color name="spark_primary_color">#FFFFC107</color>
+    <color name="spark_secondary_color">#FFFF5722</color>
+    <color name="spark_image_tint">#00000000</color>
+
+    <color name="heart_primary_color">#da4439</color>
+    <color name="heart_secondary_color">#8a098c</color>
+    <color name="color_shimmer">#75757B</color>
+
+    <color name="normal_text_color">#9f9f9f</color>
+
 </resources>
