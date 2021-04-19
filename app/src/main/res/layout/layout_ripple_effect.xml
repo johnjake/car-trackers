@@ -4,14 +4,14 @@
     android:layout_height="wrap_content">
 
     <!-- Change the dimension if you want to change the size of the dots effect splash -->
-    <com.appetiser.questioninfluencers.utils.ui.rippleEffect.DotsView
+    <com.cartrackers.app.utils.ripple_effect.DotsView
         android:id="@+id/vDotsView"
         android:layout_width="@dimen/pixels_15"
         android:layout_height="@dimen/pixels_15"
         android:layout_gravity="center" />
 
     <!-- Change the dimension if you want to change the size of the effect diameter -->
-    <com.appetiser.questioninfluencers.utils.ui.rippleEffect.CircleView
+    <com.cartrackers.app.utils.ripple_effect.CircleView
         android:id="@+id/vCircle"
         android:layout_width="@dimen/pixels_15"
         android:layout_height="@dimen/pixels_15"
