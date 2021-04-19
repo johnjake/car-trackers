@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:paddingBottom="@dimen/pixels_8"
+    >
+
+    <!-- tools:context=".features.feeds.adapter.FeedsAdapter" -->
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/leftGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/pixels_16" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/rightGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/pixels_16" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/imageContainer"
+        android:layout_width="@dimen/pixel_0"
+        android:layout_height="@dimen/pixels_480"
+        android:layout_marginTop="@dimen/pixels_32"
+        app:cardCornerRadius="@dimen/pixels_32"
+        app:layout_constraintEnd_toStartOf="@id/rightGuideline"
+        app:layout_constraintStart_toEndOf="@id/leftGuideline"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/alt_feed"
+            android:transitionName="imageTransition" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/videoLength"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/pixels_30"
+        android:layout_marginStart="@dimen/pixels_16"
+        android:layout_marginTop="@dimen/pixels_16"
+        android:background="@drawable/video_length_background"
+        android:elevation="@dimen/pixels_15"
+        android:fontFamily="@font/inter_semi_bold"
+        android:gravity="center"
+        android:minWidth="@dimen/pixels_60"
+        android:paddingStart="@dimen/pixels_16"
+        android:paddingEnd="@dimen/pixels_16"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/text_size_tiny"
+        app:layout_constraintStart_toStartOf="@id/imageContainer"
+        app:layout_constraintTop_toTopOf="@id/imageContainer"
+        tools:text="1:42" />
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/avatar"
+        android:layout_width="@dimen/pixels_50"
+        android:layout_height="@dimen/pixels_50"
+        android:layout_marginBottom="@dimen/pixels_16"
+        android:layout_marginStart="@dimen/pixels_16"
+        android:elevation="@dimen/pixels_15"
+        android:padding="@dimen/pixels_4"
+        app:layout_constraintStart_toStartOf="@id/imageContainer"
+        app:layout_constraintBottom_toBottomOf="@id/imageContainer"
+        tools:src="@tools:sample/avatars"
+        tools:background="@drawable/yellow_profile_image_stroke"/>
+
+    <ImageButton
+        android:id="@+id/overflow_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:elevation="@dimen/pixels_15"
+        android:padding="8dp"
+        android:background="@drawable/bg_circle_black_alpha_80"
+        android:contentDescription="@string/more_options"
+        app:layout_constraintEnd_toEndOf="@id/imageContainer"
+        app:layout_constraintTop_toTopOf="@id/imageContainer"
+        app:srcCompat="@drawable/ic_overflow"/>
+
+    <LinearLayout
+        android:id="@+id/heart_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/pixels_14"
+        android:padding="@dimen/pixels_4"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/imageContainer">
+        <com.cartrackers.app.utils.ripple_effect.TrackRippleEffectButton
+            android:id="@+id/heartButton"
+            android:layout_width="@dimen/pixels_55"
+            android:layout_height="@dimen/pixels_40"
+            app:sparkbutton_activeImage="@drawable/ic_heart_icon"
+            app:sparkbutton_inActiveImage="@drawable/ic_unheart_icon"
+            app:sparkbutton_iconSize="@dimen/pixels_28"
+            app:sparkbutton_primaryColor="@color/heart_primary_color"
+            app:sparkbutton_secondaryColor="@color/heart_secondary_color" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/heartCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_semi_bold"
+        android:includeFontPadding="false"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/text_size_tiny"
+        app:layout_constraintBottom_toBottomOf="@+id/heart_container"
+        app:layout_constraintStart_toEndOf="@+id/heart_container"
+        app:layout_constraintTop_toTopOf="@+id/heart_container"
+        tools:text="3,122" />
+
+    <ImageButton
+        android:id="@+id/shareButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/pixels_16"
+        android:background="?actionBarItemBackground"
+        android:padding="@dimen/pixels_8"
+        android:src="@drawable/ic_share_android"
+        app:layout_constraintEnd_toStartOf="@id/rightGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/imageContainer" />
+
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="@dimen/pixel_0"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/pixels_8"
+        android:layout_marginTop="@dimen/pixels_16"
+        android:layout_marginEnd="@dimen/pixels_8"
+        android:fontFamily="@font/inter_regular"
+        android:lineSpacingMultiplier="1.2"
+        android:textColor="@color/normal_text_color"
+        android:textSize="@dimen/text_size_tiny"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/heart_container"
+        tools:text="@tools:sample/lorem[15]" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
