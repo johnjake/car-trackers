@@ -4,16 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".features.details.MainActivity">
+    tools:background="@drawable/black_gradient_background"
+    tools:context=".features.main.CarTrackActivity">
 
-    <TextView
-        android:id="@+id/helloWorld"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/host_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:fab_cradle_margin="@dimen/pixels_2"
+            app:fab_cradle_rounded_corner_radius="@dimen/pixels_6"
+            app:fab_size="@dimen/pixels_60"
+            android:clickable="false"
+            android:contextClickable="false"
+            android:background="@color/bg_color_bottom_nav"
+            app:itemIconTint="@null"
+            app:labelVisibilityMode="unlabeled"
+            app:menu="@menu/main_menu" />
+    </FrameLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/pixels_28"
+        android:clickable="true"
+        android:focusable="true"
+        app:backgroundTint="@color/bg_color_bottom_nav"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_vello_post" />
 </androidx.constraintlayout.widget.ConstraintLayout>

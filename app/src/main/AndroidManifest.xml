@@ -30,7 +30,7 @@
 
         <activity android:name=".features.intro.IntroActivity" />
         <activity android:name=".features.country.CountryActivity" />
-        <activity android:name=".features.home.TrackerActivity" />
+        <activity android:name=".features.main.CarTrackActivity" />
 
     </application>
 

@@ -20,4 +20,7 @@
     <string name="my_inbox">inbox</string>
     <string name="profile">profile</string>
     <string name="title">CarTrack</string>
+    <string name="all">All user</string>
+    <string name="car_list">Vehicles</string>
+    <string name="search">Search</string>
 </resources>

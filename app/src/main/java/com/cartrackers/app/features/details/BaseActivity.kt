@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.cartrackers.app.data.vo.State
 import com.cartrackers.app.data.vo.User
-import com.cartrackers.app.databinding.ActivityMainBinding
+import com.cartrackers.app.databinding.ActivityBaseBinding
 import com.cartrackers.app.features.home.HomeViewModel as HomeModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
@@ -15,15 +15,15 @@ import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 
-class MainActivity : AppCompatActivity() {
+class BaseActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityBaseBinding
     private var stateJob: Job? = null
     private val viewModel: HomeModel by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityBaseBinding.inflate(layoutInflater)
         setContentView(binding.root)
        // viewModel.getUserFromDomain()
         viewModel.getListFromRoom()
