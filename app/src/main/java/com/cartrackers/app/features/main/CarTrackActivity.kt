@@ -1,10 +1,15 @@
 package com.cartrackers.app.features.main
 
 import android.os.Bundle
+import android.view.MenuItem
+import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.fragment.NavHostFragment
 import com.cartrackers.app.R
 import com.cartrackers.app.databinding.ActivityMainBinding
-import com.cartrackers.app.extension.setupWithNavController
+import com.cartrackers.app.features.track.FeedFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class CarTrackActivity: AppCompatActivity() {
@@ -16,24 +21,48 @@ class CarTrackActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         setupNavigationMenu()
     }
 
-    private fun setupNavigationMenu() {
+    private fun setupNavigationMenu(){
         bottomNavView = binding.bottomNavigation.apply {
             itemIconTintList = null
         }
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        bottomNavView.setOnNavigationItemSelectedListener(object :
+            BottomNavigationView.OnNavigationItemSelectedListener {
+            override fun onNavigationItemSelected(@NonNull item: MenuItem): Boolean {
+                when (item.itemId) {
+                    R.id.feeds_stack -> {
+                        openFragment(FeedFragment.newInstance(feed_fragment), feed_fragment)
+                        return true
+                    }
+                    R.id.vehicle_stack -> {
+                        return true
+                    }
+                    R.id.inbox_stack -> {
+                        return true
+                    }
+                    R.id.profile_stack -> {
+                        return true
+                    }
+                }
+                return true
+            }
+        })
+    }
 
-        val navGraphIds = listOf(
-            R.navigation.feed_stack
-        )
+    fun openFragment(fragment: Fragment, fragmentName: String) {
+        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.nav_host_fragment, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
 
-        bottomNavView.setupWithNavController(
-            navGraphIds = navGraphIds,
-            fragmentManager = supportFragmentManager,
-            containerId = R.id.host_container,
-            intent = intent
-        )
+    companion object {
+        const val feed_fragment = "feed_fragment"
+        const val profile_fragment = "profile_fragment"
+        const val visited_fragment = "visited_fragment"
+        const val vehicle_fragment = "vehicle_fragment"
     }
 }

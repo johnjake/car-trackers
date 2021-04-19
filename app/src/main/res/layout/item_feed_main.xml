@@ -34,7 +34,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/image"
+            android:id="@+id/imageMap"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
@@ -44,7 +44,7 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/videoLength"
+        android:id="@+id/userId"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/pixels_30"
         android:layout_marginStart="@dimen/pixels_16"
@@ -60,13 +60,33 @@
         android:textSize="@dimen/text_size_tiny"
         app:layout_constraintStart_toStartOf="@id/imageContainer"
         app:layout_constraintTop_toTopOf="@id/imageContainer"
-        tools:text="1:42" />
+        tools:text="ID: 1" />
+
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="@dimen/pixels_220"
+        android:layout_height="@dimen/pixels_30"
+        android:elevation="@dimen/pixels_15"
+        android:fontFamily="@font/inter_semi_bold"
+        android:minWidth="@dimen/pixels_60"
+        android:paddingStart="@dimen/pixels_16"
+        android:paddingEnd="@dimen/pixels_16"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/text_size_tiny"
+        android:layout_marginTop="@dimen/pixels_15"
+        app:layout_constraintBottom_toTopOf="@+id/content"
+        app:layout_constraintEnd_toStartOf="@+id/shareButton"
+        app:layout_constraintHorizontal_bias="0.036"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/imageContainer"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="John Jake A. Avila" />
 
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/avatar"
-        android:layout_width="@dimen/pixels_50"
-        android:layout_height="@dimen/pixels_50"
+        android:layout_width="@dimen/pixels_62"
+        android:layout_height="@dimen/pixels_62"
         android:layout_marginBottom="@dimen/pixels_16"
         android:layout_marginStart="@dimen/pixels_16"
         android:elevation="@dimen/pixels_15"
@@ -95,7 +115,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="@dimen/pixels_14"
+        android:layout_marginTop="@dimen/pixels_35"
         android:padding="@dimen/pixels_4"
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
         app:layout_constraintTop_toBottomOf="@+id/imageContainer">
@@ -127,7 +147,7 @@
         android:id="@+id/shareButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/pixels_16"
+        android:layout_marginTop="@dimen/pixels_35"
         android:background="?actionBarItemBackground"
         android:padding="@dimen/pixels_8"
         android:src="@drawable/ic_share_android"

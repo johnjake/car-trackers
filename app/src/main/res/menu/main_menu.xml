@@ -6,7 +6,7 @@
         android:icon="@drawable/ic_home_menu"/>
 
     <item
-        android:id="@+id/vello_stack"
+        android:id="@+id/vehicle_stack"
         android:title="@string/title"
         android:icon="@drawable/ic_tracker_main"/>
 
@@ -17,7 +17,7 @@
         android:icon="@drawable/ic_inbox_menu"/>
 
     <item
-        android:id="@+id/settings_stack"
+        android:id="@+id/profile_stack"
         android:title="@string/profile"
         android:icon="@drawable/ic_profile_menu"/>
 </menu>
