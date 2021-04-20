@@ -1,6 +1,7 @@
 package com.cartrackers.app.features.profile
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,15 +44,7 @@ class ProfileFragment: Fragment() {
         hideNavigation()
 
         binding?.backButton?.setOnClickListener {
-            val onBackPressedCallback = object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    Timber.d("Leaving")
-                    view.findNavController().navigate(R.id.action_back_to_main)
-                }
-            }
-            requireActivity().onBackPressedDispatcher.addCallback(
-                viewLifecycleOwner, onBackPressedCallback
-            )
+           view.findNavController().popBackStack()
         }
     }
 

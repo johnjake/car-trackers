@@ -29,6 +29,7 @@ class CarTrackActivity: AppCompatActivity() {
             itemIconTintList = null
         }
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
         bottomNavView.setOnNavigationItemSelectedListener(object :
             BottomNavigationView.OnNavigationItemSelectedListener {
             override fun onNavigationItemSelected(@NonNull item: MenuItem): Boolean {
@@ -50,6 +51,9 @@ class CarTrackActivity: AppCompatActivity() {
                 return true
             }
         })
+        /**if(!navController.popBackStack() && onBackPress) {
+            finish()
+        }**/
     }
 
     fun openFragment(fragment: Fragment, fragmentName: String) {
