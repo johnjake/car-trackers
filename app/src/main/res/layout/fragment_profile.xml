@@ -33,7 +33,8 @@
             android:layout_width="@dimen/pixels_24"
             android:layout_height="@dimen/pixels_24"
             android:layout_marginStart="@dimen/pixels_16"
-            android:layout_marginTop="@dimen/pixels_32"
+            android:layout_marginTop="@dimen/pixels_20"
+            android:layout_marginBottom="@dimen/pixels_5"
             android:background="@null"
             android:contentDescription="@string/alt_back_button"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,6 +47,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/pixels_8"
+            android:layout_marginTop="@dimen/pixels_14"
             app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
             app:layout_constraintStart_toStartOf="@+id/leftGuideline"
             app:layout_constraintTop_toBottomOf="@+id/back_button" />

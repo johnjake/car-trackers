@@ -9,10 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.cartrackers.app.R
 import com.cartrackers.app.data.vo.State
 import com.cartrackers.app.data.vo.User
 import com.cartrackers.app.databinding.FragmentFeedBinding
+import com.cartrackers.app.features.main.CarTrackActivity
 import com.cartrackers.app.features.track.adapter.FeedAdapter
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -44,16 +47,21 @@ class FeedFragment: Fragment(), FeedAdapter.ProfileOnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAdapter(view)
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         stateJob =  lifecycleScope.launch {
             viewModel.listModelState.collect { state ->
-
                 handleListFromRoom(state)
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        bottomVisibility()
     }
 
     override fun onStart() {
@@ -90,6 +98,14 @@ class FeedFragment: Fragment(), FeedAdapter.ProfileOnClickListener {
         TODO("Not yet implemented")
     }
 
+    private fun bottomVisibility() {
+        if(CarTrackActivity.onBackPress) {
+            CarTrackActivity.onBackPress = false
+            val bottomNavigationView = activity?.findViewById<BottomNavigationView>(R.id.bottomNavigation)
+            bottomNavigationView?.visibility = View.VISIBLE
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
@@ -111,6 +127,7 @@ class FeedFragment: Fragment(), FeedAdapter.ProfileOnClickListener {
 
     override fun profileOnClick(userId: Int) {
         val args = FeedFragmentDirections.actionFeedToProfile(userId)
+        CarTrackActivity.onBackPress = true
         view?.findNavController()?.navigate(args)
     }
 }

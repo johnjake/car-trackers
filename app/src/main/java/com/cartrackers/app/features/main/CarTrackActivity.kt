@@ -64,5 +64,6 @@ class CarTrackActivity: AppCompatActivity() {
         const val profile_fragment = "profile_fragment"
         const val visited_fragment = "visited_fragment"
         const val vehicle_fragment = "vehicle_fragment"
+        var onBackPress: Boolean = false
     }
 }

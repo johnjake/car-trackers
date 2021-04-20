@@ -8,8 +8,7 @@
         android:id="@+id/feedFragment"
         android:name="com.cartrackers.app.features.track.FeedFragment"
         android:label="FeedFragment"
-        tools:layout="@layout/fragment_feed"
-        >
+        tools:layout="@layout/fragment_feed">
         <action
             android:id="@+id/action_feed_to_profile"
             app:destination="@id/profileFragment" />
@@ -23,6 +22,9 @@
             android:name="userId"
             app:argType="integer"
             android:defaultValue="0" />
+
+        <action android:id="@+id/action_back_to_main"
+            app:destination="@+id/feedFragment" />
 
     </fragment>
 </navigation>
