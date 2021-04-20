@@ -12,4 +12,10 @@ class Repository(
         val result = userDao.getUserDetails(userId)
         return mapper.mapFromRoom(result)
     }
+
+    override suspend fun getListOfDBUser(userId: Int): List<User> {
+        return userDao.getFriendsList(userId).mapIndexed { _, dbUser ->
+            mapper.mapFromRoom(dbUser)
+        }
+    }
 }

@@ -47,7 +47,6 @@ class FeedFragment: Fragment(), FeedAdapter.ProfileOnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAdapter(view)
-
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -77,6 +76,7 @@ class FeedFragment: Fragment(), FeedAdapter.ProfileOnClickListener {
             layoutManager = resultLayout
             adapter = userAdapter
         }
+        userAdapter.hasStableIds()
     }
 
     private fun handleListFromRoom(state: State<List<User>>) {

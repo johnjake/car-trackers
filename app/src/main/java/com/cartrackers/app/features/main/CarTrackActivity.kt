@@ -34,7 +34,9 @@ class CarTrackActivity: AppCompatActivity() {
             override fun onNavigationItemSelected(@NonNull item: MenuItem): Boolean {
                 when (item.itemId) {
                     R.id.feeds_stack -> {
-                        openFragment(FeedFragment.newInstance(feed_fragment), feed_fragment)
+                      //  val instance = FeedFragment.newInstance(feed_fragment)
+
+                       // openFragment(instance, feed_fragment)
                         return true
                     }
                     R.id.vehicle_stack -> {

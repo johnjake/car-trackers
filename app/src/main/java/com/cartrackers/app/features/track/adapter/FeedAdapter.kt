@@ -29,6 +29,7 @@ class FeedAdapter(
     }
 
     override fun getItemCount(): Int = dataSource.size
+
 }
 
 
