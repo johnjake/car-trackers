@@ -23,8 +23,5 @@
             app:argType="integer"
             android:defaultValue="0" />
 
-        <action android:id="@+id/action_back_to_main"
-            app:destination="@+id/feedFragment" />
-
     </fragment>
 </navigation>

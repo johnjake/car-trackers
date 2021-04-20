@@ -14,7 +14,7 @@ import com.cartrackers.app.extension.toAvatar
 import de.hdodenhof.circleimageview.CircleImageView
 
 class FeedViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
-    val name: TextView = view.findViewById(R.id.userName)
+    val name: TextView = view.findViewById(R.id.carModel)
     private val image: ImageView = view.findViewById(R.id.imageMap)
     private val userId: TextView = view.findViewById(R.id.userId)
     val content: TextView = view.findViewById(R.id.content)

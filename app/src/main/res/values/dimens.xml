@@ -133,5 +133,6 @@
     <dimen name="text_size_tiny">14sp</dimen>
     <dimen name="text_size_tinier">12sp</dimen>
     <dimen name="text_size_tiniest">11sp</dimen>
+    <dimen name="pixels_300">300dp</dimen>
 
 </resources>

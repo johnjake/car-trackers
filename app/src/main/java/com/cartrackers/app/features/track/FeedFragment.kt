@@ -76,6 +76,7 @@ class FeedFragment: Fragment(), FeedAdapter.ProfileOnClickListener {
             layoutManager = resultLayout
             adapter = userAdapter
         }
+        userAdapter.hasStableIds()
     }
 
     private fun handleListFromRoom(state: State<List<User>>) {
