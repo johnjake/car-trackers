@@ -71,7 +71,7 @@
             app:srcCompat="@drawable/ic_days_time_selected" />
 
         <TextView
-            android:id="@+id/days"
+            android:id="@+id/friendUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
@@ -81,12 +81,12 @@
             android:lineSpacingExtra="3sp"
             android:textColor="@color/pinkOne"
             android:textSize="@dimen/text_size_tiniest"
-            tools:text="1 Day" />
+            tools:text="Jake" />
 
     </LinearLayout>
 
     <TextView
-        android:id="@+id/companyName"
+        android:id="@+id/friendUserId"
         android:layout_width="34dp"
         android:layout_height="34dp"
         android:layout_margin="2dp"
