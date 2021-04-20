@@ -35,7 +35,7 @@
         tools:src="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/tagName"
+        android:id="@+id/emailAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -62,7 +62,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/avatar"
         app:layout_constraintStart_toStartOf="@+id/avatar"
-        app:layout_constraintTop_toBottomOf="@+id/tagName">
+        app:layout_constraintTop_toBottomOf="@+id/emailAddress">
 
         <ImageView
             android:layout_width="16dp"

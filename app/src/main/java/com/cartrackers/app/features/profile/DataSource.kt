@@ -4,5 +4,5 @@ import com.cartrackers.app.data.vo.User
 
 interface DataSource {
     suspend fun getUserDetails(userId: Int): User
-    suspend fun getListOfDBUser(): List<User>
+    suspend fun getListOfDBUser(userId: Int): List<User>
 }

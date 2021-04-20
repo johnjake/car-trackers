@@ -47,7 +47,6 @@ class FeedFragment: Fragment(), FeedAdapter.ProfileOnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAdapter(view)
-
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

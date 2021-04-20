@@ -24,9 +24,9 @@ class ViewModel(
         }
     }
 
-    fun getListFromRoom() {
+    fun getListFromRoom(userId: Int) {
         viewModelScope.launch {
-            val data = repository.getListOfDBUser()
+            val data = repository.getListOfDBUser(userId)
             val stateData = State.Data(data)
             listModelFlow.value = stateData
         }
