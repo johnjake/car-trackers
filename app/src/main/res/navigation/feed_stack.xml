@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/feeds_stack"
+    app:startDestination="@id/feedsParentContainer">
+
+    <fragment
+        android:id="@+id/feedsParentContainer"
+        android:name="com.cartrackers.app.features.track.FeedParentFragment"
+        android:label="FeedsParent"
+        tools:layout="@layout/fragment_feeds_parent"/>
+
+    <fragment
+        android:id="@+id/feedsScreen"
+        android:name="com.cartrackers.app.features.track.FeedFragment"
+        android:label="Feeds"
+        tools:layout="@layout/fragment_feed">
+        <argument
+            android:name="influencerUid"
+            app:argType="string"
+            android:defaultValue="INFLUENCERID123" />
+    </fragment>
+
+</navigation>

@@ -58,4 +58,17 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <style name="StyleRadioItem">
+        <item name="android:textAppearance">@style/StyleRadioButtonTextAppearance
+        </item>
+        <item name="android:button">@null</item>
+        <item name="android:textColor">@color/checked_color</item>
+    </style>
+
+    <style name="StyleRadioButtonTextAppearance">
+        <item name="android:fontFamily">@font/inter_bold</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
 </resources>

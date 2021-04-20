@@ -36,6 +36,7 @@
     <color name="bright_pink_alpha_70">#B3FF0058</color>
     <color name="barbie_pink">#DA1884</color>
     <color name="piggy_pink">#f786a6</color>
+    <color name="pink">#e5004f</color>
 
     <color name="colorPrimary">@android:color/black</color>
     <color name="colorPrimaryDark">@android:color/black</color>
@@ -55,5 +56,12 @@
     <color name="color_shimmer">#75757B</color>
 
     <color name="normal_text_color">#9f9f9f</color>
+    <color name="bg_color_bottom_nav">#F2222229</color>
+    <color name="silver">#75757B</color>
+    <color name="pinkOne">#ff0058</color>
+    <color name="lighter_grey">#b7bebf</color>
+    <color name="gold">#FFB222</color>
+    <color name="grayOne">#898f90</color>
+    <color name="pinkTwenty">#33ff0058</color>
 
 </resources>
