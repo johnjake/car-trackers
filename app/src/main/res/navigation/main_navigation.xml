@@ -24,4 +24,11 @@
             android:defaultValue="0" />
 
     </fragment>
+    <fragment
+        android:id="@+id/carsFragment"
+        android:name="com.cartrackers.app.features.cars.CarsFragment"
+        android:label="CarsFragment"
+        tools:layout="@layout/fragment_cars"
+        />
+
 </navigation>

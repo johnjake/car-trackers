@@ -16,7 +16,7 @@ import de.hdodenhof.circleimageview.CircleImageView
 class FeedViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
     val name: TextView = view.findViewById(R.id.carModel)
     private val image: ImageView = view.findViewById(R.id.imageMap)
-    private val userId: TextView = view.findViewById(R.id.userId)
+    private val userId: TextView = view.findViewById(R.id.carTrack)
     val content: TextView = view.findViewById(R.id.content)
     private val avatar: CircleImageView = view.findViewById(R.id.avatar)
 

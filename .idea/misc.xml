@@ -62,6 +62,7 @@
         <entry key="..\:/car-trackers/app/src/main/res/layout/fragment_feeds_parent.xml" value="0.5421875" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/fragment_profile_management.xml" value="0.5362318840579711" />
+        <entry key="..\:/car-trackers/app/src/main/res/layout/fragment_vehicles.xml" value="0.5362318840579711" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/fragment_visited.xml" value="0.5421875" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/item_feed_cars.xml" value="0.5362318840579711" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/item_feed_main.xml" value="0.5421875" />
@@ -73,6 +74,7 @@
         <entry key="..\:/car-trackers/app/src/main/res/layout/tracker_alert_layout.xml" value="0.5" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/vello_alert_layout.xml" value="0.5421875" />
         <entry key="..\:/car-trackers/app/src/main/res/menu/influencer_menu.xml" value="0.5421875" />
+        <entry key="..\:/car-trackers/app/src/main/res/menu/main_menu.xml" value="0.5421875" />
         <entry key="..\:/dev/trackers/app/src/main/res/layout/activity_main.xml" value="0.490036231884058" />
       </map>
     </option>

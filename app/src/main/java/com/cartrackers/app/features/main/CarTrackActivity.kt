@@ -9,7 +9,6 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.fragment.NavHostFragment
 import com.cartrackers.app.R
 import com.cartrackers.app.databinding.ActivityMainBinding
-import com.cartrackers.app.features.track.FeedFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class CarTrackActivity: AppCompatActivity() {
@@ -29,17 +28,17 @@ class CarTrackActivity: AppCompatActivity() {
             itemIconTintList = null
         }
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
         bottomNavView.setOnNavigationItemSelectedListener(object :
             BottomNavigationView.OnNavigationItemSelectedListener {
             override fun onNavigationItemSelected(@NonNull item: MenuItem): Boolean {
                 when (item.itemId) {
                     R.id.feeds_stack -> {
-                      //  val instance = FeedFragment.newInstance(feed_fragment)
-
-                       // openFragment(instance, feed_fragment)
+                        navController.navigate(R.id.feedFragment)
                         return true
                     }
-                    R.id.vehicle_stack -> {
+                    R.id.car_stack -> {
+                        navController.navigate(R.id.carsFragment)
                         return true
                     }
                     R.id.inbox_stack -> {
