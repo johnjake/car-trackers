@@ -21,7 +21,7 @@ class FeedViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
     private val avatar: CircleImageView = view.findViewById(R.id.avatar)
 
     @SuppressLint("SetTextI18n")
-    fun bind(user: User) {
+    fun bind(user: User, itemListener: FeedAdapter.ProfileOnClickListener) {
         name.text = user.name
         image.setImageDrawable(ContextCompat.getDrawable(view.context, R.drawable.ic_map_item))
         val id = user.id.toString()
@@ -30,6 +30,9 @@ class FeedViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
         val phrase = user.company.catchPhrase
         content.text = "$companyName is a $phrase"
         avatar.toAvatar(user.id, view.context)
+        avatar.setOnClickListener {
+            itemListener.profileOnClick(user.id)
+        }
     }
 
     companion object {

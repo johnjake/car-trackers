@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cartrackers.app.data.vo.State
 import com.cartrackers.app.data.vo.User
@@ -18,14 +19,14 @@ import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 
-class FeedFragment: Fragment() {
+class FeedFragment: Fragment(), FeedAdapter.ProfileOnClickListener {
     private var binding: FragmentFeedBinding? = null
 
     private val bind get() = binding
 
     private val viewModel: ViewModel by inject()
 
-    private val userAdapter: FeedAdapter by lazy { FeedAdapter() }
+    private val userAdapter: FeedAdapter by lazy { FeedAdapter(this) }
 
     private var stateJob: Job? = null
 
@@ -106,5 +107,10 @@ class FeedFragment: Fragment() {
         private const val ARGS_FILTER = "ARGS_FILTER"
         private const val VISIBLE_THRESHOLD = 1
         private const val THRESHOLD_DELAY = 600L
+    }
+
+    override fun profileOnClick(userId: Int) {
+        val args = FeedFragmentDirections.actionFeedToProfile(userId)
+        view?.findNavController()?.navigate(args)
     }
 }

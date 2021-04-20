@@ -4,7 +4,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cartrackers.app.data.vo.User
 
-class FeedAdapter: RecyclerView.Adapter<FeedViewHolder>() {
+class FeedAdapter(
+    private val itemListener: ProfileOnClickListener
+    ): RecyclerView.Adapter<FeedViewHolder>() {
 
     private var dataSources: List<User> = emptyList()
 
@@ -14,12 +16,16 @@ class FeedAdapter: RecyclerView.Adapter<FeedViewHolder>() {
             notifyDataSetChanged()
         }
 
+    interface ProfileOnClickListener {
+        fun profileOnClick(userId: Int)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedViewHolder {
         return FeedViewHolder.create(parent)
     }
 
     override fun onBindViewHolder(holder: FeedViewHolder, position: Int) {
-        holder.bind(dataSources[position])
+        holder.bind(dataSources[position], itemListener)
     }
 
     override fun getItemCount(): Int = dataSource.size

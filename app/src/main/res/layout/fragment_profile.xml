@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/black_gradient_background"
+    android:fillViewport="true"
+    android:scrollbars="none"
+    tools:context=".features.profile.ProfileFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/leftGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_circle_silver"
+            app:layout_constraintGuide_begin="16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/rightGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="0dp" />
+
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="@dimen/pixels_24"
+            android:layout_height="@dimen/pixels_24"
+            android:layout_marginStart="@dimen/pixels_16"
+            android:layout_marginTop="@dimen/pixels_32"
+            android:background="@null"
+            android:contentDescription="@string/alt_back_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_arrow_back_main" />
+
+        <include
+            android:id="@+id/header"
+            layout="@layout/item_profile_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/pixels_8"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+            app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/back_button" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listOfQuestions"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:requiresFadingEdge="horizontal"
+            android:cacheColorHint="#FFFFFF"
+            android:fadingEdgeLength="@dimen/pixels_64"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+            app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/header"
+            tools:listitem="@layout/item_friends_list"/>
+
+        <com.cartrackers.app.widget.ItemMenuView
+            android:id="@+id/manageSubscription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginStart="@dimen/pixels_8"
+            app:item_background_color="@color/darkGray"
+            app:item_text="@string/manage_subscription"
+            app:item_text_color="@color/pinkOne"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listOfQuestions" />
+
+        <com.cartrackers.app.widget.ItemMenuView
+            android:id="@+id/chargeHistory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:layout_marginStart="@dimen/pixels_8"
+            app:item_background_color="@color/darkGray"
+            app:item_text="@string/charge_history"
+            app:item_text_color="@color/pinkOne"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/manageSubscription" />
+
+        <com.cartrackers.app.widget.ItemMenuView
+            android:id="@+id/editDetails"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:layout_marginStart="@dimen/pixels_8"
+            app:item_background_color="@color/darkGray"
+            app:item_text="@string/edit_my_details"
+            app:item_text_color="@color/pinkOne"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chargeHistory" />
+
+        <com.cartrackers.app.widget.ItemMenuView
+            android:id="@+id/editPaymentDetails"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:layout_marginStart="@dimen/pixels_8"
+            app:item_background_color="@color/darkGray"
+            app:item_text="@string/payments"
+            app:item_text_color="@color/pinkOne"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editDetails" />
+
+
+        <Button
+            android:id="@+id/becomeAnInfluencer"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:layout_marginTop="12dp"
+            android:drawableEnd="@drawable/ic_arrow_right"
+            android:background="@color/darkGray"
+            android:fontFamily="@font/inter_regular"
+            android:text="@string/become_an_influencer"
+            android:textAllCaps="false"
+            android:textColor="@color/pinkOne"
+            android:textSize="16sp"
+            android:gravity="start|center_vertical"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editPaymentDetails"/>
+
+        <Button
+            android:id="@+id/button_logout"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/pixels_56"
+            android:layout_marginTop="56dp"
+            android:layout_marginBottom="128dp"
+            android:background="?android:attr/selectableItemBackground"
+           android:fontFamily="@font/inter_semi_bold"
+            android:text="@string/logout"
+            android:textAllCaps="false"
+            android:textColor="@color/pinkOne"
+            android:textSize="@dimen/text_size_smallest"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+            app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/becomeAnInfluencer" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

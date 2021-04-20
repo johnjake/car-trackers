@@ -23,4 +23,19 @@
     <string name="all">All user</string>
     <string name="car_list">Vehicles</string>
     <string name="search">Search</string>
+    <string name="alt_back_button">back button</string>
+    <string name="my_network">Friend\'s List</string>
+    <string name="manage_subscription">Manager Subscription</string>
+    <string name="charge_history">Charge History</string>
+    <string name="edit_my_details">Edit My Details</string>
+    <string name="payments">Payment</string>
+    <string name="logout">Logout</string>
+    <string name="become_an_influencer">Other Details</string>
+    <string name="following">Following</string>
+    <string name="vip_list">Vip</string>
+    <string name="zero">0</string>
+    <string name="vello_ready">Ready</string>
+    <string name="vello_sent">Sent</string>
+    <string name="questions_available">Available</string>
+    <string name="friends_list">Friend\'s List</string>
 </resources>
