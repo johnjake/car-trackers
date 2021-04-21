@@ -1,5 +1,7 @@
 package com.cartrackers.app.features.profile
 
+import android.content.Intent
+import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -16,7 +18,10 @@ import com.cartrackers.app.data.vo.User
 import com.cartrackers.app.databinding.FragmentProfileBinding
 import com.cartrackers.app.extension.toAvatar
 import com.cartrackers.app.extension.toast
+import com.cartrackers.app.features.country.CountryActivity
 import com.cartrackers.app.features.profile.adapter.ProfileAdapter
+import com.cartrackers.app.utils.alert_dialog.ListenerCallBack
+import com.cartrackers.app.utils.alert_dialog.TrackerAlertDialog
 import com.cartrackers.app.utils.toJsonType
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.Job
@@ -63,6 +68,35 @@ class ProfileFragment: Fragment() {
             val args = ProfileFragmentDirections.actionEditProfile(userId, formattedProfile)
             it.findNavController().navigate(args)
         }
+
+        binding?.buttonLogout?.setOnClickListener {
+            val alertDialog = TrackerAlertDialog()
+            alertDialog.alertInitialize(
+                it.context,
+                "Car Track",
+                "Hi would you like to sign-out?",
+                Typeface.SANS_SERIF,
+                Typeface.DEFAULT_BOLD,
+                isCancelable = true,
+                isNegativeBtnHide = false)
+            alertDialog.setPositive("YES", object : ListenerCallBack {
+                override fun onClick(dialog: TrackerAlertDialog) {
+                    dialog.dismiss()
+                    launchActivity()
+                }
+            })
+            alertDialog.setNegative("NO", object : ListenerCallBack {
+                override fun onClick(dialog: TrackerAlertDialog) {
+                    dialog.dismiss()
+                }
+            })
+            alertDialog.show()
+        }
+    }
+
+    private fun launchActivity() {
+        val intent = Intent(activity, CountryActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onStart() {
