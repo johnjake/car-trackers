@@ -38,4 +38,14 @@
     <string name="vello_sent">Sent</string>
     <string name="questions_available">Available</string>
     <string name="friends_list">Friend\'s List</string>
+    <string name="email">email</string>
+    <string name="reply">Reply</string>
+    <string name="manage">manage</string>
+    <string name="login">Please Sign-in</string>
+    <string name="incorrect_password">Incorrect Password</string>
+    <string name="welcome_back">Please sign-in</string>
+    <string name="password_time">Credential</string>
+    <string name="no_account">Sign-up</string>
+    <string name="s_email_address">email address</string>
+    <string name="s_password">password</string>
 </resources>

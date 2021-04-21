@@ -49,7 +49,7 @@
         android:layout_height="@dimen/pixels_30"
         android:layout_marginStart="@dimen/pixels_16"
         android:layout_marginTop="@dimen/pixels_16"
-        android:background="@drawable/video_length_background"
+        android:background="@drawable/track_background"
         android:elevation="@dimen/pixels_15"
         android:fontFamily="@font/inter_semi_bold"
         android:gravity="center"

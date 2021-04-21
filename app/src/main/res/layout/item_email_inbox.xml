@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?android:selectableItemBackground"
+    tools:background="@drawable/black_gradient_background"
+    tools:ignore="UnusedAttribute"
+   >
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/leftGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/pixels_16" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/rightGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/pixels_16" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/avatar_inbox"
+        android:layout_width="@dimen/pixels_60"
+        android:layout_height="@dimen/pixels_60"
+        android:layout_marginTop="@dimen/pixels_16"
+        android:layout_marginBottom="@dimen/pixels_16"
+        android:background="@drawable/stroke_transparent_avatar"
+        android:elevation="@dimen/pixels_15"
+        android:padding="@dimen/pixels_4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/leftGuideline"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/completeName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/pixels_8"
+        android:layout_marginEnd="@dimen/pixels_8"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_tiny"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/emailAddressInbox"
+        app:layout_constraintEnd_toStartOf="@+id/manageButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/avatar_inbox"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="@tools:sample/full_names" />
+
+    <TextView
+        android:id="@+id/emailAddressInbox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/pixels_8"
+        android:layout_marginEnd="@dimen/pixels_8"
+        tools:text="@string/email"
+        android:textSize="@dimen/text_size_tinier"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/manageButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/avatar_inbox"
+        app:layout_constraintTop_toBottomOf="@+id/completeName" />
+
+    <Button
+        android:id="@+id/manageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/pixels_35"
+        android:text="@string/manage"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:background="@drawable/bg_corner_16dp_black_grey_border"
+        android:layout_marginEnd="@dimen/pixels_4"
+        android:contentDescription="@string/alt_feed"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

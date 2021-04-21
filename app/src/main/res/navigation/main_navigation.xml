@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation.xml"
-    app:startDestination="@id/feedFragment">
+    app:startDestination="@id/loginFragment">
     <fragment
         android:id="@+id/feedFragment"
         android:name="com.cartrackers.app.features.track.FeedFragment"
@@ -29,6 +29,18 @@
         android:name="com.cartrackers.app.features.cars.CarsFragment"
         android:label="CarsFragment"
         tools:layout="@layout/fragment_cars"
+        />
+    <fragment
+        android:id="@+id/inboxFragment"
+        android:name="com.cartrackers.app.features.inbox.InboxFragment"
+        android:label="InboxFragment"
+        tools:layout="@layout/fragment_manage"
+        />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.cartrackers.app.features.login.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login"
         />
 
 </navigation>

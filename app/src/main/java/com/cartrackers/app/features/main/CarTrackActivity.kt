@@ -42,6 +42,7 @@ class CarTrackActivity: AppCompatActivity() {
                         return true
                     }
                     R.id.inbox_stack -> {
+                        navController.navigate(R.id.inboxFragment)
                         return true
                     }
                     R.id.profile_stack -> {

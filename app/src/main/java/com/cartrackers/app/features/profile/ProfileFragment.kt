@@ -34,8 +34,6 @@ class ProfileFragment: Fragment() {
 
     private lateinit var resultLayout: LinearLayoutManager
 
-    private var currentId: Int? = 0
-
     private val userAdapter: ProfileAdapter by lazy { ProfileAdapter() }
 
     override fun onCreateView(

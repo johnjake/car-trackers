@@ -4,6 +4,7 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.content.Context
 import android.graphics.PorterDuff
@@ -229,6 +230,7 @@ class TrackRippleEffectButton : FrameLayout, View.OnClickListener {
         }
     }
 
+    @SuppressLint("CustomViewStyleable")
     private fun getStuffFromXML(attr: AttributeSet) {
         val a = context.obtainStyledAttributes(attr, R.styleable.sparkbutton)
         imageSize = a.getDimensionPixelOffset(R.styleable.sparkbutton_sparkbutton_iconSize, RippleUtilities.dpToPx(context, 50))
