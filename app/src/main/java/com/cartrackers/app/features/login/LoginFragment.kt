@@ -25,7 +25,7 @@ class LoginFragment: Fragment() {
     private val bind get() = binding
     private var isEmailFormat: Boolean = false
     private var isPasswordFormat: Boolean = false
-    val viewModel: LoginViewModel by inject()
+    private val viewModel: LoginViewModel by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,10 +40,14 @@ class LoginFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         activity?.overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right)
         hideNavigation()
+
         viewModel.userState.observe(viewLifecycleOwner) { state ->
             handleStateFlow(state)
         }
+    }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
         validateInputEmail()
         validateAndLogin()
     }

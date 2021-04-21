@@ -50,6 +50,8 @@ dependencies {
     implementation ("androidx.room:room-rxjava2:$archCompVersion")
     kapt ("androidx.room:room-compiler:$archCompVersion")
 
+    implementation("com.google.code.gson:gson:2.8.6")
+
     //Dependency injection
     implementation("org.koin:koin-android:$koinVersion")
     implementation ("org.koin:koin-androidx-viewmodel:$koinVersion")

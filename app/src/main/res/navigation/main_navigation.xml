@@ -26,6 +26,9 @@
             android:name="userId"
             app:argType="integer"
             android:defaultValue="0" />
+        <action
+            android:id="@+id/action_edit_profile"
+            app:destination="@id/editFragmentProfile" />
 
     </fragment>
     <fragment
@@ -50,6 +53,21 @@
             android:id="@+id/action_login_to_main"
             app:destination="@id/feedFragment" />
 
+    </fragment>
+    <fragment
+        android:id="@+id/editFragmentProfile"
+        android:name="com.cartrackers.app.features.profile.edit.EditProfileFragment"
+        android:label="EditProfileFragment"
+        tools:layout="@layout/fragment_edit_profile">
+        <argument
+            android:name="userId"
+            app:argType="integer"
+            android:defaultValue="0" />
+
+        <argument
+            android:name="profile"
+            app:argType="string"
+            android:defaultValue="" />
     </fragment>
 
 </navigation>
