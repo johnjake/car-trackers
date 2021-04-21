@@ -30,7 +30,30 @@ class CarDialog {
                     dialog.dismiss()
                 }
             })
+            alertDialog.show()
             return value
+        }
+
+        fun builderAlert(context: Context, title: String, messages: String) {
+            val alertDialog = TrackerAlertDialog()
+            alertDialog.alertInitialize(
+                context,
+                title,
+                messages,
+                Typeface.SANS_SERIF,
+                Typeface.DEFAULT_BOLD,
+                isCancelable = true,
+                isNegativeBtnHide = true)
+            alertDialog.setPositive("Ok", object : ListenerCallBack {
+                override fun onClick(dialog: TrackerAlertDialog) {
+                    dialog.dismiss()
+                }
+            })
+            alertDialog.setNegative("Ok", object : ListenerCallBack {
+                override fun onClick(dialog: TrackerAlertDialog) {
+                    dialog.dismiss()
+                }
+            })
             alertDialog.show()
         }
     }

@@ -14,7 +14,7 @@ class CountryActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCountryBinding.inflate(layoutInflater)
 
-        overridePendingTransition(R.anim.slide_in_bottom, R.anim.slide_out_bottom)
+        overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right)
 
         setContentView(binding.root)
 

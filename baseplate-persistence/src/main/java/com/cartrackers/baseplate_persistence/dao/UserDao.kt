@@ -33,6 +33,9 @@ abstract class UserDao {
     @Query("select * from users where id <> :userId")
     abstract suspend fun getFriendsList(userId: Int): List<DBUser>
 
+    @Query("select * from users where id <> :userId")
+    abstract suspend fun getInboxList(userId: Int): List<DBUser>
+
     @Query("select * from users")
     abstract suspend fun getUserList(): List<DBUser>
 }

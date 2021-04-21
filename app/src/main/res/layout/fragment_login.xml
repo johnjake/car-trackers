@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/signInContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/black_gradient_background"
+    >
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/leftGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/rightGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="32dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/middleGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="385dp" />
+
+    <TextView
+        android:id="@+id/welcomeBackTitle"
+        style="@style/TitleTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="17dp"
+        android:text="@string/welcome_back"
+        app:layout_constraintBottom_toTopOf="@+id/passwordTimeTitle"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline" />
+
+    <TextView
+        android:id="@+id/passwordTimeTitle"
+        style="@style/SubTitleTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:text="@string/password_time"
+        app:layout_constraintBottom_toTopOf="@+id/email"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline" />
+
+    <TextView
+        android:id="@+id/forgotPassword"
+        style="@style/SubTitleTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableEnd="@drawable/ic_sign_up"
+        android:drawablePadding="4dp"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/no_account"
+        android:background="@drawable/track_background"
+        app:layout_constraintBottom_toBottomOf="@+id/passwordTimeTitle"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintTop_toTopOf="@+id/passwordTimeTitle"
+        tools:visibility="visible" />
+
+    <EditText
+        android:id="@+id/email"
+        style="@style/StyleEmailEditText"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/pixels_58"
+        android:layout_marginBottom="16dp"
+        android:drawableEnd="@drawable/ic_envelop"
+        android:hint="@string/s_email_address"
+        android:focusable="true"
+        app:layout_constraintBottom_toTopOf="@+id/password"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        tools:text="sample@email.com" />
+
+    <EditText
+        android:id="@+id/password"
+        style="@style/StyleEditText"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/pixels_58"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/email_text_background"
+        android:drawableEnd="@drawable/ic_password_default"
+        android:hint="@string/s_password"
+        android:inputType="textPassword"
+        android:focusable="true"
+        app:layout_constraintBottom_toTopOf="@+id/middleGuideline"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_goneMarginBottom="28dp"
+        tools:text="testpassword" />
+
+    <TextView
+        android:id="@+id/textError"
+        style="@style/SubTitleTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/incorrect_password"
+        android:textSize="12sp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/password"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
+
+    <Button
+        android:id="@+id/userLoginButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/next_button"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintTop_toTopOf="@+id/middleGuideline" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
