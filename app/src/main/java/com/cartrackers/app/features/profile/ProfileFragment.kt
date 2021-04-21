@@ -108,8 +108,8 @@ class ProfileFragment: Fragment() {
         binding?.header?.UserName?.text = data.username
         binding?.header?.fullname?.text = data.name
         binding?.header?.webSite?.text = data.website
-        binding?.header?.companyName?.text = data.company.name
-        view?.context?.let { binding?.header?.avatar?.toAvatar(data.id, it) }
+        binding?.header?.companyName?.text = data.company?.name
+        view?.context?.let { data.id?.let { it1 -> binding?.header?.avatar?.toAvatar(it1, it) } }
     }
 
     private fun handleListFromRoom(state: State<List<User>>) {

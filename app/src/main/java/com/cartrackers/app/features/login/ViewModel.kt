@@ -18,7 +18,7 @@ class ViewModel(
         viewModelScope.launch {
             val data = repository.getUserByCredential(userName, password)
             val stateData = State.Data(data)
-            userFlow.value = stateData
+            stateData.also { userFlow.value = (it ?: null) as State<User> }
         }
     }
 }

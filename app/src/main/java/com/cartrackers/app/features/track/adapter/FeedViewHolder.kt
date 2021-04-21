@@ -26,12 +26,12 @@ class FeedViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
         image.setImageDrawable(ContextCompat.getDrawable(view.context, R.drawable.ic_map_item))
         val id = user.id.toString()
         userId.text = "ID: $id"
-        val companyName = user.company.name
-        val phrase = user.company.catchPhrase
+        val companyName = user.company?.name
+        val phrase = user.company?.catchPhrase
         content.text = "$companyName is a $phrase"
-        avatar.toAvatar(user.id, view.context)
+        user.id?.let { avatar.toAvatar(it, view.context) }
         avatar.setOnClickListener {
-            itemListener.profileOnClick(user.id)
+            user.id?.let { item -> itemListener.profileOnClick(item) }
         }
     }
 

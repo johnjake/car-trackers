@@ -25,7 +25,9 @@ class InboxAdapter: ListAdapter<User, InboxAdapter.InboxViewHolder>(DiffCallback
     inner class InboxViewHolder(private val binding: ItemEmailInboxBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(user: User) {
             binding.apply {
-                avatarInbox.toAvatar(user.id, binding.root.context)
+                if(user.id!=0) {
+                    user.id?.let { avatarInbox.toAvatar(it, binding.root.context) }
+                }
                 completeName.text = user.name
                 emailAddressInbox.text = user.email
             }

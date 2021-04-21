@@ -15,8 +15,8 @@ class Mapper: MapperSource {
         password = from.password,
         email = from.email,
         address = from.address.toJsonType(),
-        phone = from.phone,
-        website = from.website,
+        phone = from.phone ?: "",
+        website = from.website ?: "",
         company = from.company.toJsonType()
         )
         return map
@@ -37,14 +37,14 @@ class Mapper: MapperSource {
 
     override fun mapFromDomain(from: User): DBUser {
         return DBUser(
-            id = from.id,
-            name = from.name,
-            username = from.username,
-            password = from.password,
-            email = from.email,
+            id = from.id ?: 0,
+            name = from.name ?: "",
+            username = from.username ?: "",
+            password = from.password ?: "",
+            email = from.email ?: "",
             address = from.address.toJsonType(),
-            phone = from.phone,
-            website = from.website,
+            phone = from.phone ?: "",
+            website = from.website ?: "",
             company = from.company.toJsonType()
         )
     }

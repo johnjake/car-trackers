@@ -20,7 +20,7 @@ class ProfileViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
         email.text = user.email
         userName.text = user.username
         userId.text = user.id.toString()
-        avatar.toAvatar(user.id, view.context)
+        user.id?.let { avatar.toAvatar(it, view.context) }
     }
 
     companion object {

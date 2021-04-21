@@ -6,6 +6,7 @@ import com.cartrackers.app.features.track.ViewModel as Track
 import com.cartrackers.app.features.profile.ViewModel as Profile
 import com.cartrackers.app.features.cars.ViewModel as Car
 import com.cartrackers.app.features.inbox.ViewModel as Inbox
+import com.cartrackers.app.features.login.ViewModel as Login
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -16,4 +17,5 @@ val viewModelModule = module {
     viewModel { Profile(repository = get()) }
     viewModel { Car(repository = get()) }
     viewModel { Inbox(repository = get()) }
+    viewModel { Login(repository = get()) }
 }
