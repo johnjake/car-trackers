@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import com.cartrackers.app.comms.CarDialog
 import com.cartrackers.app.data.vo.*
 import com.cartrackers.app.databinding.FragmentEditProfileBinding
@@ -60,6 +61,10 @@ class EditProfileFragment: Fragment() {
         super.onActivityCreated(savedInstanceState)
         binding?.save?.setOnClickListener {
             updateProfile()
+        }
+
+        binding?.backButton?.setOnClickListener {
+            it.findNavController().popBackStack()
         }
     }
 
