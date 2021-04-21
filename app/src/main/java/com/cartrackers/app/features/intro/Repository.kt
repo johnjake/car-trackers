@@ -17,15 +17,15 @@ class Repository(private val apiServices: ApiServices,
         try {
             val model = mapper.mapFromDomain(user)
             userDao.insertUserQuery(
-                id = model.id,
+                id = model.id ?: 0,
                 name = model.name ?: "",
-                username = model.username,
-                password = model.password,
+                username = model.username ?: "",
+                password = model.password ?: "",
                 email = model.email ?: "",
-                address = model.address,
-                phone = model.phone,
-                website = model.website,
-                company = model.company
+                address = model.address ?: "",
+                phone = model.phone ?: "",
+                website = model.website ?: "",
+                company = model.company ?: ""
             )
         } catch (e: Exception) {
             Log.e("Error: ",  "${e.message}")

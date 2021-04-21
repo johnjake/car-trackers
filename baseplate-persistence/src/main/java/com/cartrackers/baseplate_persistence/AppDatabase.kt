@@ -11,7 +11,7 @@ import com.cartrackers.baseplate_persistence.model.DBUser
 
 @Database(
     entities = [DBUser::class],
-    version = 3,
+    version = 9,
     exportSchema = false
 )
 @TypeConverters

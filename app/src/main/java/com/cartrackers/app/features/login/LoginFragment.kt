@@ -5,21 +5,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.cartrackers.app.R
 import com.cartrackers.app.comms.CarDialog
 import com.cartrackers.app.comms.EmailAddress
+import com.cartrackers.app.data.vo.State
+import com.cartrackers.app.data.vo.User
 import com.cartrackers.app.databinding.FragmentLoginBinding
 import com.cartrackers.app.extension.toast
+import com.cartrackers.app.features.main.CarTrackActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.Job
+import org.koin.android.ext.android.inject
+import timber.log.Timber
 import java.lang.Exception
 
 class LoginFragment: Fragment() {
     private var binding: FragmentLoginBinding? = null
     private val bind get() = binding
-    private val stateJob: Job? = null
     private var isEmailFormat: Boolean = false
     private var isPasswordFormat: Boolean = false
+    private val viewModel: LoginViewModel by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,19 +40,53 @@ class LoginFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         activity?.overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right)
         hideNavigation()
+
+        viewModel.userState.observe(viewLifecycleOwner) { state ->
+            handleStateFlow(state)
+        }
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
         validateInputEmail()
         validateAndLogin()
     }
 
+    private fun handleStateFlow(state: State<User?>) {
+        when(state) {
+            is State.Data -> handlesSuccess(state.data)
+            is State.Error -> handleFailed(state.error)
+            else -> Timber.e("An error occurred during query request!")
+        }
+    }
+
+    private fun handleFailed(error: Throwable) {
+        context?.let { CarDialog.builderAlert(it,
+            "Invalid Credential",
+            "Invalid email or password!") }
+    }
+
+    private fun handlesSuccess(data: User?) {
+        if(data!=null) {
+            activity?.toast("Welcome ${data.username} !")
+            val args = LoginFragmentDirections.actionLoginToMain(data.id ?: 0)
+            view?.findNavController()?.navigate(args)
+            CarTrackActivity.onBackPress = true
+        } else {
+            context?.let { CarDialog.builderAlert(it,
+                "Credential",
+                "Invalid username or password!") }
+        }
+    }
+
     private fun validateAndLogin() {
+        //TODO add progress bar
         binding?.userLoginButton?.setOnClickListener {
             validateInputPassword()
             if(isEmailFormat && isPasswordFormat) {
-                activity?.toast("begin login process")
+                val username = binding?.email?.text.toString().trim()
+                val password = binding?.password?.text.toString().trim()
+                viewModel.authenticateUser(username, password)
             }
         }
     }
@@ -95,6 +135,5 @@ class LoginFragment: Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
-        stateJob?.cancel()
-    }
+   }
 }

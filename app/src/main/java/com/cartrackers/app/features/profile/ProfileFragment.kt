@@ -15,7 +15,9 @@ import com.cartrackers.app.data.vo.State
 import com.cartrackers.app.data.vo.User
 import com.cartrackers.app.databinding.FragmentProfileBinding
 import com.cartrackers.app.extension.toAvatar
+import com.cartrackers.app.extension.toast
 import com.cartrackers.app.features.profile.adapter.ProfileAdapter
+import com.cartrackers.app.utils.toJsonType
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
@@ -34,7 +36,11 @@ class ProfileFragment: Fragment() {
 
     private lateinit var resultLayout: LinearLayoutManager
 
+    private var userId: Int = 0
+
     private val userAdapter: ProfileAdapter by lazy { ProfileAdapter() }
+
+    private lateinit var formattedProfile: String
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,6 +58,11 @@ class ProfileFragment: Fragment() {
         binding?.backButton?.setOnClickListener {
             view.findNavController().popBackStack()
         }
+
+        binding?.editDetails?.setOnClickListener {
+            val args = ProfileFragmentDirections.actionEditProfile(userId, formattedProfile)
+            it.findNavController().navigate(args)
+        }
     }
 
     override fun onStart() {
@@ -60,6 +71,7 @@ class ProfileFragment: Fragment() {
             val arg = ProfileFragmentArgs.fromBundle(it)
             viewModel.getUserProfile(arg.userId)
             viewModel.getListFromRoom(arg.userId)
+            userId = arg.userId
         }
     }
 
@@ -108,8 +120,9 @@ class ProfileFragment: Fragment() {
         binding?.header?.UserName?.text = data.username
         binding?.header?.fullname?.text = data.name
         binding?.header?.webSite?.text = data.website
-        binding?.header?.companyName?.text = data.company.name
-        view?.context?.let { binding?.header?.avatar?.toAvatar(data.id, it) }
+        binding?.header?.companyName?.text = data.company?.name
+        view?.context?.let { data.id?.let { it1 -> binding?.header?.avatar?.toAvatar(it1, it) } }
+        formattedProfile = data.toJsonType().toString()
     }
 
     private fun handleListFromRoom(state: State<List<User>>) {

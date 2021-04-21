@@ -43,13 +43,13 @@ inline fun<reified T: Any?> String.toListType(): List<T> {
 }
 
 @TypeConverter
-inline fun<reified T: Any?> T.toJsonType(): String {
-    return Gson().toJson(this)
+inline fun<reified T: Any?> T.toJsonType(): String? {
+    return Gson().toJson(this) ?: ""
 }
 
 @TypeConverter
-inline fun<reified T: Any?> String.toClassType(): T {
-    return Gson().fromJson(this, T::class.java)
+inline fun<reified T: Any?> String.toClassType(): T? {
+    return Gson().fromJson(this, T::class.java) ?: null
 }
 
 /** determined object class type using reflection **/
