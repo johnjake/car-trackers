@@ -1,1 +1,1 @@
-D:\car-trackers\buildSrc\build\classes\kotlin\main\com\cartrackers\app\Config.class
+D:\dev\car-trackers\buildSrc\build\classes\kotlin\main\com\cartrackers\app\Config.class

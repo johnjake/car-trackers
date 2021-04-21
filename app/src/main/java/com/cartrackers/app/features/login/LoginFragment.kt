@@ -35,7 +35,7 @@ class LoginFragment: Fragment() {
         activity?.overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right)
         hideNavigation()
     }
-
+git
     override fun onStart() {
         super.onStart()
         validateInputEmail()
