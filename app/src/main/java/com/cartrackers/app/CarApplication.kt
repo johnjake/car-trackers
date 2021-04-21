@@ -21,7 +21,8 @@ class CarApplication: Application() {
                 databaseModule,
                 mapperModule,
                 repositoryModule,
-                viewModelModule
+                viewModelModule,
+                viewModelLogin
             ))
         }
     }

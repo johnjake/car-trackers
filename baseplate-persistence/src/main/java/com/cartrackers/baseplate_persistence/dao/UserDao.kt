@@ -18,8 +18,8 @@ abstract class UserDao {
     @Query("select * from users where id = :userId")
     abstract suspend fun getUserDetails(userId: Int): DBUser
 
-    @Query("select * from users where username = :authUserName and password = :authPassword")
-    abstract suspend fun getUserByCredential(authUserName: String, authPassword: String): DBUser
+    @Query("select * from users where email = :authUserName and password = :authPassword")
+    abstract suspend fun getUserByCredential(authUserName: String, authPassword: String): DBUser?
 
     @Query("select * from users where name like '%' || :searchItem || '%' ")
     abstract fun searchUser(searchItem: String): Flow<List<DBUser>>

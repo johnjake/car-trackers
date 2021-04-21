@@ -7,12 +7,7 @@ import java.lang.Exception
 
 class Repository(private val userDao: UserDao, private val mapper: Mapper): DataSource {
     override suspend fun getUserByCredential(authUserName: String, authPassword: String): User? {
-        return try {
-            val user = userDao.getUserByCredential(authUserName, authPassword)
-            mapper.mapFromRoom(user)
-        }catch (ex: Exception) {
-            null
-        }
-
+        val user = userDao.getUserByCredential(authUserName, authPassword)
+        return user?.let { mapper.mapFromRoom(it) }
     }
 }

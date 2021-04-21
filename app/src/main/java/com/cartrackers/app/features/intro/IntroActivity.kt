@@ -88,6 +88,7 @@ class IntroActivity : AppCompatActivity() {
         if(data.isNotEmpty()) {
             data.map { user ->
                 val userId = user.id
+                user.email = user.email?.toLowerCase()
                 user.password = "password$userId"
                 Log.d("handleDomainSuccess", "$user")
                 viewModel.insertUserToDB(user)
