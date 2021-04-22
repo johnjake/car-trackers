@@ -10,10 +10,12 @@ import com.cartrackers.app.R
 import com.cartrackers.app.data.vo.State
 import com.cartrackers.app.data.vo.User
 import com.cartrackers.app.databinding.ActivityIntroBinding
+import com.cartrackers.app.di.providesSharedPrefGetCount
 import com.cartrackers.app.di.providesSharedPrefGetStorage
 import com.cartrackers.app.di.providesSharedPrefStored
 import com.cartrackers.app.di.providesSharedUserCount
 import com.cartrackers.app.features.country.CountryActivity
+import com.cartrackers.app.utils.shared_counter
 import com.cartrackers.app.utils.shared_room
 import com.cartrackers.app.utils.shared_user_no
 import com.cartrackers.app.utils.toast
@@ -28,18 +30,21 @@ class IntroActivity : AppCompatActivity() {
     private lateinit var binding: ActivityIntroBinding
     private var stateJob: Job? = null
     private val viewModel: ViewModel by inject()
-
+    private var counter: Int? = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityIntroBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupLogoAnimate()
         val storageRoom = providesSharedPrefGetStorage(this, shared_room)
+        counter = providesSharedPrefGetCount(binding.root.context, shared_counter)
         if(storageRoom == false) {
             viewModel.getUserFromDomain()
             viewModel.insertCountryToDB()
+        }
+        if(counter ?:0 > 0) {
             binding.userSplashNextButton.isEnabled = true
-        } else binding.userSplashNextButton.isEnabled = true
+        }
     }
 
     override fun onStart() {
@@ -100,7 +105,8 @@ class IntroActivity : AppCompatActivity() {
             this.toast("${data.size} no of data persist to room")
             providesSharedUserCount(this, shared_user_no, data.count())
             providesSharedPrefStored(this, shared_room, true)
-
+            binding.userSplashNextButton.isEnabled = true
+            providesSharedUserCount(this, shared_counter, 1)
         } else {
             providesSharedPrefStored(this, shared_room, false)
             this.toast("0 no of data persist to room")

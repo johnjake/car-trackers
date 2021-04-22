@@ -5,10 +5,14 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.cartrackers.app.comms.CarDialog
 import com.cartrackers.app.databinding.ActivitySplashBinding
+import com.cartrackers.app.di.providesSharedPrefGetCount
 import com.cartrackers.app.di.providesSharedPrefStored
+import com.cartrackers.app.di.providesSharedUserCount
 import com.cartrackers.app.features.intro.IntroActivity
 import com.cartrackers.app.utils.isOnline
 import com.cartrackers.app.utils.net_connectivity
+import com.cartrackers.app.utils.shared_counter
+import com.cartrackers.app.utils.shared_user_no
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -23,6 +27,10 @@ class SplashActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val counter = providesSharedPrefGetCount(binding.root.context, shared_counter)
+        if(counter == 0) {
+            providesSharedUserCount(this, shared_counter, 0)
+        }
     }
 
     override fun onStart() {
