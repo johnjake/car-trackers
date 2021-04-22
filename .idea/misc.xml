@@ -86,7 +86,12 @@
         <entry key="..\:/car-trackers/app/src/main/res/layout/vello_alert_layout.xml" value="0.5421875" />
         <entry key="..\:/car-trackers/app/src/main/res/menu/influencer_menu.xml" value="0.5421875" />
         <entry key="..\:/car-trackers/app/src/main/res/menu/main_menu.xml" value="0.5421875" />
+        <entry key="..\:/dev/car-trackers/app/src/main/res/layout/activity_country.xml" value="0.4773550724637681" />
         <entry key="..\:/dev/car-trackers/app/src/main/res/layout/fragment_edit_profile.xml" value="0.483695652173913" />
+        <entry key="..\:/dev/car-trackers/app/src/main/res/layout/fragment_manage.xml" value="0.5421875" />
+        <entry key="..\:/dev/car-trackers/app/src/main/res/layout/item_email_inbox.xml" value="0.5421875" />
+        <entry key="..\:/dev/car-trackers/app/src/main/res/layout/item_friends_list.xml" value="0.5421875" />
+        <entry key="..\:/dev/car-trackers/app/src/main/res/layout/item_string_country.xml" value="0.5421875" />
         <entry key="..\:/dev/trackers/app/src/main/res/layout/activity_main.xml" value="0.490036231884058" />
       </map>
     </option>

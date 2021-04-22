@@ -56,58 +56,42 @@
             android:layout_marginBottom="28dp"
             android:text="@string/country"
             android:textAppearance="@style/SubTitleTextStyle"
-            app:layout_constraintBottom_toTopOf="@+id/email"
+            app:layout_constraintBottom_toTopOf="@+id/country"
             app:layout_constraintStart_toStartOf="@+id/leftGuideline" />
 
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/country"
             style="@style/StyleEditText"
-            android:layout_width="0dp"
+            android:layout_width="294dp"
             android:layout_marginBottom="38dp"
             android:drawableEnd="@drawable/ic_globe"
             android:hint="@string/select_country"
             android:inputType="textEmailAddress"
             app:layout_constraintBottom_toTopOf="@+id/middleGuideline"
-            app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
             app:layout_constraintStart_toStartOf="@+id/leftGuideline"
             tools:ignore="Autofill" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/countryList"
+            android:layout_marginTop="@dimen/pixels_4"
+
+            android:layout_width="@dimen/pixels_294"
+            android:layout_height="@dimen/pixels_280"
+            app:layout_constraintLeft_toLeftOf="@id/leftGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/country"
+            tools:listitem="@layout/item_string_country"/>
 
         <Button
             android:id="@+id/countryNextButton"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginEnd="5dp"
+            android:enabled="false"
             android:background="@drawable/next_button"
-            app:layout_constraintEnd_toStartOf="@id/rightGuideline"
-            app:layout_constraintTop_toBottomOf="@+id/middleGuideline" />
+            app:layout_constraintBottom_toTopOf="@+id/countryList"
+            app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+            app:layout_constraintStart_toEndOf="@+id/country" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/facebookLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="32dp"
-            android:textAllCaps="false"
-            android:background="@android:color/transparent"
-            android:drawableStart="@drawable/ic_facebook_colored"
-            android:gravity="center_vertical"
-            android:paddingTop="12dp"
-            android:paddingBottom="12dp"
-            android:textColor="@android:color/white"
-            android:fontFamily="@font/inter_regular"
-            android:text="@string/sign_in_with_facebook"
-            android:textSize="16sp"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.constraintlayout.widget.Group
-            android:id="@+id/inputGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:constraint_referenced_ids="letsGoTitle,startWithYourEmail,email" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

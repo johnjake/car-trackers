@@ -4,11 +4,15 @@ import android.util.Log
 import com.cartrackers.app.api.ApiServices
 import com.cartrackers.app.data.mapper.Mapper
 import com.cartrackers.app.data.vo.User
+import com.cartrackers.app.utils.Countries
+import com.cartrackers.baseplate_persistence.dao.CountryDao
 import com.cartrackers.baseplate_persistence.dao.UserDao
+import com.cartrackers.baseplate_persistence.model.DBCountry
 import java.lang.Exception
 
 class Repository(private val apiServices: ApiServices,
                  private val userDao: UserDao,
+                 private val countryDao: CountryDao,
                  private val mapper: Mapper
 ): DataSource {
     override suspend fun getListOfUsers(): List<User> = apiServices.getAllUsers()
@@ -29,6 +33,13 @@ class Repository(private val apiServices: ApiServices,
             )
         } catch (e: Exception) {
             Log.e("Error: ",  "${e.message}")
+        }
+    }
+
+    override suspend fun insertCountryDao() {
+        val country = Countries.getCountries()
+        country.forEach { value ->
+            countryDao.insertCountry(value)
         }
     }
 }

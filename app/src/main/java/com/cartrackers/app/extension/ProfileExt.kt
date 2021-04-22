@@ -23,3 +23,10 @@ inline fun CircleImageView.toAvatar(userId: Int, context: Context) {
         10 -> this.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.clementina_dubuque))
     }
 }
+
+inline fun CircleImageView.toCountry(userId: Int, context: Context) {
+    this.borderColor = Color.parseColor("#75757B")
+    this.setPadding(1, 1, 1, 1)
+    this.borderWidth = 5
+    this.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_map_item))
+}
