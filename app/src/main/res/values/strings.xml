@@ -65,4 +65,6 @@
     <string name="catch_phrases">Catch Phrase:</string>
     <string name="bs_label">BS:</string>
     <string name="username">Username:</string>
+    <string name="new_user">New Account</string>
+    <string name="register">Register</string>
 </resources>

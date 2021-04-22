@@ -164,6 +164,7 @@
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
         android:text="@string/terms_of_use"
+
         android:textAppearance="@style/FooterTextStyle"
         app:layout_constraintBottom_toBottomOf="@+id/privacyPolicy"
         app:layout_constraintEnd_toEndOf="parent"
@@ -175,6 +176,7 @@
         android:layout_width="@dimen/pixels_60"
         android:layout_height="@dimen/pixels_60"
         android:background="@drawable/next_button"
+        android:enabled="false"
         app:layout_constraintBottom_toBottomOf="@+id/readyLetsGoTitle"
         app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
         app:layout_constraintTop_toTopOf="@+id/readyLetsGoTitle" />

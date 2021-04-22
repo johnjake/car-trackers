@@ -52,6 +52,9 @@
         <action
             android:id="@+id/action_login_to_main"
             app:destination="@id/feedFragment" />
+        <action
+            android:id="@+id/action_to_register"
+            app:destination="@id/registerFragment" />
 
     </fragment>
     <fragment
@@ -69,5 +72,11 @@
             app:argType="string"
             android:defaultValue="" />
     </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.cartrackers.app.features.profile.register.RegisterFragment"
+        android:label="RegisterFragment"
+        tools:layout="@layout/fragment_register"
+        />
 
 </navigation>

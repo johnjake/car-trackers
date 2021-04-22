@@ -12,8 +12,11 @@ import com.cartrackers.app.data.vo.User
 import com.cartrackers.app.databinding.ActivityIntroBinding
 import com.cartrackers.app.di.providesSharedPrefGetStorage
 import com.cartrackers.app.di.providesSharedPrefStored
+import com.cartrackers.app.di.providesSharedUserCount
 import com.cartrackers.app.features.country.CountryActivity
 import com.cartrackers.app.utils.shared_room
+import com.cartrackers.app.utils.shared_user_no
+import com.cartrackers.app.utils.toast
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.take
@@ -35,7 +38,8 @@ class IntroActivity : AppCompatActivity() {
         if(storageRoom == false) {
             viewModel.getUserFromDomain()
             viewModel.insertCountryToDB()
-        }
+            binding.userSplashNextButton.isEnabled = true
+        } else binding.userSplashNextButton.isEnabled = true
     }
 
     override fun onStart() {
@@ -93,9 +97,13 @@ class IntroActivity : AppCompatActivity() {
                 user.password = "password$userId"
                 viewModel.insertUserToDB(user)
             }
+            this.toast("${data.size} no of data persist to room")
+            providesSharedUserCount(this, shared_user_no, data.count())
             providesSharedPrefStored(this, shared_room, true)
+
         } else {
             providesSharedPrefStored(this, shared_room, false)
+            this.toast("0 no of data persist to room")
         }
     }
 

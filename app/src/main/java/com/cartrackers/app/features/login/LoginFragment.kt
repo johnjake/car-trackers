@@ -89,6 +89,9 @@ class LoginFragment: Fragment() {
                 viewModel.authenticateUser(username, password)
             }
         }
+        binding?.registerButton?.setOnClickListener {
+            it.findNavController().navigate(R.id.action_to_register)
+        }
     }
 
     private fun validateInputEmail() {
