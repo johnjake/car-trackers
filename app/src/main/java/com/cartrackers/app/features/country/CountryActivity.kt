@@ -12,10 +12,9 @@ import com.cartrackers.app.databinding.ActivityCountryBinding
 import com.cartrackers.app.features.main.CarTrackActivity
 import org.koin.android.ext.android.inject
 
-
-class CountryActivity: AppCompatActivity() {
+class CountryActivity: AppCompatActivity(), CountryAdapter.OnCountryClick {
     private lateinit var binding: ActivityCountryBinding
-    private val countryAdapter: CountryAdapter by lazy { CountryAdapter() }
+    private val countryAdapter: CountryAdapter by lazy { CountryAdapter(this) }
     private lateinit var resultLayout: LinearLayoutManager
     private val viewModel: ViewModel by inject()
 
@@ -43,7 +42,8 @@ class CountryActivity: AppCompatActivity() {
 
             }
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
+                binding.countryList.visibility = View.VISIBLE
+                binding.countryNextButton.isEnabled = false
             }
             override fun afterTextChanged(s: Editable?) {
                 val query = s.toString()
@@ -77,5 +77,11 @@ class CountryActivity: AppCompatActivity() {
         startActivity(Intent(this, CarTrackActivity::class.java).apply {
             putExtra("INTERNET", "1")
         })
+    }
+
+    override fun onClickListener(country: String) {
+        binding.country.setText(country)
+        binding.countryNextButton.isEnabled = true
+        binding.countryList.visibility = View.GONE
     }
 }

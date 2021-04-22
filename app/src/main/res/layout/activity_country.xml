@@ -74,7 +74,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/countryList"
             android:layout_marginTop="@dimen/pixels_4"
-
+            android:visibility="gone"
             android:layout_width="@dimen/pixels_294"
             android:layout_height="@dimen/pixels_280"
             app:layout_constraintLeft_toLeftOf="@id/leftGuideline"
@@ -90,8 +90,5 @@
             app:layout_constraintBottom_toTopOf="@+id/countryList"
             app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
             app:layout_constraintStart_toEndOf="@+id/country" />
-
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

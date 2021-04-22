@@ -10,7 +10,11 @@ import com.cartrackers.app.databinding.ItemStringCountryBinding
 import com.cartrackers.app.extension.toAvatar
 import com.cartrackers.app.extension.toCountry
 
-class CountryAdapter: ListAdapter<Country, CountryAdapter.CountryViewHolder>(DiffCallback()) {
+class CountryAdapter(private val listener: OnCountryClick): ListAdapter<Country, CountryAdapter.CountryViewHolder>(DiffCallback()) {
+
+    interface OnCountryClick {
+        fun onClickListener(country: String)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {
         val binding = ItemStringCountryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -19,16 +23,19 @@ class CountryAdapter: ListAdapter<Country, CountryAdapter.CountryViewHolder>(Dif
 
     override fun onBindViewHolder(holder: CountryViewHolder, position: Int) {
         val currentItem = getItem(position)
-        holder.bind(currentItem)
+        holder.bind(currentItem, listener)
     }
 
     inner class CountryViewHolder(private val binding: ItemStringCountryBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(country: Country) {
+        fun bind(country: Country, itemListener: CountryAdapter.OnCountryClick) {
             if(country.id>0) {
                 binding.avatarCountry.toCountry(country.id, binding.root.context)
             }
             binding.apply {
                 countryName.text = country.name
+                countryName.setOnClickListener {
+                    itemListener.onClickListener(country.name)
+                }
             }
         }
     }
