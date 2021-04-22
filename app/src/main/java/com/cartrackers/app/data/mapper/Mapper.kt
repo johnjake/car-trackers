@@ -1,12 +1,10 @@
 package com.cartrackers.app.data.mapper
 
-import com.cartrackers.app.data.vo.Address
-import com.cartrackers.app.data.vo.Company
-import com.cartrackers.app.data.vo.Coordinates
-import com.cartrackers.app.data.vo.User
+import com.cartrackers.app.data.vo.*
 import com.cartrackers.app.utils.toClassType
 import com.cartrackers.app.utils.toJsonType
 import com.cartrackers.baseplate_persistence.domain.DomainUser
+import com.cartrackers.baseplate_persistence.model.DBCountry
 import com.cartrackers.baseplate_persistence.model.DBUser
 import com.google.gson.Gson
 
@@ -50,6 +48,13 @@ class Mapper: MapperSource {
             phone = from.phone ?: "",
             website = from.website ?: "",
             company = from.company.toJsonType() ?: ""
+        )
+    }
+
+    override fun mapFromDBCountry(from: DBCountry): Country {
+        return Country(
+            id = from.Id ?: 0,
+            name = from.name
         )
     }
 

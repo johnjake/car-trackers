@@ -34,6 +34,7 @@ class IntroActivity : AppCompatActivity() {
         val storageRoom = providesSharedPrefGetStorage(this, shared_room)
         if(storageRoom == false) {
             viewModel.getUserFromDomain()
+            viewModel.insertCountryToDB()
         }
     }
 
@@ -90,7 +91,6 @@ class IntroActivity : AppCompatActivity() {
                 val userId = user.id
                 user.email = user.email?.toLowerCase()
                 user.password = "password$userId"
-                Log.d("handleDomainSuccess", "$user")
                 viewModel.insertUserToDB(user)
             }
             providesSharedPrefStored(this, shared_room, true)

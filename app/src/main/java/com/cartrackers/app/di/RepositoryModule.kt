@@ -8,15 +8,17 @@ import com.cartrackers.app.features.cars.Repository as Car
 import com.cartrackers.app.features.inbox.Repository as Inbox
 import com.cartrackers.app.features.login.Repository as Login
 import com.cartrackers.app.features.profile.edit.Repository as EditProfile
+import com.cartrackers.app.features.country.Repository as Countries
 import org.koin.dsl.module
 
 val repositoryModule = module {
     factory { Home(apiServices = get(), userDao = get(), mapper = get()) }
-    factory { Intro(apiServices = get(), userDao = get(), mapper = get()) }
+    factory { Intro(apiServices = get(), userDao = get(), countryDao = get(), mapper = get()) }
     factory { Track(userDao = get(), mapper = get()) }
     factory { Profile(userDao = get(), mapper = get()) }
     factory { Car() }
     factory { Inbox(userDao = get(), mapper = get()) }
     factory { Login(userDao = get(), mapper = get()) }
     factory { EditProfile(userDao = get()) }
+    factory { Countries(dao = get(), mapper = get()) }
 }

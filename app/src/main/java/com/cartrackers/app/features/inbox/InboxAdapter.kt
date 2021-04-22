@@ -41,6 +41,4 @@ class InboxAdapter: ListAdapter<User, InboxAdapter.InboxViewHolder>(DiffCallback
         override fun areContentsTheSame(oldItem: User, newItem: User) =
             oldItem == newItem
     }
-
-
 }
