@@ -63,14 +63,20 @@ class FeedFragment: Fragment(), FeedsAdapter.ProfileOnClickListener, FeedsAdapte
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        viewModel.getListFromRoom()
+    }
+
     override fun onResume() {
         super.onResume()
         bottomVisibility()
     }
 
-    override fun onStart() {
-        super.onStart()
-        viewModel.getListFromRoom()
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+        stateJob?.cancel()
     }
 
     private fun initAdapter(view: View) {
@@ -108,12 +114,6 @@ class FeedFragment: Fragment(), FeedsAdapter.ProfileOnClickListener, FeedsAdapte
             CarTrackActivity.onBackPress = false
             activity.showNavigation()
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        binding = null
-        stateJob?.cancel()
     }
 
     override fun profileOnClick(userId: Int) {

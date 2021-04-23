@@ -57,6 +57,7 @@ class ProfileFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         activity.hideNavigation()
         initAdapter(view)
+
         binding?.backButton?.setOnClickListener {
             view.findNavController().popBackStack()
         }
@@ -91,10 +92,18 @@ class ProfileFragment: Fragment() {
         }
     }
 
-    private fun launchActivity() {
-        activity?.finish()
-        val intent = Intent(activity, CountryActivity::class.java)
-        startActivity(intent)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        stateJob = lifecycleScope.launch {
+            viewModel.userProfileState.collect {  state ->
+                handleStateUser(state)
+            }
+        }
+        stateJob =  lifecycleScope.launch {
+            viewModel.listModelState.collect { state ->
+                handleListFromRoom(state)
+            }
+        }
     }
 
     override fun onStart() {
@@ -112,6 +121,12 @@ class ProfileFragment: Fragment() {
         stateJob?.cancel()
     }
 
+    private fun launchActivity() {
+        activity?.finish()
+        val intent = Intent(activity, CountryActivity::class.java)
+        startActivity(intent)
+    }
+
     private fun initAdapter(view: View) {
         resultLayout = LinearLayoutManager(view.context).apply {
             orientation = LinearLayoutManager.HORIZONTAL
@@ -119,20 +134,6 @@ class ProfileFragment: Fragment() {
         binding?.listFriends?.apply {
             layoutManager = resultLayout
             adapter = userAdapter
-        }
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        stateJob = lifecycleScope.launch {
-            viewModel.userProfileState.collect {  state ->
-                handleStateUser(state)
-            }
-        }
-        stateJob =  lifecycleScope.launch {
-            viewModel.listModelState.collect { state ->
-                handleListFromRoom(state)
-            }
         }
     }
 

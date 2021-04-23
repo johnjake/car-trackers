@@ -50,14 +50,6 @@ class LocationFragment: Fragment(), OnMapReadyCallback {
         val mapFragment = childFragmentManager.findFragmentById(R.id.mapContainer) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        binding?.backButton?.setOnClickListener {
-            it.findNavController().popBackStack()
-        }
-    }
-
-    @SuppressLint("SetTextI18n")
-    override fun onStart() {
-        super.onStart()
         arguments?.let { bundle: Bundle ->
             val args = LocationFragmentArgs.fromBundle(bundle)
             profile = args.userProfile.toClassType()
@@ -69,6 +61,15 @@ class LocationFragment: Fragment(), OnMapReadyCallback {
         binding?.avatar?.setOnClickListener {
             val args = LocationFragmentDirections.actionLocationProfile(userId)
             view?.findNavController()?.navigate(args)
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    override fun onStart() {
+        super.onStart()
+
+        binding?.backButton?.setOnClickListener {
+            it.findNavController().popBackStack()
         }
     }
 
@@ -166,7 +167,7 @@ class LocationFragment: Fragment(), OnMapReadyCallback {
             activity?.let {
                 ActivityCompat.requestPermissions(
                     it,
-                    arrayOf<String>(Manifest.permission.ACCESS_FINE_LOCATION),
+                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                     REQUEST_LOCATION_PERMISSION
                 )
             }

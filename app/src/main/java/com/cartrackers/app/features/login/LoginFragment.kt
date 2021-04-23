@@ -39,14 +39,17 @@ class LoginFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         activity?.overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right)
         hideNavigation()
+    }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
         viewModel.userState.observe(viewLifecycleOwner) { state ->
             handleStateFlow(state)
         }
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onStart() {
+        super.onStart()
         validateInputEmail()
         validateAndLogin()
     }
@@ -79,7 +82,6 @@ class LoginFragment: Fragment() {
     }
 
     private fun validateAndLogin() {
-        //TODO add progress bar
         binding?.userLoginButton?.setOnClickListener {
             validateInputPassword()
             if(isEmailFormat && isPasswordFormat) {
