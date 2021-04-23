@@ -107,6 +107,14 @@
             android:name="userProfile"
             app:argType="string"
             android:defaultValue="" />
+        <action
+            android:id="@+id/action_location_profile"
+            app:destination="@id/profileFragment" />
     </fragment>
+    <activity
+        android:id="@+id/countryActivity"
+        android:name="com.cartrackers.app.features.country.CountryActivity"
+        android:label="activity_country"
+        tools:layout="@layout/activity_country" />
 
 </navigation>

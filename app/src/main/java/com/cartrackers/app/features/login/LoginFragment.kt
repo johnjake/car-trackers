@@ -1,5 +1,6 @@
 package com.cartrackers.app.features.login
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,9 @@ import com.cartrackers.app.comms.EmailAddress
 import com.cartrackers.app.data.vo.State
 import com.cartrackers.app.data.vo.User
 import com.cartrackers.app.databinding.FragmentLoginBinding
+import com.cartrackers.app.di.providesSharedPrefGetCount
+import com.cartrackers.app.di.providesSharedUserCount
+import com.cartrackers.app.extension.shared_login
 import com.cartrackers.app.extension.toast
 import com.cartrackers.app.features.main.CarTrackActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -43,6 +47,12 @@ class LoginFragment: Fragment() {
         viewModel.userState.observe(viewLifecycleOwner) { state ->
             handleStateFlow(state)
         }
+
+        val sharedId = providesSharedPrefGetCount(view.context, shared_login) ?: 0
+      //  val sharedUser = providesSharedGetUserInput(view.context, shared_username)
+        if(sharedId>0 ) {
+
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -67,10 +77,10 @@ class LoginFragment: Fragment() {
 
     private fun handlesSuccess(data: User?) {
         if(data!=null) {
-            activity?.toast("Welcome ${data.username} !")
-            val args = LoginFragmentDirections.actionLoginToMain(data.id ?: 0)
-            view?.findNavController()?.navigate(args)
-            CarTrackActivity.onBackPress = true
+            val user = data.username ?: ""
+            val userId = data.id ?: 0
+            verifiedUser(user, userId)
+            persistToSharedPref(user, userId)
         } else {
             context?.let { CarDialog.builderAlert(it,
                 "Credential",
@@ -78,8 +88,19 @@ class LoginFragment: Fragment() {
         }
     }
 
+    private fun verifiedUser(username: String, userId: Int) {
+        val args = LoginFragmentDirections.actionLoginToMain(userId)
+        view?.findNavController()?.navigate(args)
+        CarTrackActivity.onBackPress = true
+        activity?.toast("Welcome $username !")
+    }
+
+    private fun persistToSharedPref(username: String, userId: Int) {
+        context?.let { providesSharedUserCount(it, shared_login, userId) }
+       // context?.let { providesSharedUserInput(it, shared_username, username) }
+    }
+
     private fun validateAndLogin() {
-        //TODO add progress bar
         binding?.userLoginButton?.setOnClickListener {
             validateInputPassword()
             if(isEmailFormat && isPasswordFormat) {

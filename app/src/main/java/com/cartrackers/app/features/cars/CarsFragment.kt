@@ -41,11 +41,8 @@ class CarsFragment: Fragment(), ProfileOnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAdapter(view)
-    }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        stateJob = lifecycleScope.launch {
+        stateJob = viewLifecycleOwner.lifecycleScope.launch {
             viewModel.carState.collect { state ->
                 handleStateCars(state)
             }

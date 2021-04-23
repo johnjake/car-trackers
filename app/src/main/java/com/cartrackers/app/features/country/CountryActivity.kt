@@ -20,15 +20,15 @@ class CountryActivity: AppCompatActivity(), CountryAdapter.OnCountryClick {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityCountryBinding.inflate(layoutInflater)
-
         overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right)
-
         setContentView(binding.root)
 
         initAdapter(binding.root)
+        setupUi()
+    }
 
+    private fun setupUi() {
         binding.countryNextButton.setOnClickListener {
             launchActivity()
         }
@@ -52,7 +52,6 @@ class CountryActivity: AppCompatActivity(), CountryAdapter.OnCountryClick {
                 }
             }
         })
-
     }
 
     private fun initAdapter(view: View) {
@@ -69,9 +68,7 @@ class CountryActivity: AppCompatActivity(), CountryAdapter.OnCountryClick {
     }
 
     private fun launchActivity() {
-        startActivity(Intent(this, CarTrackActivity::class.java).apply {
-            putExtra("INTERNET", "1")
-        })
+        startActivity(Intent(this, CarTrackActivity::class.java))
     }
 
     override fun onClickListener(country: String) {

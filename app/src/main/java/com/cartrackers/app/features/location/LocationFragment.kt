@@ -44,28 +44,41 @@ class LocationFragment: Fragment(), OnMapReadyCallback {
         return bind?.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        activity?.hideNavigation()
+
         val mapFragment = childFragmentManager.findFragmentById(R.id.mapContainer) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        binding?.backButton?.setOnClickListener {
-            it.findNavController().popBackStack()
-        }
-    }
-
-    @SuppressLint("SetTextI18n")
-    override fun onStart() {
-        super.onStart()
         arguments?.let { bundle: Bundle ->
             val args = LocationFragmentArgs.fromBundle(bundle)
             profile = args.userProfile.toClassType()
         }
         val userId = profile?.id ?: 0
+
         contExt?.let { binding?.avatar?.toAvatar(userId, it) }
         binding?.profileName?.text = profile?.name
         binding?.carTrack?.text = "UserId: ${profile?.id}"
+
+        binding?.avatar?.setOnClickListener {
+            val args = LocationFragmentDirections.actionLocationProfile(userId)
+            it.findNavController().navigate(args)
+        }
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        activity?.hideNavigation()
+    }
+
+    @SuppressLint("SetTextI18n")
+    override fun onStart() {
+        super.onStart()
+
+        binding?.backButton?.setOnClickListener {
+            it.findNavController().popBackStack()
+        }
     }
 
     override fun onMapReady(googleMap: GoogleMap?) {
@@ -162,7 +175,7 @@ class LocationFragment: Fragment(), OnMapReadyCallback {
             activity?.let {
                 ActivityCompat.requestPermissions(
                     it,
-                    arrayOf<String>(Manifest.permission.ACCESS_FINE_LOCATION),
+                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                     REQUEST_LOCATION_PERMISSION
                 )
             }

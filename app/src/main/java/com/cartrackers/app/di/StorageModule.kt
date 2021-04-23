@@ -12,8 +12,10 @@ val storageModule = module(override = true) {
     single { providesSharedPreferences(get()) }
     single { providesSharedPrefStored(context = get(), storageName = get(), value = get()) }
     single { providesSharedUserCount(context = get(), storageName = get(), value = get()) }
+  //  single { providesSharedUserInput(context = get(), storageName = get(), value = get()) }
     single { providesSharedPrefGetStorage(context = get(), storageName = get()) }
     single { providesSharedPrefGetCount(context = get(), storageName = get()) }
+//    single { providesSharedGetUserInput(context = get(), storageName = get()) }
 }
 
 fun providesSharedPreferences(application: Application): SharedPreferences {
@@ -40,6 +42,7 @@ fun providesSharedUserCount(context: Context, storageName: String, value: Int) {
     editor?.apply()
 }
 
+
 fun providesSharedPrefGetStorage(context: Context, storageName: String): Boolean? {
     val pref = context.getSharedPreferences(
         shared_pref,
@@ -47,6 +50,7 @@ fun providesSharedPrefGetStorage(context: Context, storageName: String): Boolean
     )
     return pref?.getBoolean(storageName, false)
 }
+
 
 fun providesSharedPrefGetCount(context: Context, storageName: String): Int? {
     val pref = context.getSharedPreferences(

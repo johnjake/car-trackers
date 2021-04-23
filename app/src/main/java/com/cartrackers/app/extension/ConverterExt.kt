@@ -7,9 +7,12 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.widget.Toast
 import androidx.room.TypeConverter
+import com.cartrackers.app.data.vo.User
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import timber.log.Timber
+import java.io.IOException
+import java.lang.reflect.Type
 import java.security.Key
 import javax.crypto.Cipher
 import javax.crypto.spec.SecretKeySpec
@@ -41,6 +44,23 @@ inline fun<reified T: Any?> List<T>.toStringType(): String {
 inline fun<reified T: Any?> String.toListType(): List<T> {
     return Gson().fromJson(this, object : TypeToken<List<T?>?>() {}.type)
 }
+
+inline fun<reified T: Any?> String.toTypeList(): List<User> {
+    val gson = Gson()
+    val type: Type = object : TypeToken<List<User?>?>() {}.type
+    return gson.fromJson(this, type)
+}
+
+@Throws(IOException::class)
+inline fun Context.readJsonAsset(fileName: String): String {
+    val inputStream = assets.open(fileName)
+    val size = inputStream.available()
+    val buffer = ByteArray(size)
+    inputStream.read(buffer)
+    inputStream.close()
+    return String(buffer, Charsets.UTF_8)
+}
+
 
 @TypeConverter
 inline fun<reified T: Any?> T.toJsonType(): String? {
@@ -102,3 +122,6 @@ const val shared_room = "car.tracker.room"
 const val shared_user_no = "car.tracker.user.no"
 const val shared_pref = "car_track"
 const val shared_counter = "car_track_counter"
+const val shared_login = "car_track_login"
+const val shared_username = "car_track_user.name"
+const val shared_json_file = "car_owners.json"

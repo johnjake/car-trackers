@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cartrackers.app.R
 import com.cartrackers.app.data.vo.State
@@ -48,19 +47,25 @@ class FeedFragment: Fragment(), FeedsAdapter.ProfileOnClickListener, FeedsAdapte
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAdapter(view)
-    }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        stateJob =  lifecycleScope.launch {
+        stateJob =  viewLifecycleOwner.lifecycleScope.launch {
             viewModel.listModelState.collect { state ->
                 handleListFromRoom(state)
             }
         }
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
 
         binding?.searchButton?.setOnClickListener {
-            this.findNavController().navigate(R.id.action_search_item)
+            it.findNavController().navigate(R.id.action_search_item)
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.getListFromRoom()
     }
 
     override fun onResume() {
@@ -68,9 +73,10 @@ class FeedFragment: Fragment(), FeedsAdapter.ProfileOnClickListener, FeedsAdapte
         bottomVisibility()
     }
 
-    override fun onStart() {
-        super.onStart()
-        viewModel.getListFromRoom()
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+        stateJob?.cancel()
     }
 
     private fun initAdapter(view: View) {
@@ -108,12 +114,6 @@ class FeedFragment: Fragment(), FeedsAdapter.ProfileOnClickListener, FeedsAdapte
             CarTrackActivity.onBackPress = false
             activity.showNavigation()
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        binding = null
-        stateJob?.cancel()
     }
 
     override fun profileOnClick(userId: Int) {

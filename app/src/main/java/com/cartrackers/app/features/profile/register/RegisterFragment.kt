@@ -32,11 +32,12 @@ class RegisterFragment: Fragment() {
         return bind?.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onStart() {
+
+        super.onStart()
         binding?.save?.setOnClickListener { view ->
             try {
-               insertUser(view)
+                insertUser(view)
             } catch (ex: Exception) {
                 context?.let { CarDialog.builderAlert(it, "Error", "${ex.message}") }
             }
@@ -44,7 +45,9 @@ class RegisterFragment: Fragment() {
         binding?.backButton?.setOnClickListener {
             activity?.finish()
         }
+
     }
+
     private fun insertUser(view: View) {
         val count = providesSharedPrefGetCount(view.context, shared_user_no) ?: 0
         val name = binding?.nameField?.text
