@@ -14,7 +14,14 @@ class Repository(private val apiServices: ApiServices,
                  private val countryDao: CountryDao,
                  private val mapper: Mapper
 ): DataSource {
-    override suspend fun getListOfUsers(): List<User> = apiServices.getAllUsers()
+    override suspend fun getListOfUsers(): List<User> {
+        return try {
+            apiServices.getAllUsers()
+        } catch (ex: Exception) {
+            Log.e("Error: ",  "${ex.message}")
+            emptyList()
+        }
+    }
 
     override suspend fun insertUserToDao(user: User) {
         try {

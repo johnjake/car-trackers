@@ -13,17 +13,15 @@ import com.cartrackers.app.di.providesSharedPrefGetCount
 import com.cartrackers.app.di.providesSharedPrefGetStorage
 import com.cartrackers.app.di.providesSharedPrefStored
 import com.cartrackers.app.di.providesSharedUserCount
+import com.cartrackers.app.extension.*
 import com.cartrackers.app.features.country.CountryActivity
-import com.cartrackers.app.extension.shared_counter
-import com.cartrackers.app.extension.shared_room
-import com.cartrackers.app.extension.shared_user_no
-import com.cartrackers.app.extension.toast
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import timber.log.Timber
+import java.util.*
 
 class IntroActivity : AppCompatActivity() {
     private lateinit var binding: ActivityIntroBinding
@@ -95,20 +93,14 @@ class IntroActivity : AppCompatActivity() {
     private fun handleDomainSuccess(data: List<User>) {
         /** map it to insert user password **/
         if(data.isNotEmpty()) {
-            data.map { user ->
-                val userId = user.id
-                user.email = user.email?.toLowerCase()
-                user.password = "password$userId"
-                viewModel.insertUserToDB(user)
-            }
+            persistToRoom(data)
             this.toast("${data.size} no of data persist to room")
-            providesSharedUserCount(this, shared_user_no, data.count())
-            providesSharedPrefStored(this, shared_room, true)
-            binding.userSplashNextButton.isEnabled = true
-            providesSharedUserCount(this, shared_counter, 1)
         } else {
-            providesSharedPrefStored(this, shared_room, false)
-            this.toast("0 no of data persist to room")
+        /** 404 */
+            val assetData = readJsonAsset(shared_json_file)
+            val list = assetData.toTypeList<User>()
+            persistToRoom(list)
+            this.toast("${list.size} Load data from assets to room")
         }
     }
 
@@ -117,11 +109,19 @@ class IntroActivity : AppCompatActivity() {
     }
 
     private fun launchActivity() {
-        startActivity(Intent(this, CountryActivity::class.java).apply {
-            putExtra("INTERNET", "1")
-        })
+        startActivity(Intent(this, CountryActivity::class.java))
     }
 
-    /**TODO: login layout **/
-
+    private fun persistToRoom(list: List<User>) {
+        binding.userSplashNextButton.isEnabled = true
+        providesSharedPrefStored(this, shared_room, true)
+        providesSharedUserCount(this, shared_user_no, list.count())
+        providesSharedUserCount(this, shared_counter, 1)
+        list.map { user ->
+            val userId = user.id
+            user.email = user.email?.toLowerCase(Locale.getDefault())
+            user.password = "password$userId"
+            viewModel.insertUserToDB(user)
+        }
+    }
 }

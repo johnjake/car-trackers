@@ -13,6 +13,7 @@ import com.cartrackers.app.comms.EmailAddress
 import com.cartrackers.app.data.vo.State
 import com.cartrackers.app.data.vo.User
 import com.cartrackers.app.databinding.FragmentLoginBinding
+import com.cartrackers.app.di.providesSharedPrefGetCount
 import com.cartrackers.app.di.providesSharedUserCount
 import com.cartrackers.app.extension.shared_login
 import com.cartrackers.app.extension.toast
@@ -42,17 +43,20 @@ class LoginFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         activity?.overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right)
         hideNavigation()
+
+        viewModel.userState.observe(viewLifecycleOwner) { state ->
+            handleStateFlow(state)
+        }
+
+        val sharedId = providesSharedPrefGetCount(view.context, shared_login) ?: 0
+      //  val sharedUser = providesSharedGetUserInput(view.context, shared_username)
+        if(sharedId>0 ) {
+
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel.userState.observe(viewLifecycleOwner) { state ->
-            handleStateFlow(state)
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
         validateInputEmail()
         validateAndLogin()
     }
@@ -73,16 +77,27 @@ class LoginFragment: Fragment() {
 
     private fun handlesSuccess(data: User?) {
         if(data!=null) {
-            activity?.toast("Welcome ${data.username} !")
-            val args = LoginFragmentDirections.actionLoginToMain(data.id ?: 0)
-            view?.findNavController()?.navigate(args)
-            CarTrackActivity.onBackPress = true
-            context?.let { providesSharedUserCount(it, shared_login, 1) }
+            val user = data.username ?: ""
+            val userId = data.id ?: 0
+            verifiedUser(user, userId)
+            persistToSharedPref(user, userId)
         } else {
             context?.let { CarDialog.builderAlert(it,
                 "Credential",
                 "Invalid username or password!") }
         }
+    }
+
+    private fun verifiedUser(username: String, userId: Int) {
+        val args = LoginFragmentDirections.actionLoginToMain(userId)
+        view?.findNavController()?.navigate(args)
+        CarTrackActivity.onBackPress = true
+        activity?.toast("Welcome $username !")
+    }
+
+    private fun persistToSharedPref(username: String, userId: Int) {
+        context?.let { providesSharedUserCount(it, shared_login, userId) }
+       // context?.let { providesSharedUserInput(it, shared_username, username) }
     }
 
     private fun validateAndLogin() {
