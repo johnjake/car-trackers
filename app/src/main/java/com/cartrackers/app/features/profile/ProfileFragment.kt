@@ -54,12 +54,13 @@ class ProfileFragment: Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         super.onViewCreated(view, savedInstanceState)
         activity.hideNavigation()
         initAdapter(view)
 
         binding?.backButton?.setOnClickListener {
-            view.findNavController().popBackStack()
+            it.findNavController().popBackStack()
         }
 
         binding?.editDetails?.setOnClickListener {
@@ -90,16 +91,13 @@ class ProfileFragment: Fragment() {
             })
             alertDialog.show()
         }
-    }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        stateJob = lifecycleScope.launch {
+        stateJob = viewLifecycleOwner.lifecycleScope.launch {
             viewModel.userProfileState.collect {  state ->
                 handleStateUser(state)
             }
         }
-        stateJob =  lifecycleScope.launch {
+        stateJob =  viewLifecycleOwner.lifecycleScope.launch {
             viewModel.listModelState.collect { state ->
                 handleListFromRoom(state)
             }

@@ -45,21 +45,27 @@ class InboxFragment: Fragment(), ProfileOnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initAdapter(view)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        stateJob = lifecycleScope.launch {
+        stateJob = viewLifecycleOwner.lifecycleScope.launch {
             viewModel.inboxState.collect {  state ->
                 handleSuccessState(state)
             }
         }
+        initAdapter(view)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.getInboxList(1)
     }
 
     override fun onResume() {
         super.onResume()
         bottomVisibility()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        stateJob?.cancel()
     }
 
     private fun handleSuccessState(state: State<List<User>>) {
@@ -71,7 +77,7 @@ class InboxFragment: Fragment(), ProfileOnClickListener {
     }
 
     private fun handleFailed(error: Throwable) {
-        TODO("Not yet implemented")
+        Timber.e("Error: ${error.message}")
     }
 
     private fun handlesSuccess(data: List<User>) {
@@ -89,16 +95,6 @@ class InboxFragment: Fragment(), ProfileOnClickListener {
                 setHasFixedSize(true)
             }
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        viewModel.getInboxList(1)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        stateJob?.cancel()
     }
 
     private fun bottomVisibility() {

@@ -1,5 +1,6 @@
 package com.cartrackers.app.features.profile.edit
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -31,50 +32,32 @@ class EditProfileFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.editedState.observe(viewLifecycleOwner) { state ->
                 handleStateFlow(state)
             }
         }
-    }
 
-    private fun handleStateFlow(state: State<Int>) {
-        when(state) {
-            is State.Data -> handleSuccess(state.data)
-            is State.Error -> handleFailed(state.error)
-            else -> Timber.e("An error occurred during query request!")
-        }
-    }
-
-    private fun handleFailed(error: Throwable) {
-        Timber.e("${error.message}")
-    }
-
-    private fun handleSuccess(data: Int) {
-        if(data>0) {
-            context?.let { CarDialog.builderAlert(it, "Update", "${profile?.name} profile successfully updated!") }
-        }
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        binding?.save?.setOnClickListener {
-            updateProfile()
-        }
-
-        binding?.backButton?.setOnClickListener {
-            it.findNavController().popBackStack()
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
         arguments?.let { bundle ->
             val arg = EditProfileFragmentArgs.fromBundle(bundle)
             if(arg.profile.isNotEmpty()) {
                 profile = arg.profile.toClassType<User>()
             }
         }
+
+    }
+
+
+    override fun onStart() {
+        super.onStart()
+
+        binding?.save?.setOnClickListener { updateProfile() }
+
+        binding?.backButton?.setOnClickListener {
+            it.findNavController().popBackStack()
+        }
+
         binding?.nameField?.setText(profile?.name)
         binding?.userNameField?.setText((profile?.username))
         binding?.emailField?.setText(profile?.email)
@@ -87,6 +70,25 @@ class EditProfileFragment: Fragment() {
         binding?.companyName?.setText(profile?.company?.name)
         binding?.catchPhrases?.setText(profile?.company?.catchPhrase)
         binding?.companyBs?.setText(profile?.company?.bs)
+    }
+
+    private fun handleStateFlow(state: State<Int>) {
+        when(state) {
+            is State.Data -> handleSuccess(state.data)
+            is State.Error -> handleFailed(state.error)
+            else -> Timber.e("An error occurred during query request!")
+        }
+    }
+
+    @SuppressLint("TimberExceptionLogging")
+    private fun handleFailed(error: Throwable) {
+        Timber.e("${error.message}")
+    }
+
+    private fun handleSuccess(data: Int) {
+        if(data>0) {
+            context?.let { CarDialog.builderAlert(it, "Update", "${profile?.name} profile successfully updated!") }
+        }
     }
 
     private fun updateProfile() {

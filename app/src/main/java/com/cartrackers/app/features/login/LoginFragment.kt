@@ -1,5 +1,6 @@
 package com.cartrackers.app.features.login
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,8 @@ import com.cartrackers.app.comms.EmailAddress
 import com.cartrackers.app.data.vo.State
 import com.cartrackers.app.data.vo.User
 import com.cartrackers.app.databinding.FragmentLoginBinding
+import com.cartrackers.app.di.providesSharedUserCount
+import com.cartrackers.app.extension.shared_login
 import com.cartrackers.app.extension.toast
 import com.cartrackers.app.features.main.CarTrackActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -74,6 +77,7 @@ class LoginFragment: Fragment() {
             val args = LoginFragmentDirections.actionLoginToMain(data.id ?: 0)
             view?.findNavController()?.navigate(args)
             CarTrackActivity.onBackPress = true
+            context?.let { providesSharedUserCount(it, shared_login, 1) }
         } else {
             context?.let { CarDialog.builderAlert(it,
                 "Credential",

@@ -44,9 +44,10 @@ class LocationFragment: Fragment(), OnMapReadyCallback {
         return bind?.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        activity?.hideNavigation()
+
         val mapFragment = childFragmentManager.findFragmentById(R.id.mapContainer) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
@@ -55,13 +56,20 @@ class LocationFragment: Fragment(), OnMapReadyCallback {
             profile = args.userProfile.toClassType()
         }
         val userId = profile?.id ?: 0
+
         contExt?.let { binding?.avatar?.toAvatar(userId, it) }
         binding?.profileName?.text = profile?.name
         binding?.carTrack?.text = "UserId: ${profile?.id}"
+
         binding?.avatar?.setOnClickListener {
             val args = LocationFragmentDirections.actionLocationProfile(userId)
-            view?.findNavController()?.navigate(args)
+            it.findNavController().navigate(args)
         }
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        activity?.hideNavigation()
     }
 
     @SuppressLint("SetTextI18n")

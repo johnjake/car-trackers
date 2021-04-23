@@ -48,18 +48,19 @@ class FeedFragment: Fragment(), FeedsAdapter.ProfileOnClickListener, FeedsAdapte
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAdapter(view)
-    }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        stateJob =  lifecycleScope.launch {
+        stateJob =  viewLifecycleOwner.lifecycleScope.launch {
             viewModel.listModelState.collect { state ->
                 handleListFromRoom(state)
             }
         }
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
 
         binding?.searchButton?.setOnClickListener {
-            this.findNavController().navigate(R.id.action_search_item)
+            it.findNavController().navigate(R.id.action_search_item)
         }
     }
 
