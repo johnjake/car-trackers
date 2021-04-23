@@ -31,7 +31,7 @@ For the CarTrack development the following IDE and patterns are used:
 
 USER API: 
          
-         * The users list can be obtained at this endpoint: https://jsonplaceholder.typicode.com/users  in JSON format, and a total of 10 users. 
+         * The users list can be obtained at using this endpoint: https://jsonplaceholder.typicode.com/users  in JSON format, and a total of 10 users. 
 
 FEATURES: 
           
