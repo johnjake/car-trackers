@@ -93,7 +93,7 @@ class HomeUnitTest: KoinTest {
     fun `get first element of user list`() {
         val user = userList.first()
         user.name shouldBe "Leanne Graham"
-        user.company.name shouldBe "Romaguera-Crona"
+        user.company?.name shouldBe "Romaguera-Crona"
         println(user)
 
     }

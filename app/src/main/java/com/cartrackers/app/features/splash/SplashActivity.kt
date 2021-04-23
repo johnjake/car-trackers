@@ -9,10 +9,9 @@ import com.cartrackers.app.di.providesSharedPrefGetCount
 import com.cartrackers.app.di.providesSharedPrefStored
 import com.cartrackers.app.di.providesSharedUserCount
 import com.cartrackers.app.features.intro.IntroActivity
-import com.cartrackers.app.utils.isOnline
-import com.cartrackers.app.utils.net_connectivity
-import com.cartrackers.app.utils.shared_counter
-import com.cartrackers.app.utils.shared_user_no
+import com.cartrackers.app.extension.isOnline
+import com.cartrackers.app.extension.net_connectivity
+import com.cartrackers.app.extension.shared_counter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay

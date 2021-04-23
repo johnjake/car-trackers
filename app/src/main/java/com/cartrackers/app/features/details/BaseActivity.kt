@@ -33,9 +33,9 @@ class BaseActivity : AppCompatActivity() {
         super.onStart()
         /** collect */
         stateJob = lifecycleScope.launch {
-           /* viewModel.listDomainState.take(2).collect { state ->
-                //handleDomainListResult(state)
-            } */
+            viewModel.listDomainState.take(2).collect { state ->
+               handleDomainListResult(state)
+            }
             viewModel.listModelState.take(2).collect { state ->
                 handleListFromRoom(state)
             }

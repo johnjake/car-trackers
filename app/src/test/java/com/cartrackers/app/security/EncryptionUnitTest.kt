@@ -4,9 +4,9 @@ import org.junit.jupiter.api.*
 import org.testcontainers.junit.jupiter.Testcontainers
 import javax.crypto.*
 import javax.crypto.spec.SecretKeySpec
-import com.cartrackers.app.utils.advancedEncryption
-import com.cartrackers.app.utils.toDecryptedString
-import com.cartrackers.app.utils.toEncryptedString
+import com.cartrackers.app.extension.advancedEncryption
+import com.cartrackers.app.extension.toDecryptedString
+import com.cartrackers.app.extension.toEncryptedString
 import org.amshove.kluent.shouldBeEqualTo
 import org.amshove.kluent.shouldBeGreaterThan
 import java.security.Key

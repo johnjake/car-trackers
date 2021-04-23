@@ -67,4 +67,7 @@
     <string name="username">Username:</string>
     <string name="new_user">New Account</string>
     <string name="register">Register</string>
+    <string name="suggestions">Suggestion</string>
+    <string name="results">Results</string>
+    <string name="unfollow">unfollow</string>
 </resources>

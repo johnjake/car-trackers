@@ -60,10 +60,6 @@ class ItemMenuView(context: Context, attributeSet: AttributeSet) :
             }
             .root)
     }
-
-    override fun onAttachedToWindow() {
-        super.onAttachedToWindow()
-    }
 }
 
 private class ViewHolder(context: Context, viewGroup: ViewGroup) {

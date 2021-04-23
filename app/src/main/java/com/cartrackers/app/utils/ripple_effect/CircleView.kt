@@ -32,10 +32,6 @@ class CircleView : View {
         init()
     }
 
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes) {
-        init()
-    }
-
     private fun init() {
         circlePaint.style = Paint.Style.FILL
         maskPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)

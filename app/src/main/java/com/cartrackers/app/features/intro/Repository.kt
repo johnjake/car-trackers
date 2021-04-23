@@ -7,7 +7,6 @@ import com.cartrackers.app.data.vo.User
 import com.cartrackers.app.utils.Countries
 import com.cartrackers.baseplate_persistence.dao.CountryDao
 import com.cartrackers.baseplate_persistence.dao.UserDao
-import com.cartrackers.baseplate_persistence.model.DBCountry
 import java.lang.Exception
 
 class Repository(private val apiServices: ApiServices,

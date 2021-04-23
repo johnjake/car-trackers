@@ -8,28 +8,30 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cartrackers.app.R
 import com.cartrackers.app.data.vo.State
 import com.cartrackers.app.data.vo.User
 import com.cartrackers.app.databinding.FragmentFeedBinding
+import com.cartrackers.app.extension.showNavigation
+import com.cartrackers.app.extension.toJsonType
 import com.cartrackers.app.features.main.CarTrackActivity
 import com.cartrackers.app.features.track.adapter.FeedAdapter
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 
-class FeedFragment: Fragment(), FeedAdapter.ProfileOnClickListener {
+class FeedFragment: Fragment(), FeedAdapter.ProfileOnClickListener, FeedAdapter.ProfileOnMapClickListener {
     private var binding: FragmentFeedBinding? = null
 
     private val bind get() = binding
 
     private val viewModel: ViewModel by inject()
 
-    private val userAdapter: FeedAdapter by lazy { FeedAdapter(this) }
+    private val userAdapter: FeedAdapter by lazy { FeedAdapter(this, this) }
 
     private var stateJob: Job? = null
 
@@ -55,6 +57,10 @@ class FeedFragment: Fragment(), FeedAdapter.ProfileOnClickListener {
             viewModel.listModelState.collect { state ->
                 handleListFromRoom(state)
             }
+        }
+
+        binding?.searchButton?.setOnClickListener {
+            this.findNavController().navigate(R.id.action_search_item)
         }
     }
 
@@ -101,8 +107,7 @@ class FeedFragment: Fragment(), FeedAdapter.ProfileOnClickListener {
     private fun bottomVisibility() {
         if(CarTrackActivity.onBackPress) {
             CarTrackActivity.onBackPress = false
-            val bottomNavigationView = activity?.findViewById<BottomNavigationView>(R.id.bottomNavigation)
-            bottomNavigationView?.visibility = View.VISIBLE
+            activity.showNavigation()
         }
     }
 
@@ -112,21 +117,15 @@ class FeedFragment: Fragment(), FeedAdapter.ProfileOnClickListener {
         stateJob?.cancel()
     }
 
-    companion object {
-        fun newInstance(filter: String): Fragment {
-            val fragment = FeedFragment()
-            val args = Bundle()
-            args.putString(ARGS_FILTER, filter)
-            fragment.arguments = args
-            return fragment
-        }
-        private const val ARGS_FILTER = "ARGS_FILTER"
-        private const val VISIBLE_THRESHOLD = 1
-        private const val THRESHOLD_DELAY = 600L
-    }
-
     override fun profileOnClick(userId: Int) {
         val args = FeedFragmentDirections.actionFeedToProfile(userId)
+        CarTrackActivity.onBackPress = true
+        view?.findNavController()?.navigate(args)
+    }
+
+    override fun locationOnClick(user: User) {
+        val profileUser = user.toJsonType().toString()
+        val args = FeedFragmentDirections.actionToLocation(profileUser)
         CarTrackActivity.onBackPress = true
         view?.findNavController()?.navigate(args)
     }

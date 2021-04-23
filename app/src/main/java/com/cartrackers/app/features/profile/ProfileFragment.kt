@@ -1,29 +1,26 @@
 package com.cartrackers.app.features.profile
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.cartrackers.app.R
 import com.cartrackers.app.data.vo.State
 import com.cartrackers.app.data.vo.User
 import com.cartrackers.app.databinding.FragmentProfileBinding
+import com.cartrackers.app.extension.hideNavigation
 import com.cartrackers.app.extension.toAvatar
-import com.cartrackers.app.extension.toast
 import com.cartrackers.app.features.country.CountryActivity
 import com.cartrackers.app.features.profile.adapter.ProfileAdapter
 import com.cartrackers.app.utils.alert_dialog.ListenerCallBack
 import com.cartrackers.app.utils.alert_dialog.TrackerAlertDialog
-import com.cartrackers.app.utils.toJsonType
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.cartrackers.app.extension.toJsonType
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -58,7 +55,7 @@ class ProfileFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        hideNavigation()
+        activity.hideNavigation()
         initAdapter(view)
         binding?.backButton?.setOnClickListener {
             view.findNavController().popBackStack()
@@ -95,6 +92,7 @@ class ProfileFragment: Fragment() {
     }
 
     private fun launchActivity() {
+        activity?.finish()
         val intent = Intent(activity, CountryActivity::class.java)
         startActivity(intent)
     }
@@ -169,17 +167,13 @@ class ProfileFragment: Fragment() {
 
     private fun handleModelSuccess(data: List<User>) {
         if(data.isNotEmpty()) {
-            Log.d("Data", "$data")
+            Timber.d("$data")
             userAdapter.dataSource = data
         }
     }
 
+    @SuppressLint("TimberExceptionLogging")
     private fun handleModelFailed(error: Throwable) {
-        TODO("Not yet implemented")
-    }
-
-    private fun hideNavigation() {
-        val bottomNavigationView = activity?.findViewById<BottomNavigationView>(R.id.bottomNavigation)
-        bottomNavigationView?.visibility = View.GONE
+        Timber.d("${error.message}")
     }
 }

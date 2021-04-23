@@ -1,7 +1,6 @@
 package com.cartrackers.app.data.vo
 
 sealed class State<out T> {
-    object Loading : State<Nothing>()
 
     object Empty: State<Nothing>()
 

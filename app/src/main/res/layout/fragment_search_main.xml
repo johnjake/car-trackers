@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/black_gradient_background">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/leftGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/rightGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp" />
+
+    <LinearLayout
+        android:id="@+id/suggestionsGrp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarBackground">
+
+        <TextView
+            android:id="@+id/suggestionsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:includeFontPadding="false"
+            android:text="@string/suggestions"
+            android:textAppearance="@style/StyleTextView"
+            tools:layout_editor_absoluteX="24dp"
+            tools:layout_editor_absoluteY="107dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/suggestionList"
+            android:layout_width="match_parent"
+            android:layout_height="145dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:layout_editor_absoluteY="150dp"
+            tools:listitem="@layout/item_search_thumbnail" />
+
+        <LinearLayout
+            android:id="@+id/becomeAnInfluencerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pixels_56"
+            android:layout_marginBottom="@dimen/pixels_48"
+            android:orientation="vertical">
+
+
+
+            <Button
+                android:id="@+id/becomeAnInfluencerButton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/pixels_56"
+                android:layout_marginStart="@dimen/pixels_16"
+                android:layout_marginEnd="@dimen/pixels_16"
+                android:text="@string/become_an_influencer"
+                android:background="@drawable/followed_button"
+                android:textAllCaps="false" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/toolbarBackground"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_marginTop="40dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/searchInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:elevation="16dp"
+        app:endIconMode="custom"
+        app:hintEnabled="false"
+        app:layout_constraintEnd_toStartOf="@id/rightGuideline"
+        app:layout_constraintStart_toEndOf="@id/leftGuideline"
+        app:layout_constraintTop_toTopOf="@+id/toolbarBackground">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/search_input_background"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="16dp"
+            android:fontFamily="@font/inter_regular"
+            android:includeFontPadding="false"
+            android:inputType="textPersonName"
+            android:paddingStart="22dp"
+            android:paddingEnd="@dimen/pixels_18"
+            android:textColor="#b7bebf"
+            android:textCursorDrawable="@drawable/default_cursor"
+            android:textSize="15sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:id="@+id/resultsGrp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarBackground"
+        tools:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:weightSum="1">
+            <TextView
+                android:id="@+id/resultsTitle"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:includeFontPadding="false"
+                android:text="@string/results"
+                android:textAppearance="@style/StyleTextView"
+                app:layout_constraintStart_toStartOf="@+id/scrollLeftGuideline"
+                app:layout_constraintTop_toBottomOf="@id/suggestionList" />
+            <ImageView
+                android:id="@+id/imageSort"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/pixels_56"
+                android:contentDescription="@string/define_roundedimageview"
+                android:src="@drawable/ic_sort"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                />
+        </LinearLayout>
+
+
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/resultsView"
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_home_search_main" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.cartrackers.app.databinding.FragementDetailsBinding
 
 class DetailsFragment: Fragment() {
+
     private var binding: FragementDetailsBinding? = null
 
     private val bind get() = binding

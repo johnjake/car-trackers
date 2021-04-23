@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import com.cartrackers.app.comms.CarDialog
 import com.cartrackers.app.data.vo.Address
 import com.cartrackers.app.data.vo.Company
@@ -15,8 +14,7 @@ import com.cartrackers.app.databinding.FragmentRegisterBinding
 import com.cartrackers.app.di.providesSharedPrefGetCount
 import com.cartrackers.app.di.providesSharedUserCount
 import com.cartrackers.app.extension.toVerifyField
-import com.cartrackers.app.utils.shared_user_no
-import com.cartrackers.app.utils.toast
+import com.cartrackers.app.extension.shared_user_no
 import org.koin.android.ext.android.inject
 import java.lang.Exception
 
@@ -86,9 +84,5 @@ class RegisterFragment: Fragment() {
             context?.let { CarDialog.builderAlert(it, "Success", "${user.name} profile successfully registered!") }
             context?.let { providesSharedUserCount(it, shared_user_no, counter) }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
     }
 }

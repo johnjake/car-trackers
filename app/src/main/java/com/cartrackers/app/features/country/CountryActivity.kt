@@ -68,11 +68,6 @@ class CountryActivity: AppCompatActivity(), CountryAdapter.OnCountryClick {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-    }
-
-
     private fun launchActivity() {
         startActivity(Intent(this, CarTrackActivity::class.java).apply {
             putExtra("INTERNET", "1")

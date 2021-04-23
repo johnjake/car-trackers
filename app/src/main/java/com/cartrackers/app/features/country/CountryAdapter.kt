@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.cartrackers.app.data.vo.Country
 import com.cartrackers.app.databinding.ItemStringCountryBinding
-import com.cartrackers.app.extension.toAvatar
 import com.cartrackers.app.extension.toCountry
 
 class CountryAdapter(private val listener: OnCountryClick): ListAdapter<Country, CountryAdapter.CountryViewHolder>(DiffCallback()) {
@@ -27,7 +26,7 @@ class CountryAdapter(private val listener: OnCountryClick): ListAdapter<Country,
     }
 
     inner class CountryViewHolder(private val binding: ItemStringCountryBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(country: Country, itemListener: CountryAdapter.OnCountryClick) {
+        fun bind(country: Country, itemListener: OnCountryClick) {
             if(country.id>0) {
                 binding.avatarCountry.toCountry(country.id, binding.root.context)
             }

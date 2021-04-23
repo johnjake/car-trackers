@@ -9,6 +9,7 @@ import com.cartrackers.app.data.vo.User
 import com.cartrackers.app.di.networkModule
 import com.cartrackers.app.di.repositoryModule
 import com.cartrackers.app.di.viewModelModule
+import com.cartrackers.app.extension.*
 import com.cartrackers.app.features.home.HomeViewModel
 import io.kotlintest.matchers.numerics.shouldBeExactly
 import io.kotlintest.shouldBe
@@ -118,7 +119,7 @@ class TypeConverterUnitTest: KoinTest {
         val expected = "{\"lat\":7.6576,\"lng\":56.4456}"
         val coordinates = Coordinates(lat = 7.6576, lng = 56.4456)
         val json = coordinates.toJsonType()
-        json shouldBeEqualTo expected
+        json?.shouldBeEqualTo(expected)
     }
 
     @Test
@@ -126,8 +127,8 @@ class TypeConverterUnitTest: KoinTest {
     fun `type converter from json type to object class`() {
         val coordinates = Coordinates(lat = 7.6576, lng = 56.4456)
         val json = coordinates.toJsonType()
-        val classType = json.toClassType<Coordinates>()
-        println(classType.lat)
+        val classType = json?.toClassType<Coordinates>()
+        println(classType?.lat)
     }
 
     @Test
@@ -140,8 +141,8 @@ class TypeConverterUnitTest: KoinTest {
             zipcode= "92998-3874",
             Coordinates (lat= -37.3159,lng= 81.1496))
         val json = address.toJsonType()
-        val classType = json.toClassType<Address>()
-        classType.geo.lat shouldBe -37.3159
+        val classType = json?.toClassType<Address>()
+        classType?.geo?.lat shouldBe -37.3159
         println(json)
     }
 

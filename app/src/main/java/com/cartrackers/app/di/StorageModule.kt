@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceManager
-import com.cartrackers.app.utils.shared_pref
+import com.cartrackers.app.extension.shared_pref
 import org.koin.dsl.module
 
 val storageModule = module(override = true) {
@@ -21,7 +21,8 @@ fun providesSharedPreferences(application: Application): SharedPreferences {
 }
 
 fun providesSharedPrefStored(context: Context, storageName: String, value: Boolean) {
-    val pref = context.getSharedPreferences(shared_pref,
+    val pref = context.getSharedPreferences(
+        shared_pref,
         AppCompatActivity.MODE_PRIVATE
     )
     val editor = pref?.edit()
@@ -30,7 +31,8 @@ fun providesSharedPrefStored(context: Context, storageName: String, value: Boole
 }
 
 fun providesSharedUserCount(context: Context, storageName: String, value: Int) {
-    val pref = context.getSharedPreferences(shared_pref,
+    val pref = context.getSharedPreferences(
+        shared_pref,
         AppCompatActivity.MODE_PRIVATE
     )
     val editor = pref?.edit()
@@ -39,14 +41,16 @@ fun providesSharedUserCount(context: Context, storageName: String, value: Int) {
 }
 
 fun providesSharedPrefGetStorage(context: Context, storageName: String): Boolean? {
-    val pref = context.getSharedPreferences(shared_pref,
+    val pref = context.getSharedPreferences(
+        shared_pref,
         AppCompatActivity.MODE_PRIVATE
     )
     return pref?.getBoolean(storageName, false)
 }
 
 fun providesSharedPrefGetCount(context: Context, storageName: String): Int? {
-    val pref = context.getSharedPreferences(shared_pref,
+    val pref = context.getSharedPreferences(
+        shared_pref,
         AppCompatActivity.MODE_PRIVATE
     )
     return pref?.getInt(storageName, 0)

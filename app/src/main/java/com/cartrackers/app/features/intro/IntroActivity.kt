@@ -2,7 +2,6 @@ package com.cartrackers.app.features.intro
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -15,10 +14,10 @@ import com.cartrackers.app.di.providesSharedPrefGetStorage
 import com.cartrackers.app.di.providesSharedPrefStored
 import com.cartrackers.app.di.providesSharedUserCount
 import com.cartrackers.app.features.country.CountryActivity
-import com.cartrackers.app.utils.shared_counter
-import com.cartrackers.app.utils.shared_room
-import com.cartrackers.app.utils.shared_user_no
-import com.cartrackers.app.utils.toast
+import com.cartrackers.app.extension.shared_counter
+import com.cartrackers.app.extension.shared_room
+import com.cartrackers.app.extension.shared_user_no
+import com.cartrackers.app.extension.toast
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.take
