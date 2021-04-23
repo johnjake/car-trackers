@@ -28,7 +28,7 @@ For the CarTrack development the following IDE and patterns are used:
     Room: 2.3.0-alpha03
     
   
-   App Test Credential:
+   App Test Credential: (or create a new user account)
    
     username: sincere@april.biz
     password: password1
