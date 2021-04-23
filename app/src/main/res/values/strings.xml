@@ -70,4 +70,5 @@
     <string name="suggestions">Suggestion</string>
     <string name="results">Results</string>
     <string name="unfollow">unfollow</string>
+    <string name="dropped_pin">dropIn</string>
 </resources>

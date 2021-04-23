@@ -96,7 +96,7 @@
         android:label="LocationFragment"
         tools:layout="@layout/fragment_location">
         <argument
-            android:name="profile"
+            android:name="userProfile"
             app:argType="string"
             android:defaultValue="" />
     </fragment>

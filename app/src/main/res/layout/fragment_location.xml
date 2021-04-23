@@ -33,10 +33,12 @@
         app:srcCompat="@drawable/ic_arrow_back_main" />
 
     <fragment
-        android:id="@+id/imageContainer"
+        android:id="@+id/mapContainer"
         android:layout_width="match_parent"
         android:layout_height="@dimen/pixels_450"
         android:layout_marginTop="@dimen/pixels_62"
+        android:layout_marginStart="@dimen/pixels_16"
+        android:layout_marginEnd="@dimen/pixels_16"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         app:layout_constraintEnd_toStartOf="@id/rightGuideline"
         app:layout_constraintStart_toEndOf="@id/leftGuideline"
@@ -48,7 +50,6 @@
             android:contentDescription="@string/alt_feed"
             android:scaleType="centerCrop"
             android:transitionName="imageTransition" />
-
     </fragment>
 
     <TextView
@@ -66,12 +67,12 @@
         android:paddingEnd="@dimen/pixels_16"
         android:textColor="@android:color/white"
         android:textSize="@dimen/text_size_tiny"
-        app:layout_constraintStart_toStartOf="@id/imageContainer"
-        app:layout_constraintTop_toTopOf="@id/imageContainer"
+        app:layout_constraintStart_toStartOf="@id/mapContainer"
+        app:layout_constraintTop_toTopOf="@id/mapContainer"
         tools:text="ID: 1" />
 
     <TextView
-        android:id="@+id/carModel"
+        android:id="@+id/profileName"
         android:layout_width="@dimen/pixels_220"
         android:layout_height="@dimen/pixels_30"
         android:elevation="@dimen/pixels_15"
@@ -82,11 +83,10 @@
         android:textColor="@color/colorAccent"
         android:textSize="@dimen/text_size_tiny"
         android:layout_marginTop="@dimen/pixels_15"
-
         app:layout_constraintEnd_toStartOf="@+id/carBrand"
         app:layout_constraintHorizontal_bias="0.036"
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
-        app:layout_constraintTop_toBottomOf="@+id/imageContainer"
+        app:layout_constraintTop_toBottomOf="@+id/mapContainer"
         app:layout_constraintVertical_bias="0.0"
         tools:text="John Jake A. Avila" />
 
@@ -95,12 +95,12 @@
         android:id="@+id/avatar"
         android:layout_width="@dimen/pixels_62"
         android:layout_height="@dimen/pixels_62"
-        android:layout_marginBottom="@dimen/pixels_16"
+        android:layout_marginBottom="@dimen/pixels_32"
         android:layout_marginStart="@dimen/pixels_16"
         android:elevation="@dimen/pixels_15"
         android:padding="@dimen/pixels_4"
-        app:layout_constraintStart_toStartOf="@id/imageContainer"
-        app:layout_constraintBottom_toBottomOf="@id/imageContainer"
+        app:layout_constraintStart_toStartOf="@id/mapContainer"
+        app:layout_constraintBottom_toBottomOf="@id/mapContainer"
         tools:src="@tools:sample/avatars"
         tools:background="@drawable/yellow_profile_image_stroke"/>
 
@@ -112,22 +112,21 @@
         android:layout_marginTop="@dimen/pixels_35"
         android:padding="@dimen/pixels_4"
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
-        app:layout_constraintTop_toBottomOf="@+id/imageContainer"/>
+        app:layout_constraintTop_toBottomOf="@+id/mapContainer"/>
 
     <ImageButton
         android:id="@+id/carBrand"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/pixels_35"
+        android:layout_marginTop="12dp"
         android:background="?actionBarItemBackground"
         android:minWidth="48dp"
         android:minHeight="48dp"
         android:padding="@dimen/pixels_8"
         android:src="@drawable/ic_share_android"
         app:layout_constraintEnd_toStartOf="@id/rightGuideline"
-        app:layout_constraintTop_toBottomOf="@+id/imageContainer"
+        app:layout_constraintTop_toBottomOf="@+id/mapContainer"
         tools:ignore="SpeakableTextPresentCheck" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
