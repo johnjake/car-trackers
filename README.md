@@ -27,6 +27,12 @@ For the CarTrack development the following IDE and patterns are used:
     Navigation Component: 2.3.5
     Room: 2.3.0-alpha03
     
+  
+   App Test Credential:
+   
+    username: sincere@april.biz
+    password: password1
+    
     
 
 USER API: 
