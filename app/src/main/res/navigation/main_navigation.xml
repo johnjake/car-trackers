@@ -42,13 +42,21 @@
         android:name="com.cartrackers.app.features.cars.CarsFragment"
         android:label="CarsFragment"
         tools:layout="@layout/fragment_cars"
-        />
+        >
+        <action
+            android:id="@+id/action_cars_to_profile"
+            app:destination="@id/profileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/inboxFragment"
         android:name="com.cartrackers.app.features.inbox.InboxFragment"
         android:label="InboxFragment"
         tools:layout="@layout/fragment_manage"
-        />
+        >
+        <action
+            android:id="@+id/action_inbox_to_profile"
+            app:destination="@id/profileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.cartrackers.app.features.login.LoginFragment"

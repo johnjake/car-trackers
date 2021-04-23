@@ -145,7 +145,7 @@ class ProfileFragment: Fragment() {
     }
 
     private fun handleFailedState(error: Throwable) {
-        TODO("Not yet implemented")
+        Timber.e("An error: ${error.message}")
     }
 
     private fun handleSuccessState(data: User) {

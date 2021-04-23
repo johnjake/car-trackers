@@ -8,8 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cartrackers.app.data.vo.User
 import com.cartrackers.app.databinding.ItemEmailInboxBinding
 import com.cartrackers.app.extension.toAvatar
+import com.cartrackers.app.features.common.ProfileOnClickListener
 
-class InboxAdapter: ListAdapter<User, InboxAdapter.InboxViewHolder>(DiffCallback()) {
+class InboxAdapter(private val listener: ProfileOnClickListener): ListAdapter<User, InboxAdapter.InboxViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InboxViewHolder {
         val binding = ItemEmailInboxBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -18,18 +19,21 @@ class InboxAdapter: ListAdapter<User, InboxAdapter.InboxViewHolder>(DiffCallback
 
     override fun onBindViewHolder(holder: InboxViewHolder, position: Int) {
         val currentItem = getItem(position)
-        holder.bind(currentItem)
+        holder.bind(currentItem, listener)
     }
 
 
     inner class InboxViewHolder(private val binding: ItemEmailInboxBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(user: User) {
+        fun bind(user: User, listener: ProfileOnClickListener) {
             binding.apply {
                 if(user.id!=0) {
                     user.id?.let { avatarInbox.toAvatar(it, binding.root.context) }
                 }
                 completeName.text = user.name
                 emailAddressInbox.text = user.email
+                avatarInbox.setOnClickListener {
+                    user.id?.let { view -> listener.onClickListener(view) }
+                }
             }
         }
     }

@@ -10,8 +10,9 @@ import com.cartrackers.app.data.vo.CarModel
 import com.cartrackers.app.databinding.ItemFeedCarsBinding
 import com.cartrackers.app.extension.toAvatar
 import com.cartrackers.app.extension.toCarModel
+import com.cartrackers.app.features.common.ProfileOnClickListener
 
-class CarsAdapter: ListAdapter<CarModel, CarsAdapter.CarsViewHolder>(DiffCallback()) {
+class CarsAdapter(private val listener: ProfileOnClickListener): ListAdapter<CarModel, CarsAdapter.CarsViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarsViewHolder {
         val binding = ItemFeedCarsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -20,12 +21,12 @@ class CarsAdapter: ListAdapter<CarModel, CarsAdapter.CarsViewHolder>(DiffCallbac
 
     override fun onBindViewHolder(holder: CarsViewHolder, position: Int) {
         val currentItem = getItem(position)
-        holder.bind(currentItem)
+        holder.bind(currentItem, listener)
     }
 
     inner class CarsViewHolder(private val binding: ItemFeedCarsBinding): RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
-        fun bind(car: CarModel) {
+        fun bind(car: CarModel, listener: ProfileOnClickListener) {
             binding.apply {
                 if(car.userId!=0) {
                     car.userId.let { imageMap.toCarModel(it, binding.root.context) }
@@ -36,6 +37,9 @@ class CarsAdapter: ListAdapter<CarModel, CarsAdapter.CarsViewHolder>(DiffCallbac
                 carModel.text = "Model: ${car.modelNo}"
                 carTrack.text =  "TrackNo: ${car.trackNo}"
                 content.text = "The model of a car is the name used by a manufacturer to market a range of similar cars. The methods used by car manufacturers to categorise their product range into models varies between manufacturers"
+                avatar.setOnClickListener {
+                    listener.onClickListener(car.userId)
+                }
             }
         }
     }
