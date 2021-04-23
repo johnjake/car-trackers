@@ -42,6 +42,7 @@ FEATURES:
           * In case of failure to fetch from end point due to 404, 403, 500 or other server failure, a simple fallback was integrated to shift from end-point to local (car_owners.json)
           
           * You can also add user and sign-up can be found in login screen.
+          * Profile user can be modify or edit.
           
           * Paging was not coded due to time limit and endpoint does not have pagination. 
           * Search features are not yet integrated due to time limitation of the app development.
