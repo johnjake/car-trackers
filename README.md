@@ -6,7 +6,7 @@ For the CarTrack development the following IDE and patterns are used:
 
 
     IDE: Android Studio 2020.3.1 Canary 13 
-    Runtime Version: 11.8.0 
+    Runtime Version: 11.8.0 (jre)
     VM: OpenJDK 64-Bit
 
     Gradle Version: 7.0.0-alpha13
