@@ -1,7 +1,6 @@
 package com.cartrackers.app.features.track
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,21 +16,21 @@ import com.cartrackers.app.databinding.FragmentFeedBinding
 import com.cartrackers.app.extension.showNavigation
 import com.cartrackers.app.extension.toJsonType
 import com.cartrackers.app.features.main.CarTrackActivity
-import com.cartrackers.app.features.track.adapter.FeedAdapter
+import com.cartrackers.app.features.track.adapter.FeedsAdapter
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 
-class FeedFragment: Fragment(), FeedAdapter.ProfileOnClickListener, FeedAdapter.ProfileOnMapClickListener {
+class FeedFragment: Fragment(), FeedsAdapter.ProfileOnClickListener, FeedsAdapter.ProfileOnMapClickListener {
     private var binding: FragmentFeedBinding? = null
 
     private val bind get() = binding
 
     private val viewModel: ViewModel by inject()
 
-    private val userAdapter: FeedAdapter by lazy { FeedAdapter(this, this) }
+    private val userAdapter: FeedsAdapter by lazy { FeedsAdapter(this, this) }
 
     private var stateJob: Job? = null
 
@@ -95,13 +94,13 @@ class FeedFragment: Fragment(), FeedAdapter.ProfileOnClickListener, FeedAdapter.
 
     private fun handleModelSuccess(data: List<User>) {
         if(data.isNotEmpty()) {
-            Log.d("Data", "$data")
-            userAdapter.dataSource = data
+            Timber.d( "$data")
+            userAdapter.submitList(data)
         }
     }
 
     private fun handleModelFailed(error: Throwable) {
-        TODO("Not yet implemented")
+       Timber.e("Error: ${error.message}")
     }
 
     private fun bottomVisibility() {
