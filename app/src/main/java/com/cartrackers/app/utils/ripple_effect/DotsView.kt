@@ -1,11 +1,9 @@
 package com.cartrackers.app.utils.ripple_effect
 
 import android.animation.ArgbEvaluator
-import android.annotation.TargetApi
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
-import android.os.Build
 import android.util.AttributeSet
 import android.util.Property
 import android.view.View
@@ -39,11 +37,6 @@ class DotsView : View {
     }
 
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
-        init()
-    }
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes) {
         init()
     }
 
@@ -110,30 +103,34 @@ class DotsView : View {
     }
 
     private fun updateInnerDotsPosition() {
-        if (currentProgress < 0.3f) {
-            currentRadius2 = RippleUtilities.mapValueFromRangeToRange(currentProgress, 0.0, 0.3, 0.0, maxInnerDotsRadius)
+        currentRadius2 = if (currentProgress < 0.3f) {
+            RippleUtilities.mapValueFromRangeToRange(currentProgress, 0.0, 0.3, 0.0, maxInnerDotsRadius)
         } else {
-            currentRadius2 = maxInnerDotsRadius
+            maxInnerDotsRadius
         }
-        if (currentProgress < 0.2) {
-            currentDotSize2 = maxDotSize
-        } else if (currentProgress < 0.5) {
-            currentDotSize2 = RippleUtilities.mapValueFromRangeToRange(currentProgress, 0.2, 0.5, maxDotSize, 0.3 * maxDotSize)
-        } else {
-            currentDotSize2 = RippleUtilities.mapValueFromRangeToRange(currentProgress, 0.5, 1.0, maxDotSize * 0.3f, 0.0)
+        currentDotSize2 = when {
+            currentProgress < 0.2 -> {
+                maxDotSize
+            }
+            currentProgress < 0.5 -> {
+                RippleUtilities.mapValueFromRangeToRange(currentProgress, 0.2, 0.5, maxDotSize, 0.3 * maxDotSize)
+            }
+            else -> {
+                RippleUtilities.mapValueFromRangeToRange(currentProgress, 0.5, 1.0, maxDotSize * 0.3f, 0.0)
+            }
         }
     }
 
     private fun updateOuterDotsPosition() {
-        if (currentProgress < 0.3f) {
-            currentRadius1 = RippleUtilities.mapValueFromRangeToRange(currentProgress, 0.0, 0.3, 0.0, maxOuterDotsRadius * 0.8f)
+        currentRadius1 = if (currentProgress < 0.3f) {
+            RippleUtilities.mapValueFromRangeToRange(currentProgress, 0.0, 0.3, 0.0, maxOuterDotsRadius * 0.8f)
         } else {
-            currentRadius1 = RippleUtilities.mapValueFromRangeToRange(currentProgress, 0.3, 1.0, 0.8f * maxOuterDotsRadius, maxOuterDotsRadius)
+            RippleUtilities.mapValueFromRangeToRange(currentProgress, 0.3, 1.0, 0.8f * maxOuterDotsRadius, maxOuterDotsRadius)
         }
-        if (currentProgress < 0.7) {
-            currentDotSize1 = maxDotSize
+        currentDotSize1 = if (currentProgress < 0.7) {
+            maxDotSize
         } else {
-            currentDotSize1 = RippleUtilities.mapValueFromRangeToRange(currentProgress, 0.7, 1.0, maxDotSize, 0.0)
+            RippleUtilities.mapValueFromRangeToRange(currentProgress, 0.7, 1.0, maxDotSize, 0.0)
         }
     }
 

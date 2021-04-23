@@ -116,11 +116,11 @@ class TrackRippleEffectButton : FrameLayout, View.OnClickListener {
         circleView.setOuterCircleRadiusProgress(0F)
         dotsView!!.setCurrentProgress(0F)
         animatorSet = AnimatorSet()
-        val outerCircleAnimator: ObjectAnimator = ObjectAnimator.ofFloat<CircleView>(circleView,
+        val outerCircleAnimator: ObjectAnimator = ObjectAnimator.ofFloat(circleView,
             CircleView.OUTER_CIRCLE_RADIUS_PROGRESS, 0.1f, 1f)
         outerCircleAnimator.duration = (250 / animationSpeed).toLong()
         outerCircleAnimator.interpolator = DECCELERATE_INTERPOLATOR
-        val innerCircleAnimator: ObjectAnimator = ObjectAnimator.ofFloat<CircleView>(circleView, CircleView.INNER_CIRCLE_RADIUS_PROGRESS, 0.1f, 1f)
+        val innerCircleAnimator: ObjectAnimator = ObjectAnimator.ofFloat(circleView, CircleView.INNER_CIRCLE_RADIUS_PROGRESS, 0.1f, 1f)
         innerCircleAnimator.duration = (200 / animationSpeed).toLong()
         innerCircleAnimator.startDelay = (200 / animationSpeed).toLong()
         innerCircleAnimator.interpolator = DECCELERATE_INTERPOLATOR
@@ -132,7 +132,7 @@ class TrackRippleEffectButton : FrameLayout, View.OnClickListener {
         starScaleXAnimator.duration = (350 / animationSpeed).toLong()
         starScaleXAnimator.startDelay = (250 / animationSpeed).toLong()
         starScaleXAnimator.interpolator = OVERSHOOT_INTERPOLATOR
-        val dotsAnimator: ObjectAnimator = ObjectAnimator.ofFloat<DotsView>(dotsView, DotsView.DOTS_PROGRESS, 0f, 1f)
+        val dotsAnimator: ObjectAnimator = ObjectAnimator.ofFloat(dotsView, DotsView.DOTS_PROGRESS, 0f, 1f)
         dotsAnimator.duration = (900 / animationSpeed).toLong()
         dotsAnimator.startDelay = (50 / animationSpeed).toLong()
         dotsAnimator.interpolator = ACCELERATE_DECELERATE_INTERPOLATOR

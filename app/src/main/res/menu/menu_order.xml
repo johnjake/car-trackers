@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_search"
+        android:title="Search"
+        app:showAsAction="collapseActionView" />
+
+    <item
+        android:id="@+id/action_sort_by_name"
+        android:title="Sort by name"
+        app:showAsAction="collapseActionView"
+        />
+    <item
+        android:id="@+id/action_sort_by_id"
+        android:title="Sort by id"
+        app:showAsAction="collapseActionView"
+        />
+
+
+</menu>

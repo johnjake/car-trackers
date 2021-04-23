@@ -91,8 +91,4 @@ class InboxFragment: Fragment() {
         super.onDestroy()
         stateJob?.cancel()
     }
-    override fun onDestroyView() {
-        super.onDestroyView()
-    }
-
 }

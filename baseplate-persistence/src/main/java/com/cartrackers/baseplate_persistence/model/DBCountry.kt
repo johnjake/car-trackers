@@ -9,7 +9,6 @@ data class DBCountry(
     val Id: Int? = 0,
     val name: String
 ) {
-    constructor(): this(0, "")
     companion object {
         const val tableName = "countries"
     }

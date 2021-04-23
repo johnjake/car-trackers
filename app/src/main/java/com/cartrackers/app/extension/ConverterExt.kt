@@ -1,4 +1,4 @@
-package com.cartrackers.app.utils
+package com.cartrackers.app.extension
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -66,7 +66,7 @@ inline fun<reified T: Any> KClass<T>.toCheckClassType(): String {
     }
 }
 
-fun Activity.toast(message: String) {
+fun Activity?.toast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }
 
@@ -94,10 +94,11 @@ fun isOnline(context: Context): Boolean {
     return false
 }
 
-
 const val throwListException = "Not a valid Array"
 const val advancedEncryption = "AES"
 const val encryptionKey = "#$657LgJi_45%^"
 const val net_connectivity = "car.tracker.net"
 const val shared_room = "car.tracker.room"
+const val shared_user_no = "car.tracker.user.no"
 const val shared_pref = "car_track"
+const val shared_counter = "car_track_counter"

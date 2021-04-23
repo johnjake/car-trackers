@@ -50,7 +50,7 @@
         app:layout_constraintStart_toStartOf="@+id/leftGuideline" />
 
     <TextView
-        android:id="@+id/forgotPassword"
+        android:id="@+id/registerButton"
         style="@style/SubTitleTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

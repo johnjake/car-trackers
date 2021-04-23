@@ -21,6 +21,7 @@ inline fun CircleImageView.toAvatar(userId: Int, context: Context) {
         8 -> this.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.nicholas_runolfsdottir))
         9 -> this.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.glenna_reichert))
         10 -> this.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.clementina_dubuque))
+        else -> this.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_unknow_person))
     }
 }
 

@@ -86,12 +86,37 @@
         <entry key="..\:/car-trackers/app/src/main/res/layout/vello_alert_layout.xml" value="0.5421875" />
         <entry key="..\:/car-trackers/app/src/main/res/menu/influencer_menu.xml" value="0.5421875" />
         <entry key="..\:/car-trackers/app/src/main/res/menu/main_menu.xml" value="0.5421875" />
+        <entry key="..\:/dev/car-trackers/app/src/main/res/drawable/default_cursor.xml" value="0.5583333333333333" />
+        <entry key="..\:/dev/car-trackers/app/src/main/res/drawable/followed_button.xml" value="0.5583333333333333" />
+        <entry key="..\:/dev/car-trackers/app/src/main/res/drawable/ic_car_top.xml" value="0.5583333333333333" />
+        <entry key="..\:/dev/car-trackers/app/src/main/res/drawable/ic_sort.xml" value="0.5583333333333333" />
+        <entry key="..\:/dev/car-trackers/app/src/main/res/drawable/ic_unknow_person.xml" value="0.5583333333333333" />
+        <entry key="..\:/dev/car-trackers/app/src/main/res/drawable/ic_vello_post.xml" value="0.3390625" />
+        <entry key="..\:/dev/car-trackers/app/src/main/res/drawable/result_separator_background.xml" value="0.5583333333333333" />
+        <entry key="..\:/dev/car-trackers/app/src/main/res/drawable/selector_follow_unfollow.xml" value="0.5583333333333333" />
+        <entry key="..\:/dev/car-trackers/app/src/main/res/drawable/state_follow_unfollow_check.xml" value="0.5583333333333333" />
+        <entry key="..\:/dev/car-trackers/app/src/main/res/drawable/state_follow_unfollow_uncheck.xml" value="0.5583333333333333" />
         <entry key="..\:/dev/car-trackers/app/src/main/res/layout/activity_country.xml" value="0.4773550724637681" />
-        <entry key="..\:/dev/car-trackers/app/src/main/res/layout/fragment_edit_profile.xml" value="0.483695652173913" />
+        <entry key="..\:/dev/car-trackers/app/src/main/res/layout/activity_intro.xml" value="0.5421875" />
+        <entry key="..\:/dev/car-trackers/app/src/main/res/layout/fragment_edit_profile.xml" value="0.4693417493237151" />
+        <entry key="..\:/dev/car-trackers/app/src/main/res/layout/fragment_feed.xml" value="0.5421875" />
+        <entry key="..\:/dev/car-trackers/app/src/main/res/layout/fragment_location.xml" value="0.5421875" />
+        <entry key="..\:/dev/car-trackers/app/src/main/res/layout/fragment_login.xml" value="0.5421875" />
         <entry key="..\:/dev/car-trackers/app/src/main/res/layout/fragment_manage.xml" value="0.5421875" />
+        <entry key="..\:/dev/car-trackers/app/src/main/res/layout/fragment_map.xml" value="0.5421875" />
+        <entry key="..\:/dev/car-trackers/app/src/main/res/layout/fragment_profile.xml" value="0.5421875" />
+        <entry key="..\:/dev/car-trackers/app/src/main/res/layout/fragment_register.xml" value="0.41874497184231696" />
+        <entry key="..\:/dev/car-trackers/app/src/main/res/layout/fragment_search_main.xml" value="0.5421875" />
         <entry key="..\:/dev/car-trackers/app/src/main/res/layout/item_email_inbox.xml" value="0.5421875" />
+        <entry key="..\:/dev/car-trackers/app/src/main/res/layout/item_feed_main.xml" value="0.5421875" />
         <entry key="..\:/dev/car-trackers/app/src/main/res/layout/item_friends_list.xml" value="0.5421875" />
+        <entry key="..\:/dev/car-trackers/app/src/main/res/layout/item_home_search_main.xml" value="0.5421875" />
+        <entry key="..\:/dev/car-trackers/app/src/main/res/layout/item_influencer_thumbnail.xml" value="0.5421875" />
+        <entry key="..\:/dev/car-trackers/app/src/main/res/layout/item_profile_header.xml" value="0.5421875" />
+        <entry key="..\:/dev/car-trackers/app/src/main/res/layout/item_profile_menu.xml" value="0.5421875" />
         <entry key="..\:/dev/car-trackers/app/src/main/res/layout/item_string_country.xml" value="0.5421875" />
+        <entry key="..\:/dev/car-trackers/app/src/main/res/layout/layout_popup.xml" value="0.528125" />
+        <entry key="..\:/dev/car-trackers/app/src/main/res/menu/menu_order.xml" value="0.5421875" />
         <entry key="..\:/dev/trackers/app/src/main/res/layout/activity_main.xml" value="0.490036231884058" />
       </map>
     </option>

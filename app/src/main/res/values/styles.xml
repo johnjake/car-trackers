@@ -56,6 +56,19 @@
         <item name="android:background">@drawable/email_text_background</item>
     </style>
 
+    <style name="StyleTextView">
+        <item name="android:fontFamily">@font/inter_bold</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="StyleSubTextView">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColorHint">@color/disabled_color</item>
+    </style>
+
     <style name="CommonText">
         <item name="android:fontFamily">@font/inter_regular</item>
         <item name="android:textColor">@android:color/white</item>
@@ -80,6 +93,29 @@
         <item name="android:fontFamily">@font/inter_bold</item>
         <item name="android:textSize">26sp</item>
         <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="StyleTextView.Small">
+        <item name="android:textColor">#898f90</item>
+        <item name="android:textSize">11sp</item>
+    </style>
+
+    <style name="StyleItemNameTextAppearance">
+        <item name="android:fontFamily">@font/inter_bold</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="SecondaryTextAppearance">
+        <item name="android:fontFamily">@font/inter_semi_bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="HandleTextAppearance">
+        <item name="android:fontFamily">@font/inter_regular</item>
+        <item name="android:textColor">#b7bebf</item>
+        <item name="android:textSize">15sp</item>
     </style>
 
 </resources>

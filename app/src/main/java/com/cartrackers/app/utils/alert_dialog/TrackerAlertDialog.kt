@@ -63,11 +63,11 @@ class TrackerAlertDialog {
         dialog.show()
     }
 
-    fun setTitle(title: String?) {
+    private fun setTitle(title: String?) {
         titleTV.text = title
     }
 
-    fun setMessages(subtitle: String?) {
+    private fun setMessages(subtitle: String?) {
         subTitleTv.text = subtitle
     }
 

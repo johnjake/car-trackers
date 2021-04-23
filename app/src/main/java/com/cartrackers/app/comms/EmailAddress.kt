@@ -2,8 +2,8 @@ package com.cartrackers.app.comms
 
 class EmailAddress(fullAddress: String) {
 
-    var domain: String
-    var localPart: String
+    private var domain: String
+    private var localPart: String
 
     init {
         val atIndex = fullAddress.indexOf('@')

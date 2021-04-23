@@ -2,7 +2,7 @@ package com.cartrackers.app.features.profile.edit
 
 import com.cartrackers.app.data.vo.Address
 import com.cartrackers.app.data.vo.Company
-import com.cartrackers.app.utils.toJsonType
+import com.cartrackers.app.extension.toJsonType
 import com.cartrackers.baseplate_persistence.dao.UserDao
 import java.lang.Exception
 

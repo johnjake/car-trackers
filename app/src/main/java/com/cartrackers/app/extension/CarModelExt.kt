@@ -17,5 +17,6 @@ inline fun ImageView.toCarModel(userId: Int, context: Context) {
         8 -> this.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.user_8))
         9 -> this.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.user_9))
         10 -> this.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.user_10))
+        else -> this.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.user_1))
     }
 }

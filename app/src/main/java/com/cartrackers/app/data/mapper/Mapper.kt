@@ -1,12 +1,11 @@
 package com.cartrackers.app.data.mapper
 
 import com.cartrackers.app.data.vo.*
-import com.cartrackers.app.utils.toClassType
-import com.cartrackers.app.utils.toJsonType
+import com.cartrackers.app.extension.toClassType
+import com.cartrackers.app.extension.toJsonType
 import com.cartrackers.baseplate_persistence.domain.DomainUser
 import com.cartrackers.baseplate_persistence.model.DBCountry
 import com.cartrackers.baseplate_persistence.model.DBUser
-import com.google.gson.Gson
 
 class Mapper: MapperSource {
     override fun toHashMap(from: User): Map<String, Any> {

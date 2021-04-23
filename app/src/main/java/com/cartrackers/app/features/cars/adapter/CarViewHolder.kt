@@ -20,7 +20,7 @@ class CarViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
     private val brand: TextView = view.findViewById(R.id.carBrand)
     private val avatar: CircleImageView = view.findViewById(R.id.avatar)
     val content: TextView = view.findViewById(R.id.content)
-    val imgCar: ImageView = view.findViewById(R.id.imageMap)
+    private val imgCar: ImageView = view.findViewById(R.id.imageMap)
 
     @SuppressLint("SetTextI18n")
     fun bind(car: CarModel) {

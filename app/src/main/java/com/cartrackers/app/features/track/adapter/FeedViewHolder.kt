@@ -21,7 +21,7 @@ class FeedViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
     private val avatar: CircleImageView = view.findViewById(R.id.avatar)
 
     @SuppressLint("SetTextI18n")
-    fun bind(user: User, itemListener: FeedAdapter.ProfileOnClickListener) {
+    fun bind(user: User, itemListener: FeedAdapter.ProfileOnClickListener, onMapListener: FeedAdapter.ProfileOnMapClickListener) {
         name.text = user.name
         image.setImageDrawable(ContextCompat.getDrawable(view.context, R.drawable.ic_map_item))
         val id = user.id.toString()
@@ -32,6 +32,10 @@ class FeedViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
         user.id?.let { avatar.toAvatar(it, view.context) }
         avatar.setOnClickListener {
             user.id?.let { item -> itemListener.profileOnClick(item) }
+        }
+
+        image.setOnClickListener {
+            onMapListener.locationOnClick(user)
         }
     }
 

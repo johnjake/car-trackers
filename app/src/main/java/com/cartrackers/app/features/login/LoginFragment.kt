@@ -15,7 +15,6 @@ import com.cartrackers.app.databinding.FragmentLoginBinding
 import com.cartrackers.app.extension.toast
 import com.cartrackers.app.features.main.CarTrackActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.coroutines.Job
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 import java.lang.Exception
@@ -88,6 +87,9 @@ class LoginFragment: Fragment() {
                 val password = binding?.password?.text.toString().trim()
                 viewModel.authenticateUser(username, password)
             }
+        }
+        binding?.registerButton?.setOnClickListener {
+            it.findNavController().navigate(R.id.action_to_register)
         }
     }
 

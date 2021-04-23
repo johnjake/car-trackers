@@ -10,8 +10,7 @@ import androidx.navigation.findNavController
 import com.cartrackers.app.comms.CarDialog
 import com.cartrackers.app.data.vo.*
 import com.cartrackers.app.databinding.FragmentEditProfileBinding
-import com.cartrackers.app.utils.toClassType
-import kotlinx.coroutines.flow.collect
+import com.cartrackers.app.extension.toClassType
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import timber.log.Timber

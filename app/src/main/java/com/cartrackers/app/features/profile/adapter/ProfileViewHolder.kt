@@ -1,6 +1,5 @@
 package com.cartrackers.app.features.profile.adapter
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
