@@ -6,17 +6,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cartrackers.app.data.vo.State
 import com.cartrackers.app.data.vo.User
 import com.cartrackers.app.databinding.FragmentManageBinding
+import com.cartrackers.app.extension.showNavigation
+import com.cartrackers.app.features.common.ProfileOnClickListener
+import com.cartrackers.app.features.main.CarTrackActivity
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 
-class InboxFragment: Fragment() {
+class InboxFragment: Fragment(), ProfileOnClickListener {
     private var binding: FragmentManageBinding? = null
 
     private val bind get() = binding
@@ -27,7 +31,7 @@ class InboxFragment: Fragment() {
 
     private lateinit var resultLayout: LinearLayoutManager
 
-    private val inboxAdapter: InboxAdapter by lazy { InboxAdapter() }
+    private val inboxAdapter: InboxAdapter by lazy { InboxAdapter(this) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,6 +55,11 @@ class InboxFragment: Fragment() {
                 handleSuccessState(state)
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        bottomVisibility()
     }
 
     private fun handleSuccessState(state: State<List<User>>) {
@@ -90,5 +99,18 @@ class InboxFragment: Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         stateJob?.cancel()
+    }
+
+    private fun bottomVisibility() {
+        if(CarTrackActivity.onBackPress) {
+            CarTrackActivity.onBackPress = false
+            activity.showNavigation()
+        }
+    }
+
+    override fun onClickListener(userId: Int) {
+        val args = InboxFragmentDirections.actionInboxToProfile(userId)
+        CarTrackActivity.onBackPress = true
+        view?.findNavController()?.navigate(args)
     }
 }
