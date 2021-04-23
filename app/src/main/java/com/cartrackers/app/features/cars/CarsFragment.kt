@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.cartrackers.app.data.vo.CarModel
 import com.cartrackers.app.data.vo.State
 import com.cartrackers.app.databinding.FragmentCarsBinding
-import com.cartrackers.app.features.cars.adapter.CarAdapter
+import com.cartrackers.app.features.cars.adapter.CarsAdapter
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -20,7 +20,7 @@ import timber.log.Timber
 class CarsFragment: Fragment() {
     private var binding: FragmentCarsBinding? = null
     private val bind get() = binding
-    private val carAdapter: CarAdapter by lazy { CarAdapter() }
+    private val carAdapter: CarsAdapter by lazy { CarsAdapter() }
     private val viewModel: ViewModel by inject()
     private var stateJob: Job? = null
     private lateinit var resultLayout: LinearLayoutManager
@@ -57,12 +57,12 @@ class CarsFragment: Fragment() {
     }
 
     private fun handlesFailed(error: Throwable) {
-        TODO("Not yet implemented")
+        Timber.e("Error: ${error.message}")
     }
 
     private fun handlesSuccess(data: List<CarModel>) {
         if(data.isNotEmpty()) {
-            carAdapter.dataSource = data
+            carAdapter.submitList(data)
         }
     }
 
@@ -74,10 +74,6 @@ class CarsFragment: Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
         stateJob?.cancel()
     }
 

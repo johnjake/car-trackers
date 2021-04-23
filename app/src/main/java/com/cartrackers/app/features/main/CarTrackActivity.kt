@@ -4,10 +4,9 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.fragment.NavHostFragment
 import com.cartrackers.app.R
+import com.cartrackers.app.comms.CarDialog
 import com.cartrackers.app.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -45,6 +44,7 @@ class CarTrackActivity: AppCompatActivity() {
                         return true
                     }
                     R.id.profile_stack -> {
+                        CarDialog.builderAlert(binding.root.context, "Under Construction", "Sorry this page is under-construction")
                         return true
                     }
                 }
