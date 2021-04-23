@@ -39,7 +39,7 @@ FEATURES:
    
    Offline Mode:
    
-  ![alt text](https://github.com/johnjake/members-directory/blob/master/local_storage.png)
+  ![alt text](https://github.com/johnjake/car-trackers/blob/screen-shot/car_track_screen.png)
 
 
 
