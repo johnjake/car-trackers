@@ -19,7 +19,6 @@ For the CarTrack development the following IDE and patterns are used:
     
     3rd Party
     Dependency Injection: Koin-2.0.1
-    Image Stream: Coil-0.13.0
     Http Client: OkHttp-4.9.0
     Http Client: Retrofit-2.9.0
     Concurrency Library: Coroutine-1.4.2
