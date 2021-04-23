@@ -32,12 +32,17 @@ For the CarTrack development the following IDE and patterns are used:
 
 USER API: The users list can be obtained at this endpoint: https://jsonplaceholder.typicode.com/users  in JSON format, and a total of 10 users. 
 
+
 FEATURES: 
           When you run the app for the first time it will access first the endpoint API then persist the user data to room (SQLite). 
           To login the cartrack app you may use the email as username and password: `password+n` sample username: `sincere@april.biz` password: `password1` 
           the n'th is the user id.  
+          
+          You can also add user and sign-up can be found in login screen.
+          
+          
    
-   Offline Mode:
+   User Interface:
    
   ![alt text](https://github.com/johnjake/car-trackers/blob/screen-shot/car_track_screen.png)
 
