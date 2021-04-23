@@ -38,6 +38,8 @@ FEATURES:
           To login the cartrack app you may use the email as username and password: `password+n` sample username: `sincere@april.biz` password: `password1` 
           the n'th is the user id.  
           
+          * In case of failure to fetch from end point due to 404, 403, 500 or other server failure, a simple fallback was integrated to shift from end-point to local (car_owners.json)
+          
           * You can also add user and sign-up can be found in login screen.
           
           * Paging was not coded due to time limit and endpoint does not have pagination. 
