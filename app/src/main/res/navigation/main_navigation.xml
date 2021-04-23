@@ -107,6 +107,9 @@
             android:name="userProfile"
             app:argType="string"
             android:defaultValue="" />
+        <action
+            android:id="@+id/action_location_profile"
+            app:destination="@id/profileFragment" />
     </fragment>
 
 </navigation>

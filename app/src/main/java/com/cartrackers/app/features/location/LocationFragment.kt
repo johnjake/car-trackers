@@ -66,6 +66,10 @@ class LocationFragment: Fragment(), OnMapReadyCallback {
         contExt?.let { binding?.avatar?.toAvatar(userId, it) }
         binding?.profileName?.text = profile?.name
         binding?.carTrack?.text = "UserId: ${profile?.id}"
+        binding?.avatar?.setOnClickListener {
+            val args = LocationFragmentDirections.actionLocationProfile(userId)
+            view?.findNavController()?.navigate(args)
+        }
     }
 
     override fun onMapReady(googleMap: GoogleMap?) {
