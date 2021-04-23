@@ -1,4 +1,4 @@
-# Car Track   ![alt text](https://github.com/johnjake/members-directory/blob/master/app/src/main/res/drawable/ic_github_logo.png)
+# Car Track   ![alt text](https://github.com/johnjake/car-trackers/blob/master/ic_car_top.png)
 
 This app is about listing of car owners including personal information of the owner and vehicles. The app mainly runs locally. 
 
