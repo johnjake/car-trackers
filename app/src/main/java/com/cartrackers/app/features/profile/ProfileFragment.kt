@@ -17,10 +17,10 @@ import com.cartrackers.app.databinding.FragmentProfileBinding
 import com.cartrackers.app.extension.hideNavigation
 import com.cartrackers.app.extension.toAvatar
 import com.cartrackers.app.features.country.CountryActivity
-import com.cartrackers.app.features.profile.adapter.ProfileAdapter
 import com.cartrackers.app.utils.alert_dialog.ListenerCallBack
 import com.cartrackers.app.utils.alert_dialog.TrackerAlertDialog
 import com.cartrackers.app.extension.toJsonType
+import com.cartrackers.app.features.profile.adapter.ProfilesAdapter
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -40,7 +40,7 @@ class ProfileFragment: Fragment() {
 
     private var userId: Int = 0
 
-    private val userAdapter: ProfileAdapter by lazy { ProfileAdapter() }
+    private val userAdapter: ProfilesAdapter by lazy { ProfilesAdapter() }
 
     private lateinit var formattedProfile: String
 
@@ -168,7 +168,7 @@ class ProfileFragment: Fragment() {
     private fun handleModelSuccess(data: List<User>) {
         if(data.isNotEmpty()) {
             Timber.d("$data")
-            userAdapter.dataSource = data
+            userAdapter.submitList(data)
         }
     }
 

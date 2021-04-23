@@ -57,7 +57,7 @@ class CarsFragment: Fragment() {
     }
 
     private fun handlesFailed(error: Throwable) {
-        TODO("Not yet implemented")
+        Timber.e("Error: ${error.message}")
     }
 
     private fun handlesSuccess(data: List<CarModel>) {
@@ -74,10 +74,6 @@ class CarsFragment: Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
         stateJob?.cancel()
     }
 
