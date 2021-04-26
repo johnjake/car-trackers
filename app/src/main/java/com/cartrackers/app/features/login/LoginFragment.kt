@@ -1,11 +1,11 @@
 package com.cartrackers.app.features.login
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.cartrackers.app.R
 import com.cartrackers.app.comms.CarDialog
@@ -19,6 +19,8 @@ import com.cartrackers.app.extension.shared_login
 import com.cartrackers.app.extension.toast
 import com.cartrackers.app.features.main.CarTrackActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 import java.lang.Exception
@@ -44,8 +46,10 @@ class LoginFragment: Fragment() {
         activity?.overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right)
         hideNavigation()
 
-        viewModel.userState.observe(viewLifecycleOwner) { state ->
-            handleStateFlow(state)
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.userState.collect { state ->
+                handleStateFlow(state)
+            }
         }
 
         val sharedId = providesSharedPrefGetCount(view.context, shared_login) ?: 0

@@ -9,7 +9,7 @@ import com.cartrackers.baseplate_persistence.model.*
 
 @Database(
     entities = [DBUser::class, DBCountry::class],
-    version = 11,
+    version = 10,
     exportSchema = false
 )
 @TypeConverters

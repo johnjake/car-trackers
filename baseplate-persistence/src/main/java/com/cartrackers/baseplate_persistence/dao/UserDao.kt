@@ -33,6 +33,9 @@ abstract class UserDao {
         company: String
     )
 
+    @Query("select * from users where email = :authUserName and password = :authPassword")
+    abstract suspend fun getVerifiedUser(authUserName: String, authPassword: String): DBUser?
+
     @Query("select * from users where name like '%' || :searchItem || '%' ")
     abstract fun searchUser(searchItem: String): Flow<List<DBUser>>
 

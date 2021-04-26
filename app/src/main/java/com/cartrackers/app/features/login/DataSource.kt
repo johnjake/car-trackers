@@ -1,7 +1,8 @@
 package com.cartrackers.app.features.login
 
 import com.cartrackers.app.data.vo.User
+import kotlinx.coroutines.flow.Flow
 
 interface DataSource {
-    suspend fun getUserByCredential(authUserName: String, authPassword: String): User?
+    fun getUserByCredential(authUserName: String, authPassword: String): Flow<User?>
 }
