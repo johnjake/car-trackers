@@ -26,6 +26,7 @@ For the CarTrack development the following IDE and patterns are used:
     RecyclerView Paging: Paging3 (3.0.0-beta03)
     Navigation Component: 2.3.5
     Room: 2.3.0-alpha03
+    Unit Test: koin-test:2.0.1
     
   
    App Test Credential: (or create a new user account)
