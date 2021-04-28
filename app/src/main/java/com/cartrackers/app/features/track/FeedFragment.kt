@@ -22,14 +22,17 @@ import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 
-class FeedFragment: Fragment(), FeedsAdapter.ProfileOnClickListener, FeedsAdapter.ProfileOnMapClickListener {
+class FeedFragment: Fragment() {
     private var binding: FragmentFeedBinding? = null
 
     private val bind get() = binding
 
     private val viewModel: ViewModel by inject()
 
-    private val userAdapter: FeedsAdapter by lazy { FeedsAdapter(this, this) }
+    private val userAdapter: FeedsAdapter by lazy { FeedsAdapter(
+        itemListener = { profileOnClick(it)},
+        onMapListener = { user -> locationOnClick(user)})
+    }
 
     private var stateJob: Job? = null
 
@@ -116,13 +119,13 @@ class FeedFragment: Fragment(), FeedsAdapter.ProfileOnClickListener, FeedsAdapte
         }
     }
 
-    override fun profileOnClick(userId: Int) {
+    private fun profileOnClick(userId: Int) {
         val args = FeedFragmentDirections.actionFeedToProfile(userId)
         CarTrackActivity.onBackPress = true
         view?.findNavController()?.navigate(args)
     }
 
-    override fun locationOnClick(user: User) {
+    private fun locationOnClick(user: User) {
         val profileUser = user.toJsonType().toString()
         val args = FeedFragmentDirections.actionToLocation(profileUser)
         CarTrackActivity.onBackPress = true

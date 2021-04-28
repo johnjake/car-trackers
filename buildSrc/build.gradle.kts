@@ -5,7 +5,7 @@ buildscript {
     }
 
     dependencies {
-        classpath("com.android.tools.build:gradle:7.0.0-alpha13")
+        classpath("com.android.tools.build:gradle:7.0.0-alpha14")
     }
 }
 
@@ -25,5 +25,5 @@ kotlinDslPluginOptions {
 }
 
 dependencies {
-    implementation("com.android.tools.build:gradle:7.0.0-alpha13")
+    implementation("com.android.tools.build:gradle:7.0.0-alpha14")
 }

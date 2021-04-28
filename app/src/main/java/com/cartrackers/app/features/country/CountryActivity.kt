@@ -12,9 +12,9 @@ import com.cartrackers.app.databinding.ActivityCountryBinding
 import com.cartrackers.app.features.main.CarTrackActivity
 import org.koin.android.ext.android.inject
 
-class CountryActivity: AppCompatActivity(), CountryAdapter.OnCountryClick {
+class CountryActivity: AppCompatActivity() {
     private lateinit var binding: ActivityCountryBinding
-    private val countryAdapter: CountryAdapter by lazy { CountryAdapter(this) }
+    private val countryAdapter: CountryAdapter by lazy { CountryAdapter { country -> onClickListener(country) } }
     private lateinit var resultLayout: LinearLayoutManager
     private val viewModel: ViewModel by inject()
 
@@ -71,7 +71,7 @@ class CountryActivity: AppCompatActivity(), CountryAdapter.OnCountryClick {
         startActivity(Intent(this, CarTrackActivity::class.java))
     }
 
-    override fun onClickListener(country: String) {
+   private fun onClickListener(country: String) {
         binding.country.setText(country)
         binding.countryNextButton.isEnabled = true
         binding.countryList.visibility = View.GONE

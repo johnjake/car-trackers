@@ -11,10 +11,11 @@ import com.cartrackers.app.R
 import com.cartrackers.app.data.vo.User
 import com.cartrackers.app.databinding.ItemFeedMainBinding
 import com.cartrackers.app.extension.toAvatar
+import com.cartrackers.app.extension.toJsonType
 
 class FeedsAdapter(
-    private val itemListener: ProfileOnClickListener,
-    private val onMapListener: ProfileOnMapClickListener
+    private val itemListener: (id: Int) -> Unit,
+    private val onMapListener: (profile: User) -> Unit
 ): ListAdapter<User, FeedsAdapter.FeedsViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedsViewHolder {
@@ -24,14 +25,12 @@ class FeedsAdapter(
 
     override fun onBindViewHolder(holder: FeedsViewHolder, position: Int) {
         val currentItem = getItem(position)
-        holder.bind(currentItem, itemListener, onMapListener)
+        holder.bind(currentItem)
     }
 
     inner class FeedsViewHolder(private val binding: ItemFeedMainBinding): RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
-        fun bind(user: User,
-                 itemListener: ProfileOnClickListener,
-                 onMapListener: ProfileOnMapClickListener) {
+        fun bind(user: User) {
             binding.apply {
                 if(user.id!=0) {
                     user.id?.let { avatar.toAvatar(it, binding.root.context) }
@@ -42,11 +41,11 @@ class FeedsAdapter(
                 carModel.text = user.name
 
                 avatar.setOnClickListener {
-                    user.id?.let { item -> itemListener.profileOnClick(item) }
+                    user.id?.let { item -> itemListener(item) }
                 }
 
                 imageMap.setOnClickListener {
-                    onMapListener.locationOnClick(user)
+                    onMapListener(user)
                 }
             }
         }
@@ -59,13 +58,4 @@ class FeedsAdapter(
         override fun areContentsTheSame(oldItem: User, newItem: User) =
             oldItem == newItem
     }
-
-    interface ProfileOnClickListener {
-        fun profileOnClick(userId: Int)
-    }
-
-    interface ProfileOnMapClickListener {
-        fun locationOnClick(profile: User)
-    }
-
 }
