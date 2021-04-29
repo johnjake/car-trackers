@@ -112,9 +112,9 @@ dependencies {
     implementation("javax.inject:javax.inject:1")
 
     // implementation ("androidx.room:room-coroutines:2.1.0-alpha04")
-    implementation ("androidx.room:room-runtime:2.3.0-rc01")
-    implementation ("androidx.room:room-ktx:2.3.0-rc01")
-    kapt ("androidx.room:room-compiler:2.3.0-rc01")
+    implementation ("androidx.room:room-runtime:2.4.0-alpha01")
+    implementation ("androidx.room:room-ktx:2.4.0-alpha01")
+    kapt ("androidx.room:room-compiler:2.4.0-alpha01")
 
     //Dependency injection
     // Koin main features for Android (Scope,ViewModel ...)
@@ -140,7 +140,7 @@ dependencies {
     implementation("androidx.cardview:cardview:1.0.0")
 
     //circleView
-    implementation("de.hdodenhof:circleimageview:3.0.0")
+    implementation("de.hdodenhof:circleimageview:3.0.1")
 
     //images
     implementation ("com.makeramen:roundedimageview:2.3.0")
