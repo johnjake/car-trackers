@@ -9,7 +9,7 @@ For the CarTrack development the following IDE and patterns are used:
     Runtime Version: 11.8.0 (jre)
     VM: OpenJDK 64-Bit
 
-    Gradle Version: 7.0.0-alpha13
+    Gradle Version: 7.0.0-alpha14
     Kotlin Version: 1.4.31
     Gradle Type: DLS
 
