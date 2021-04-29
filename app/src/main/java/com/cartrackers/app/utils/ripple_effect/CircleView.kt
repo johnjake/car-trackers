@@ -49,7 +49,7 @@ class CircleView : View {
         tempCanvas!!.drawColor(0xffffff, PorterDuff.Mode.CLEAR)
         tempCanvas!!.drawCircle(width / 2.toFloat(), height / 2.toFloat(), outerCircleRadiusProgress * maxCircleSize, circlePaint)
         tempCanvas!!.drawCircle(width / 2.toFloat(), height / 2.toFloat(), innerCircleRadiusProgress * maxCircleSize, maskPaint)
-        tempBitmap?.let { canvas.drawBitmap(it, 0f, 0f, null) }
+        tempBitmap.let { canvas.drawBitmap(it, 0f, 0f, null) }
     }
 
     fun setColors(startColor: Int, endColor: Int) {

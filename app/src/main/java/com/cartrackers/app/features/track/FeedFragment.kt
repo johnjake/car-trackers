@@ -58,17 +58,12 @@ class FeedFragment: Fragment() {
         }
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        binding?.searchButton?.setOnClickListener {
-            it.findNavController().navigate(R.id.action_search_item)
-        }
-    }
-
     override fun onStart() {
         super.onStart()
         viewModel.getListFromRoom()
+        binding?.searchButton?.setOnClickListener {
+            it.findNavController().navigate(R.id.action_search_item)
+        }
     }
 
     override fun onResume() {

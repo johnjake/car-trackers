@@ -52,7 +52,7 @@ inline fun<reified T: Any?> String.toTypeList(): List<User> {
 }
 
 @Throws(IOException::class)
-inline fun Context.readJsonAsset(fileName: String): String {
+fun Context.readJsonAsset(fileName: String): String {
     val inputStream = assets.open(fileName)
     val size = inputStream.available()
     val buffer = ByteArray(size)

@@ -5,7 +5,7 @@ import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import com.cartrackers.app.R
 
-inline fun ImageView.toCarModel(userId: Int, context: Context) {
+fun ImageView.toCarModel(userId: Int, context: Context) {
     when(userId) {
         1 -> this.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.user_1))
         2 -> this.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.user_2))

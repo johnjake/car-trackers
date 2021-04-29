@@ -67,11 +67,6 @@ class LocationFragment: Fragment(), OnMapReadyCallback {
         }
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        activity?.hideNavigation()
-    }
-
     @SuppressLint("SetTextI18n")
     override fun onStart() {
         super.onStart()
@@ -79,6 +74,8 @@ class LocationFragment: Fragment(), OnMapReadyCallback {
         binding?.backButton?.setOnClickListener {
             it.findNavController().popBackStack()
         }
+
+        activity?.hideNavigation()
     }
 
     override fun onMapReady(googleMap: GoogleMap?) {

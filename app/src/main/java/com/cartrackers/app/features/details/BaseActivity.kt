@@ -51,7 +51,7 @@ class BaseActivity : AppCompatActivity() {
     }
 
     private fun handleModelFailed(error: Throwable) {
-        TODO("Not yet implemented")
+        Timber.e("Error: ${error.message}")
     }
 
     private fun handleModelSuccess(data: List<User>) {

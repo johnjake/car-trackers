@@ -20,10 +20,6 @@ allprojects {
     }
 }
 
-kotlinDslPluginOptions {
-    experimentalWarning.set(false)
-}
-
 dependencies {
     implementation("com.android.tools.build:gradle:7.0.0-alpha14")
 }

@@ -6,7 +6,7 @@ import androidx.core.content.ContextCompat
 import com.cartrackers.app.R
 import de.hdodenhof.circleimageview.CircleImageView
 
-inline fun CircleImageView.toAvatar(userId: Int, context: Context) {
+fun CircleImageView.toAvatar(userId: Int, context: Context) {
     this.borderColor = Color.parseColor("#FFB222")
     this.setPadding(1, 1, 1, 1)
     this.borderWidth = 5
@@ -25,7 +25,7 @@ inline fun CircleImageView.toAvatar(userId: Int, context: Context) {
     }
 }
 
-inline fun CircleImageView.toCountry(userId: Int, context: Context) {
+fun CircleImageView.toCountry(context: Context) {
     this.borderColor = Color.parseColor("#75757B")
     this.setPadding(1, 1, 1, 1)
     this.borderWidth = 5

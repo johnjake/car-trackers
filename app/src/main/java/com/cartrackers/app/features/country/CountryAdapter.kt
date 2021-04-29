@@ -24,7 +24,7 @@ class CountryAdapter(private val itemClickListener: (country: String)->Unit): Li
     inner class CountryViewHolder(private val binding: ItemStringCountryBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(country: Country) {
             if(country.id>0) {
-                binding.avatarCountry.toCountry(country.id, binding.root.context)
+                binding.avatarCountry.toCountry(binding.root.context)
             }
             binding.apply {
                 countryName.text = country.name

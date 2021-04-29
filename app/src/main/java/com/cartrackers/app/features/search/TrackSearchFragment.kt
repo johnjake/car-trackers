@@ -44,8 +44,8 @@ class TrackSearchFragment: Fragment() {
     }
 
     override fun onContextItemSelected(item: MenuItem): Boolean {
-        val selectedItemOrder = item.order
-        val selectedItemTitle = item.title
+        //val selectedItemOrder = item.order
+        //val selectedItemTitle = item.title
         return true
     }
  }

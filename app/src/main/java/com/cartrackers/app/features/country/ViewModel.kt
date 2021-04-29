@@ -9,6 +9,7 @@ class ViewModel(private val repository: Repository): ViewModel() {
 
     val searchFlow = MutableStateFlow("")
 
+    @kotlinx.coroutines.ExperimentalCoroutinesApi
     private val searchRepository = searchFlow.flatMapLatest {
         repository.getCountry(it)
     }

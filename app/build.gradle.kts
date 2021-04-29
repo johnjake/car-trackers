@@ -117,9 +117,15 @@ dependencies {
     kapt ("androidx.room:room-compiler:2.3.0-rc01")
 
     //Dependency injection
-    implementation("org.koin:koin-android:2.0.1")
-    implementation ("org.koin:koin-androidx-viewmodel:2.0.1")
-    implementation ("org.koin:koin-androidx-scope:2.0.1")
+    // Koin main features for Android (Scope,ViewModel ...)
+    implementation ("io.insert-koin:koin-android:3.0.1")
+    // Koin Android - experimental builder extensions
+    implementation ("io.insert-koin:koin-android-ext:3.0.1")
+    // Koin for Jetpack WorkManager
+    implementation ("io.insert-koin:koin-androidx-workmanager:3.0.1")
+    // Koin for Jetpack Compose (unstable version)
+    implementation ("io.insert-koin:koin-androidx-compose:3.0.1")
+
 
     //retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
@@ -145,6 +151,7 @@ dependencies {
     //navigation
     implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
     implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
+    implementation ("androidx.navigation:navigation-compose:1.0.0-alpha10")
 
     //google maps
     implementation ("com.google.android.gms:play-services-maps:17.0.0")
@@ -168,16 +175,14 @@ dependencies {
     testImplementation("androidx.arch.core:core-testing:2.1.0")
 
     //coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3")
 
     //image viewer
     implementation("io.coil-kt:coil:1.0.0")
 
     //paging
-    implementation ("androidx.paging:paging-runtime-ktx:3.0.0-beta03")
-
-    implementation("com.sdsmdg.harjot:rotatingtext:1.0.2")
+    implementation ("androidx.paging:paging-runtime-ktx:3.0.0-rc01")
 
     //testImplementation("junit:junit:4.13.2")
     testImplementation("junit:junit:4.13.2")
@@ -190,13 +195,12 @@ dependencies {
     testImplementation ("org.mockito:mockito-core:3.0.0")
     testImplementation ("com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0")
     testImplementation ("org.mockito:mockito-inline:3.0.0")
-    testImplementation ("org.amshove.kluent:kluent:1.51")
 
     testImplementation ("org.junit.jupiter:junit-jupiter-api:5.7.0")
     testRuntimeOnly ("org.junit.jupiter:junit-jupiter-engine:5.7.0")
 
     /** debugImplementation if unit test, androidTestImplementation for androidTest **/
-    debugImplementation( "org.koin:koin-test:2.0.1")
+    testImplementation ("io.insert-koin:koin-test:3.0.1")
 
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
@@ -221,6 +225,7 @@ fun getProps(file: File): Properties {
     return props
 }
 
+apply (plugin = "androidx.navigation.safeargs.kotlin")
 apply (plugin = "kotlin-kapt")
 
 

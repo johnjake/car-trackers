@@ -11,10 +11,11 @@ class ViewModel(
 
     private val searchQuery = MutableStateFlow("")
 
+    @kotlinx.coroutines.ExperimentalCoroutinesApi
     private val userFlow = searchQuery.flatMapLatest {
         repository.searchUser(it)
     }
 
-    val userQuery = userFlow.asLiveData()
+    //val userQuery = userFlow.asLiveData()
 
 }

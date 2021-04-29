@@ -201,7 +201,7 @@ class TrackRippleEffectButton : FrameLayout, View.OnClickListener {
 
     private fun setOnTouchListener() {
         if (pressOnTouch) {
-            setOnTouchListener { v, event ->
+            setOnTouchListener { _, event ->
                 when (event.action) {
                     MotionEvent.ACTION_DOWN -> {
                         imageView.animate().scaleX(0.8f).scaleY(0.8f).setDuration(150).interpolator = DECCELERATE_INTERPOLATOR

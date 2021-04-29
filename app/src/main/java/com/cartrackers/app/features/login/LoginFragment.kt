@@ -59,8 +59,8 @@ class LoginFragment: Fragment() {
         }
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onStart() {
+        super.onStart()
         validateInputEmail()
         validateAndLogin()
     }
@@ -74,6 +74,7 @@ class LoginFragment: Fragment() {
     }
 
     private fun handleFailed(error: Throwable) {
+        Timber.e("Error: ${error.message}")
         context?.let { CarDialog.builderAlert(it,
             "Invalid Credential",
             "Invalid email or password!") }
@@ -84,7 +85,7 @@ class LoginFragment: Fragment() {
             val user = data.username ?: ""
             val userId = data.id ?: 0
             verifiedUser(user, userId)
-            persistToSharedPref(user, userId)
+            persistToSharedPref(userId)
         } else {
             context?.let { CarDialog.builderAlert(it,
                 "Credential",
@@ -99,7 +100,7 @@ class LoginFragment: Fragment() {
         activity?.toast("Welcome $username !")
     }
 
-    private fun persistToSharedPref(username: String, userId: Int) {
+    private fun persistToSharedPref(userId: Int) {
         context?.let { providesSharedUserCount(it, shared_login, userId) }
        // context?.let { providesSharedUserInput(it, shared_username, username) }
     }
