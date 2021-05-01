@@ -15,6 +15,10 @@ fun Activity.toast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_LONG).show()
 }
 
+fun Activity.toasty(message: String) {
+
+}
+
 fun Editable.toVerifyField(context: Context, title: String): Int {
     if(this.isEmpty()) {
         val alertDialog = TrackerAlertDialog()

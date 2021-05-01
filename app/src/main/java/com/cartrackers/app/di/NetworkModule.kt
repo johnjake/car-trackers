@@ -48,7 +48,7 @@ fun providesBaseUrl(): String {
     return baseUrl
 }
 
-fun providesRetrofit(@Named("BASE_URL") url: String, okHttpClient: OkHttpClient, gson: Gson): Retrofit {
+fun providesRetrofit(@Named("BASE_URL_MOVIES") url: String, okHttpClient: OkHttpClient, gson: Gson): Retrofit {
     return Retrofit.Builder()
         .baseUrl(url)
         .addConverterFactory(ScalarsConverterFactory.create())

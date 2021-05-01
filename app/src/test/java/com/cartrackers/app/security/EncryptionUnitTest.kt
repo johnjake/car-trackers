@@ -7,8 +7,8 @@ import javax.crypto.spec.SecretKeySpec
 import com.cartrackers.app.extension.advancedEncryption
 import com.cartrackers.app.extension.toDecryptedString
 import com.cartrackers.app.extension.toEncryptedString
-import org.amshove.kluent.shouldBeEqualTo
-import org.amshove.kluent.shouldBeGreaterThan
+import io.kotlintest.matchers.numerics.shouldBeGreaterThan
+import io.kotlintest.matchers.string.shouldBeEqualIgnoringCase
 import java.security.Key
 
 @Testcontainers
@@ -37,7 +37,7 @@ class EncryptionUnitTest {
         val cipher = Cipher.getInstance(advancedEncryption)
         cipher.init(Cipher.DECRYPT_MODE, aesKey)
         val decrypted = String(cipher.doFinal(encryptedText)).trim()
-        plainText shouldBeEqualTo decrypted
+        plainText shouldBeEqualIgnoringCase  decrypted
         println(decrypted)
     }
 
@@ -45,14 +45,14 @@ class EncryptionUnitTest {
     @Order(3)
     fun `string extension for encryption`() {
       val encryptedText =  plainText.toEncryptedString<String>(key)
-      encryptedText.size shouldBeGreaterThan 0
+      encryptedText.size shouldBeGreaterThan  0
     }
 
     @Test
     @Order(4)
     fun `string extension for decryption`() {
        val decryptedText = encryptedText.toDecryptedString<ByteArray>(key)
-        plainText shouldBeEqualTo decryptedText
+        plainText shouldBeEqualIgnoringCase decryptedText
         println(decryptedText)
     }
 }
