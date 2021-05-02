@@ -66,14 +66,14 @@
         android:id="@+id/carModel"
         android:layout_width="@dimen/pixels_220"
         android:layout_height="@dimen/pixels_30"
+        android:layout_marginTop="@dimen/pixels_15"
         android:elevation="@dimen/pixels_15"
         android:fontFamily="@font/inter_semi_bold"
         android:minWidth="@dimen/pixels_60"
         android:paddingStart="@dimen/pixels_16"
         android:paddingEnd="@dimen/pixels_16"
-        android:textColor="@color/colorAccent"
+        android:textColor="#FF8A80"
         android:textSize="@dimen/text_size_tiny"
-        android:layout_marginTop="@dimen/pixels_15"
         app:layout_constraintBottom_toTopOf="@+id/content"
         app:layout_constraintEnd_toStartOf="@+id/carBrand"
         app:layout_constraintHorizontal_bias="0.036"
@@ -120,15 +120,17 @@
         android:padding="@dimen/pixels_4"
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
         app:layout_constraintTop_toBottomOf="@+id/imageContainer">
+
         <com.cartrackers.app.utils.ripple_effect.TrackRippleEffectButton
             android:id="@+id/heartButton"
             android:layout_width="@dimen/pixels_55"
-            android:layout_height="@dimen/pixels_40"
+            android:layout_height="48dp"
             app:sparkbutton_activeImage="@drawable/ic_heart_icon"
-            app:sparkbutton_inActiveImage="@drawable/ic_unheart_icon"
             app:sparkbutton_iconSize="@dimen/pixels_28"
+            app:sparkbutton_inActiveImage="@drawable/ic_unheart_icon"
             app:sparkbutton_primaryColor="@color/heart_primary_color"
-            app:sparkbutton_secondaryColor="@color/heart_secondary_color" />
+            app:sparkbutton_secondaryColor="@color/heart_secondary_color"
+            tools:ignore="SpeakableTextPresentCheck" />
     </LinearLayout>
 
     <TextView

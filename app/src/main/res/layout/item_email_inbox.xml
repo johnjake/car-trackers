@@ -73,13 +73,13 @@
     <Button
         android:id="@+id/manageButton"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/pixels_35"
-        android:text="@string/manage"
-        android:textStyle="bold"
-        android:textAllCaps="false"
-        android:background="@drawable/bg_corner_16dp_black_grey_border"
+        android:layout_height="48dp"
         android:layout_marginEnd="@dimen/pixels_4"
+        android:background="@drawable/bg_corner_16dp_black_grey_border"
         android:contentDescription="@string/alt_feed"
+        android:text="@string/manage"
+        android:textAllCaps="false"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
         app:layout_constraintTop_toTopOf="parent" />

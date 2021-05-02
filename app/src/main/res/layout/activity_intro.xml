@@ -121,12 +121,14 @@
         app:layout_constraintHorizontal_bias="0.126"
         app:layout_constraintStart_toStartOf="@+id/splashBackgroundImage"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout_media"
-        app:layout_constraintVertical_bias="0.146" />
+        app:layout_constraintVertical_bias="0.146"
+        android:contentDescription="@string/country" />
 
     <View
         android:id="@+id/backgroundScrim"
         android:layout_width="@dimen/pixel_0"
         android:layout_height="@dimen/pixels_100"
+        android:labelFor="@id/termsOfUse"
         android:background="@drawable/picture_scrim"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -151,6 +153,7 @@
         android:paddingEnd="@dimen/pixels_8"
         android:text="@string/privacy_policy"
         android:textAppearance="@style/FooterTextStyle"
+        android:textColor="#757575"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/termsOfUse"
         app:layout_constraintStart_toStartOf="parent"
@@ -166,10 +169,12 @@
         android:text="@string/terms_of_use"
 
         android:textAppearance="@style/FooterTextStyle"
+        android:textColor="#757575"
         app:layout_constraintBottom_toBottomOf="@+id/privacyPolicy"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/privacyPolicy"
-        app:layout_constraintTop_toTopOf="@+id/privacyPolicy" />
+        app:layout_constraintTop_toTopOf="@+id/privacyPolicy"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/userSplashNextButton"
@@ -179,6 +184,7 @@
         android:enabled="false"
         app:layout_constraintBottom_toBottomOf="@+id/readyLetsGoTitle"
         app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
-        app:layout_constraintTop_toTopOf="@+id/readyLetsGoTitle" />
+        app:layout_constraintTop_toTopOf="@+id/readyLetsGoTitle"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

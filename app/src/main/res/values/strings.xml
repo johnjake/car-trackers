@@ -71,4 +71,11 @@
     <string name="results">Results</string>
     <string name="unfollow">unfollow</string>
     <string name="dropped_pin">dropIn</string>
+    <string name="street_address">Street Address</string>
+    <string name="back_to_main">back</string>
+    <string name="enter_complete_name">Enter Complete Name</string>
+    <string name="enter_email_address">Enter email address</string>
+    <string name="enter_username">Enter Username</string>
+    <string name="enter_user_password">Enter user password</string>
+    <string name="back">back</string>
 </resources>

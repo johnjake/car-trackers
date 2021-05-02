@@ -56,6 +56,7 @@
         <entry key="..\:/car-trackers/app/src/main/res/drawable/track_background.xml" value="0.3338541666666667" />
         <entry key="..\:/car-trackers/app/src/main/res/drawable/video_length_background.xml" value="0.5583333333333333" />
         <entry key="..\:/car-trackers/app/src/main/res/drawable/yellow_profile_image_stroke.xml" value="0.5583333333333333" />
+        <entry key="..\:/car-trackers/app/src/main/res/layout/activity_base.xml" value="0.4750905797101449" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/activity_country.xml" value="0.5421875" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/activity_intro.xml" value="0.5421875" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/activity_login.xml" value="0.5421875" />
@@ -66,12 +67,16 @@
         <entry key="..\:/car-trackers/app/src/main/res/layout/fragement_details.xml" value="0.5421875" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/fragement_visited.xml" value="0.32447916666666665" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/fragment_cars.xml" value="0.5362318840579711" />
+        <entry key="..\:/car-trackers/app/src/main/res/layout/fragment_edit_profile.xml" value="0.26367781155015196" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/fragment_feed.xml" value="0.5421875" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/fragment_feeds_parent.xml" value="0.5421875" />
+        <entry key="..\:/car-trackers/app/src/main/res/layout/fragment_location.xml" value="0.4750905797101449" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/fragment_login.xml" value="0.5421875" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/fragment_manage.xml" value="0.5421875" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/fragment_profile_management.xml" value="0.5362318840579711" />
+        <entry key="..\:/car-trackers/app/src/main/res/layout/fragment_register.xml" value="0.4750905797101449" />
+        <entry key="..\:/car-trackers/app/src/main/res/layout/fragment_search_main.xml" value="0.4750905797101449" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/fragment_vehicles.xml" value="0.5362318840579711" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/fragment_visited.xml" value="0.5421875" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/item_email_inbox.xml" value="0.5421875" />
