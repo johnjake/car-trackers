@@ -10,7 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.cartrackers.app.R
 import com.cartrackers.app.databinding.ActivityCountryBinding
 import com.cartrackers.app.features.main.CarTrackActivity
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.ext.android.inject
+
 
 class CountryActivity: AppCompatActivity() {
     private lateinit var binding: ActivityCountryBinding
@@ -18,6 +20,7 @@ class CountryActivity: AppCompatActivity() {
     private lateinit var resultLayout: LinearLayoutManager
     private val viewModel: ViewModel by inject()
 
+    @ExperimentalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCountryBinding.inflate(layoutInflater)
@@ -28,6 +31,7 @@ class CountryActivity: AppCompatActivity() {
         setupUi()
     }
 
+    @ExperimentalCoroutinesApi
     private fun setupUi() {
         binding.countryNextButton.setOnClickListener {
             launchActivity()

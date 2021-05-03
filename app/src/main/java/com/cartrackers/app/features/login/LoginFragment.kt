@@ -96,7 +96,7 @@ class LoginFragment: Fragment() {
     private fun verifiedUser(username: String, userId: Int) {
         val args = LoginFragmentDirections.actionLoginToMain(userId)
         view?.findNavController()?.navigate(args)
-        CarTrackActivity.onBackPress = true
+        CarTrackActivity.onBackPress.value = true
         activity?.toast("Welcome $username !")
     }
 

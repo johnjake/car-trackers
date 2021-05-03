@@ -9,6 +9,7 @@ import com.cartrackers.app.R
 import com.cartrackers.app.comms.CarDialog
 import com.cartrackers.app.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.coroutines.flow.MutableStateFlow
 
 class CarTrackActivity: AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -54,6 +55,6 @@ class CarTrackActivity: AppCompatActivity() {
     }
 
     companion object {
-        var onBackPress: Boolean = false
+        val onBackPress = MutableStateFlow(false)
     }
 }

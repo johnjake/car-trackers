@@ -108,22 +108,22 @@ class FeedFragment: Fragment() {
     }
 
     private fun bottomVisibility() {
-        if(CarTrackActivity.onBackPress) {
-            CarTrackActivity.onBackPress = false
+        if(CarTrackActivity.onBackPress.value) {
+            CarTrackActivity.onBackPress.value = false
             activity.showNavigation()
         }
     }
 
     private fun profileOnClick(userId: Int) {
         val args = FeedFragmentDirections.actionFeedToProfile(userId)
-        CarTrackActivity.onBackPress = true
+        CarTrackActivity.onBackPress.value = true
         view?.findNavController()?.navigate(args)
     }
 
     private fun locationOnClick(user: User) {
         val profileUser = user.toJsonType().toString()
         val args = FeedFragmentDirections.actionToLocation(profileUser)
-        CarTrackActivity.onBackPress = true
+        CarTrackActivity.onBackPress.value = true
         view?.findNavController()?.navigate(args)
     }
 }

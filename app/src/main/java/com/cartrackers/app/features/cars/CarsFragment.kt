@@ -94,15 +94,15 @@ class CarsFragment: Fragment(), ProfileOnClickListener {
     }
 
     private fun bottomVisibility() {
-        if(CarTrackActivity.onBackPress) {
-            CarTrackActivity.onBackPress = false
+        if(CarTrackActivity.onBackPress.value) {
+            CarTrackActivity.onBackPress.value = false
             activity.showNavigation()
         }
     }
 
     override fun onClickListener(userId: Int) {
         val args = CarsFragmentDirections.actionCarsToProfile(userId)
-        CarTrackActivity.onBackPress = true
+        CarTrackActivity.onBackPress.value = true
         view?.findNavController()?.navigate(args)
     }
 }
