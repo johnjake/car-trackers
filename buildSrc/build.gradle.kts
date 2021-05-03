@@ -5,7 +5,7 @@ buildscript {
     }
 
     dependencies {
-        classpath("com.android.tools.build:gradle:7.0.0-alpha14")
+        classpath("com.android.tools.build:gradle:7.0.0-alpha15")
     }
 }
 
@@ -21,5 +21,5 @@ allprojects {
 }
 
 dependencies {
-    implementation("com.android.tools.build:gradle:7.0.0-alpha14")
+    implementation("com.android.tools.build:gradle:7.0.0-alpha15")
 }

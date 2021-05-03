@@ -101,14 +101,10 @@ class TrackerAlertDialog {
     // positive and negative button initialise here
     private fun initClickEvents() {
         bntSubmit.setOnClickListener {
-            if (okButtonClickListener != null) {
-                okButtonClickListener.onClick(this@TrackerAlertDialog)
-            }
+            okButtonClickListener.onClick(this@TrackerAlertDialog)
         }
         bntCancel.setOnClickListener {
-            if (cancelButtonClickListener != null) {
-                cancelButtonClickListener.onClick(this@TrackerAlertDialog)
-            }
+            cancelButtonClickListener.onClick(this@TrackerAlertDialog)
         }
     }
 
