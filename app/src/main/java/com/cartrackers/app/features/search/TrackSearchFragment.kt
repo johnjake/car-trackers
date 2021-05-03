@@ -30,7 +30,7 @@ class TrackSearchFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         registerForContextMenu(view)
         activity.hideNavigation()
-        CarTrackActivity.onBackPress = true
+        CarTrackActivity.onBackPress.value = true
     }
 
     override fun onCreateContextMenu(
