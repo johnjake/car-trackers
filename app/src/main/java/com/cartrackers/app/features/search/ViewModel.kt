@@ -1,13 +1,12 @@
 package com.cartrackers.app.features.search
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flatMapLatest
 
 class ViewModel(
     private val repository: Repository
-    ): ViewModel() {
+    ) : ViewModel() {
 
     private val searchQuery = MutableStateFlow("")
 
@@ -16,6 +15,6 @@ class ViewModel(
         repository.searchUser(it)
     }
 
-    //val userQuery = userFlow.asLiveData()
+    // val userQuery = userFlow.asLiveData()
 
 }

@@ -1,7 +1,7 @@
 package com.cartrackers.app.features.splash
 
-import android.content.Intent
 import android.os.Bundle
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import com.cartrackers.app.comms.CarDialog
 import com.cartrackers.app.databinding.ActivitySplashBinding
@@ -17,7 +17,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class SplashActivity: AppCompatActivity() {
+class SplashActivity : AppCompatActivity() {
     private val scope = CoroutineScope(Dispatchers.IO)
 
     private lateinit var binding: ActivitySplashBinding
@@ -27,14 +27,14 @@ class SplashActivity: AppCompatActivity() {
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val counter = providesSharedPrefGetCount(binding.root.context, shared_counter)
-        if(counter == 0) {
+        if (counter == 0) {
             providesSharedUserCount(this, shared_counter, 0)
         }
     }
 
     override fun onStart() {
         super.onStart()
-        when(isOnline(this)) {
+        when (isOnline(this)) {
             true -> {
                 scope.launch {
                     delay(5000)

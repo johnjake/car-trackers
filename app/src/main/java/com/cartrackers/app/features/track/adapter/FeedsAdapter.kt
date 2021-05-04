@@ -11,12 +11,11 @@ import com.cartrackers.app.R
 import com.cartrackers.app.data.vo.User
 import com.cartrackers.app.databinding.ItemFeedMainBinding
 import com.cartrackers.app.extension.toAvatar
-import com.cartrackers.app.extension.toJsonType
 
 class FeedsAdapter(
     private val itemListener: (id: Int) -> Unit,
     private val onMapListener: (profile: User) -> Unit
-): ListAdapter<User, FeedsAdapter.FeedsViewHolder>(DiffCallback()) {
+) : ListAdapter<User, FeedsAdapter.FeedsViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedsViewHolder {
         val binding = ItemFeedMainBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -28,11 +27,11 @@ class FeedsAdapter(
         holder.bind(currentItem)
     }
 
-    inner class FeedsViewHolder(private val binding: ItemFeedMainBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class FeedsViewHolder(private val binding: ItemFeedMainBinding) : RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
         fun bind(user: User) {
             binding.apply {
-                if(user.id!=0) {
+                if (user.id != 0) {
                     user.id?.let { avatar.toAvatar(it, binding.root.context) }
                 }
                 content.text = "${user.company?.name} is a ${user.company?.catchPhrase}"

@@ -6,7 +6,10 @@ import com.cartrackers.baseplate_persistence.dao.UserDao
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class Repository(private val dao: UserDao, private val mapper: Mapper): DataSource {
+class Repository(
+    private val dao: UserDao,
+    private val mapper: Mapper
+) : DataSource {
 
     override fun searchUser(name: String): Flow<List<User>> = flow  {
         val searchResult = dao.searchListUser(name)

@@ -22,7 +22,7 @@ import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 
-class FeedFragment: Fragment() {
+class FeedFragment : Fragment() {
     private var binding: FragmentFeedBinding? = null
 
     private val bind get() = binding
@@ -30,8 +30,8 @@ class FeedFragment: Fragment() {
     private val viewModel: ViewModel by inject()
 
     private val userAdapter: FeedsAdapter by lazy { FeedsAdapter(
-        itemListener = { profileOnClick(it)},
-        onMapListener = { user -> locationOnClick(user)})
+        itemListener = { profileOnClick(it) },
+        onMapListener = { user -> locationOnClick(user) })
     }
 
     private var stateJob: Job? = null
@@ -51,7 +51,7 @@ class FeedFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initAdapter(view)
 
-        stateJob =  viewLifecycleOwner.lifecycleScope.launch {
+        stateJob = viewLifecycleOwner.lifecycleScope.launch {
             viewModel.listModelState.collect { state ->
                 handleListFromRoom(state)
             }
@@ -89,7 +89,7 @@ class FeedFragment: Fragment() {
     }
 
     private fun handleListFromRoom(state: State<List<User>>) {
-        when(state) {
+        when (state) {
             is State.Data -> handleModelSuccess(state.data)
             is State.Error -> handleModelFailed(state.error)
             else -> Timber.e("An error occurred during query request!")
@@ -97,18 +97,18 @@ class FeedFragment: Fragment() {
     }
 
     private fun handleModelSuccess(data: List<User>) {
-        if(data.isNotEmpty()) {
-            Timber.d( "$data")
+        if (data.isNotEmpty()) {
+            Timber.d("$data")
             userAdapter.submitList(data)
         }
     }
 
     private fun handleModelFailed(error: Throwable) {
-       Timber.e("Error: ${error.message}")
+        Timber.e("Error: ${error.message}")
     }
 
     private fun bottomVisibility() {
-        if(CarTrackActivity.onBackPress.value) {
+        if (CarTrackActivity.onBackPress.value) {
             CarTrackActivity.onBackPress.value = false
             activity.showNavigation()
         }
