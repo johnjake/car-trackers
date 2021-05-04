@@ -58,5 +58,5 @@ class CarTrackActivity: AppCompatActivity() {
         val onBackPress = MutableStateFlow(false)
     }
 
-    
+
 }
