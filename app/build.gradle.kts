@@ -8,7 +8,7 @@ import java.util.Properties
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    id ("kotlin-parcelize")
+    id("kotlin-parcelize")
     id("androidx.navigation.safeargs.kotlin")
     id("kotlin-kapt")
 }
@@ -96,7 +96,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("com.google.android.material:material:1.3.0")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
-    implementation ("com.android.support:design:30.0.0")
+    implementation("com.android.support:design:30.0.0")
 
     //httpOK
     implementation("com.squareup.okhttp3:okhttp:4.9.0")
@@ -106,26 +106,25 @@ dependencies {
     // implementation ("me.relex:circleindicator:2.1.4")
 
     //sharedPreferrences
-    implementation ("androidx.preference:preference-ktx:1.1.1")
+    implementation("androidx.preference:preference-ktx:1.1.1")
 
     //javax annotation
     implementation("javax.inject:javax.inject:1")
 
     // implementation ("androidx.room:room-coroutines:2.1.0-alpha04")
-    implementation ("androidx.room:room-runtime:2.4.0-alpha01")
-    implementation ("androidx.room:room-ktx:2.4.0-alpha01")
-    kapt ("androidx.room:room-compiler:2.4.0-alpha01")
+    implementation("androidx.room:room-runtime:2.4.0-alpha01")
+    implementation("androidx.room:room-ktx:2.4.0-alpha01")
+    kapt("androidx.room:room-compiler:2.4.0-alpha01")
 
     //Dependency injection
     // Koin main features for Android (Scope,ViewModel ...)
-    implementation ("io.insert-koin:koin-android:3.0.1")
+    implementation("io.insert-koin:koin-android:3.0.1")
     // Koin Android - experimental builder extensions
-    implementation ("io.insert-koin:koin-android-ext:3.0.1")
+    implementation("io.insert-koin:koin-android-ext:3.0.1")
     // Koin for Jetpack WorkManager
-    implementation ("io.insert-koin:koin-androidx-workmanager:3.0.1")
+    implementation("io.insert-koin:koin-androidx-workmanager:3.0.1")
     // Koin for Jetpack Compose (unstable version)
-    implementation ("io.insert-koin:koin-androidx-compose:3.0.1")
-
+    implementation("io.insert-koin:koin-androidx-compose:3.0.1")
 
     //retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
@@ -143,18 +142,18 @@ dependencies {
     implementation("de.hdodenhof:circleimageview:3.0.1")
 
     //images
-    implementation ("com.makeramen:roundedimageview:2.3.0")
+    implementation("com.makeramen:roundedimageview:2.3.0")
 
     //airbnb
-    implementation ("com.airbnb.android:lottie:3.4.4")
+    implementation("com.airbnb.android:lottie:3.4.4")
 
     //navigation
     implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
     implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
-    implementation ("androidx.navigation:navigation-compose:1.0.0-alpha10")
+    implementation("androidx.navigation:navigation-compose:1.0.0-alpha10")
 
     //google maps
-    implementation ("com.google.android.gms:play-services-maps:17.0.0")
+    implementation("com.google.android.gms:play-services-maps:17.0.0")
 
     //LifeCycle
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
@@ -182,7 +181,7 @@ dependencies {
     implementation("io.coil-kt:coil:1.0.0")
 
     //paging
-    implementation ("androidx.paging:paging-runtime-ktx:3.0.0-rc01")
+    implementation("androidx.paging:paging-runtime-ktx:3.0.0-rc01")
 
     //testImplementation("junit:junit:4.13.2")
     testImplementation("junit:junit:4.13.2")
@@ -191,16 +190,14 @@ dependencies {
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.2")
     testImplementation("org.testcontainers:testcontainers:1.15.1")
     testImplementation("org.testcontainers:junit-jupiter:1.15.1")
-    testImplementation ("androidx.test.ext:junit:1.1.3-alpha05")
-    testImplementation ("org.mockito:mockito-core:3.0.0")
-    testImplementation ("com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0")
-    testImplementation ("org.mockito:mockito-inline:3.0.0")
-
-    testImplementation ("org.junit.jupiter:junit-jupiter-api:5.7.0")
-    testRuntimeOnly ("org.junit.jupiter:junit-jupiter-engine:5.7.0")
-
+    testImplementation("androidx.test.ext:junit:1.1.3-alpha05")
+    testImplementation("org.mockito:mockito-core:3.0.0")
+    testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0")
+    testImplementation("org.mockito:mockito-inline:3.0.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.0")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.0")
     /** debugImplementation if unit test, androidTestImplementation for androidTest **/
-    testImplementation ("io.insert-koin:koin-test:3.0.1")
+    testImplementation("io.insert-koin:koin-test:3.0.1")
 
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
@@ -210,7 +207,6 @@ dependencies {
 repositories {
     google()
 }
-
 
 fun Project.android(configure: com.android.build.gradle.internal.dsl.BaseAppModuleExtension.() -> Unit) {
     return (this as ExtensionAware).extensions.configure(
@@ -225,7 +221,5 @@ fun getProps(file: File): Properties {
     return props
 }
 
-apply (plugin = "androidx.navigation.safeargs.kotlin")
-apply (plugin = "kotlin-kapt")
-
-
+apply(plugin = "androidx.navigation.safeargs.kotlin")
+apply(plugin = "kotlin-kapt")
