@@ -25,7 +25,7 @@ val networkModule = module {
 }
 
 const val API = "api"
-const val baseUrl = BuildConfig.BASE_URL
+const val baseUrl = BuildConfig.BASE_URL_MOVIES
 
 fun providesOkHttpClient(): OkHttpClient {
     val logging = HttpLoggingInterceptor()
