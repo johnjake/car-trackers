@@ -71,4 +71,16 @@
     <string name="results">Results</string>
     <string name="unfollow">unfollow</string>
     <string name="dropped_pin">dropIn</string>
+    <string name="see_all">See All</string>
+    <string name="top_categories">Top Categories</string>
+    <string name="this_week">This Week</string>
+    <string name="best_selling">Most Popular</string>
+    <string name="todays_trending">Todays Movie</string>
+    <string name="track_date">Showing</string>
+    <string name="track_name">Track Name:</string>
+    <string name="item_image_movie">Item Image Movies</string>
+    <string name="movie_title">James Bond: For your eyes only</string>
+    <string name="content_item_horizontal">Item movie horizontal</string>
+    <string name="best_movie">Best Movie</string>
+    <string name="search_movie_content">search movie content</string>
 </resources>
