@@ -43,7 +43,6 @@ android {
 
         release {
             isMinifyEnabled = false
-            //isShrinkResources = false
             isDebuggable = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -56,7 +55,6 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
-
 
     kotlinOptions {
         jvmTarget = "1.8"
@@ -82,14 +80,14 @@ dependencies {
 
     implementation(project(mapOf("path" to ":baseplate-persistence")))
 
-    //recycleView
+    // recycleView
     implementation("androidx.recyclerview:recyclerview:1.2.0")
 
-    //annotation
+    // annotation
     implementation("com.android.support:support-annotations:28.0.0")
     implementation("androidx.annotation:annotation:1.2.0")
 
-    //stdlib
+    // stdlib
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.4.32")
 
     implementation("androidx.core:core-ktx:1.3.2")
@@ -98,17 +96,17 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation("com.android.support:design:30.0.0")
 
-    //httpOK
+    // httpOK
     implementation("com.squareup.okhttp3:okhttp:4.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
 
-    //CircleIndicator
+    // CircleIndicator
     // implementation ("me.relex:circleindicator:2.1.4")
 
-    //sharedPreferrences
+    // sharedPreferrences
     implementation("androidx.preference:preference-ktx:1.1.1")
 
-    //javax annotation
+    // javax annotation
     implementation("javax.inject:javax.inject:1")
 
     // implementation ("androidx.room:room-coroutines:2.1.0-alpha04")
@@ -116,7 +114,7 @@ dependencies {
     implementation("androidx.room:room-ktx:2.4.0-alpha01")
     kapt("androidx.room:room-compiler:2.4.0-alpha01")
 
-    //Dependency injection
+    // Dependency injection
     // Koin main features for Android (Scope,ViewModel ...)
     implementation("io.insert-koin:koin-android:3.0.1")
     // Koin Android - experimental builder extensions
@@ -126,36 +124,36 @@ dependencies {
     // Koin for Jetpack Compose (unstable version)
     implementation("io.insert-koin:koin-androidx-compose:3.0.1")
 
-    //retrofit
+    // retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:adapter-rxjava2:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.squareup.retrofit2:converter-scalars:2.9.0")
 
-    //timber
+    // timber
     implementation("com.jakewharton.timber:timber:4.7.1")
 
-    //cardView
+    // cardView
     implementation("androidx.cardview:cardview:1.0.0")
 
-    //circleView
+    // circleView
     implementation("de.hdodenhof:circleimageview:3.0.1")
 
-    //images
+    // images
     implementation("com.makeramen:roundedimageview:2.3.0")
 
-    //airbnb
+    // airbnb
     implementation("com.airbnb.android:lottie:3.4.4")
 
-    //navigation
+    // navigation
     implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
     implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
     implementation("androidx.navigation:navigation-compose:1.0.0-alpha10")
 
-    //google maps
+    // google maps
     implementation("com.google.android.gms:play-services-maps:17.0.0")
 
-    //LifeCycle
+    // LifeCycle
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
@@ -165,25 +163,25 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-process:2.3.1")
     implementation("androidx.lifecycle:lifecycle-reactivestreams-ktx:2.3.1")
 
-    //rxBinding
+    // rxBinding
     implementation("com.jakewharton.rxbinding3:rxbinding:3.1.0")
     implementation("com.jakewharton.rxbinding3:rxbinding-core:3.1.0")
     implementation("com.jakewharton.rxbinding3:rxbinding-appcompat:3.1.0")
 
-    //kapt("androidx.lifecycle:lifecycle-compiler:2.3.1")
+    // kapt("androidx.lifecycle:lifecycle-compiler:2.3.1")
     testImplementation("androidx.arch.core:core-testing:2.1.0")
 
-    //coroutines
+    // coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3")
 
-    //image viewer
+    // image viewer
     implementation("io.coil-kt:coil:1.0.0")
 
-    //paging
+    // paging
     implementation("androidx.paging:paging-runtime-ktx:3.0.0-rc01")
 
-    //testImplementation("junit:junit:4.13.2")
+    // testImplementation("junit:junit:4.13.2")
     testImplementation("junit:junit:4.13.2")
     testImplementation("io.mockk:mockk:1.10.0")
     testImplementation("io.kotlintest:kotlintest-assertions:3.4.2")

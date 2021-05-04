@@ -7,7 +7,7 @@ import com.cartrackers.baseplate_persistence.dao.UserDao
 class Repository(
     private val userDao: UserDao,
     private val mapper: Mapper
-): DataSource {
+) : DataSource {
     override suspend fun getUserDetails(userId: Int): User {
         val result = userDao.getUserDetails(userId)
         return mapper.mapFromRoom(result)

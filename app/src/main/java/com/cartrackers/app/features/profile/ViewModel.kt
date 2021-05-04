@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 
 class ViewModel(
     private val repository: Repository
-    ): ViewModel() {
+) : ViewModel() {
         private val userProfileFlow = MutableStateFlow<State<User>>(State.Empty)
         private val listModelFlow = MutableStateFlow<State<List<User>>>(State.Empty)
         val userProfileState: StateFlow<State<User>> = userProfileFlow
