@@ -48,6 +48,8 @@ dependencies {
 
     implementation("com.google.code.gson:gson:2.8.6")
 
+    implementation ("androidx.paging:paging-runtime-ktx:3.0.0-rc01")
+
     //Dependency injection
     implementation ("io.insert-koin:koin-android:3.0.1")
     implementation ("io.insert-koin:koin-android-ext:3.0.1")

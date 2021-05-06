@@ -32,7 +32,7 @@ interface ApiServices {
     ): MovieMetaData
 
     @GET("search/movie")
-    suspend fun getSearchMovies(
+    suspend fun getSearchDiscover(
         @Query("api_key") apiKey: String,
         @Query("query") searchKey: String,
         @Query("page") pageNumber: Int

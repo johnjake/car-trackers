@@ -12,6 +12,7 @@ import com.cartrackers.app.databinding.ActivityCountryBinding
 import com.cartrackers.app.features.main.CarTrackActivity
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.ext.android.inject
+import timber.log.Timber
 
 
 class CountryActivity: AppCompatActivity() {
@@ -53,6 +54,7 @@ class CountryActivity: AppCompatActivity() {
                 val query = s.toString()
                 if(s?.isNotEmpty() == true) {
                     viewModel.searchFlow.value = query
+                    Timber.d("Countries: $query")
                 }
             }
         })

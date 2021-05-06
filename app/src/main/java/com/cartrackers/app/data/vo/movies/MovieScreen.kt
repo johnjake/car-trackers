@@ -3,7 +3,6 @@ package com.cartrackers.app.data.vo.movies
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
-
 @Parcelize
 data class MovieScreen(
     val popularity: Double = 0.0,

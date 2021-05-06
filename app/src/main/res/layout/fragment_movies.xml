@@ -155,8 +155,8 @@
                     android:cacheColorHint="#FFFFFF"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:spanCount="2"
-                    android:id="@+id/recycle_cinema_preview"
-                    tools:listitem="@layout/item_now_showing">
+                    android:id="@+id/listTopMovie"
+                    tools:listitem="@layout/item_top_movies">
                 </androidx.recyclerview.widget.RecyclerView>
 
             </LinearLayout>

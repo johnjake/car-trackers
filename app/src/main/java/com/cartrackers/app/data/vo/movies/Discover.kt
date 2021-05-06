@@ -12,7 +12,7 @@ data class Discover(
     val backdrop_path: String? = "",
     val original_language: String? = "",
     val original_title: String? = "",
-    val genre_ids: List<Int> = emptyList(),
+    val genre_ids: List<Int>? = emptyList(),
     val title: String? = "",
     val vote_average: Double = 0.0,
     val overview: String? = "",

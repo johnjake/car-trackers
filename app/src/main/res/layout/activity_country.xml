@@ -85,10 +85,11 @@
             android:id="@+id/countryNextButton"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:enabled="false"
             android:background="@drawable/next_button"
+            android:enabled="false"
             app:layout_constraintBottom_toTopOf="@+id/countryList"
             app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
-            app:layout_constraintStart_toEndOf="@+id/country" />
+            app:layout_constraintStart_toEndOf="@+id/country"
+            tools:ignore="SpeakableTextPresentCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
