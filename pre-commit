@@ -7,7 +7,11 @@ git stash -q --keep-index
 
 echo "Running git pre-commit hook"
 
+<<<<<<< HEAD
 ./gradlew ktlintCheck
+=======
+./gradlew ktlint
+>>>>>>> b1c27a9... update in gradle
 
 RESULT=$?
 

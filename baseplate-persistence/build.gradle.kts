@@ -10,9 +10,6 @@ android {
     defaultConfig {
         minSdk = 26
         targetSdk = 30
-       // versionCode = 1
-       //versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -50,6 +47,8 @@ dependencies {
     kapt ("androidx.room:room-compiler:2.4.0-alpha01")
 
     implementation("com.google.code.gson:gson:2.8.6")
+
+    implementation ("androidx.paging:paging-runtime-ktx:3.0.0-rc01")
 
     //Dependency injection
     implementation ("io.insert-koin:koin-android:3.0.1")

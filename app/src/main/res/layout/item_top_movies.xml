@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/pixels_130"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="4dp"
+    android:layout_marginTop="@dimen/pixels_8"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="165dp"
+        app:cardCornerRadius="@dimen/pixels_8">
+
+        <ImageView
+            android:id="@+id/imgView"
+            android:layout_width="match_parent"
+            android:layout_height="165dp"
+            android:contentDescription="@string/item_image_movie"
+            android:scaleType="fitCenter"
+            app:riv_mutate_background="true"
+            tools:ignore="ImageContrastCheck"
+            tools:src="@tools:sample/avatars" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/txtMovieTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/pixels_8"
+        android:textColor="@color/white_alpha_70"
+        android:textColorHint="@color/white_alpha_70"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="start|center"
+        android:includeFontPadding="false"
+        android:textStyle="bold"
+        android:textSize="11sp"
+        tools:text="James Bond: For your eyes only"
+        android:hint="@string/track_name"/>
+
+    <TextView
+        android:layout_marginTop="8dp"
+        android:id="@+id/txtDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/track_date"
+        android:textColor="@color/white_alpha_70"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="start|center"
+        android:includeFontPadding="false"
+        tools:text="2009-09-10"
+        android:textSize="11sp"
+        />
+</LinearLayout>

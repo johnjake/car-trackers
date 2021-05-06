@@ -12,6 +12,7 @@ import com.cartrackers.app.di.viewModelModule
 import com.cartrackers.app.extension.*
 import com.cartrackers.app.features.home.HomeViewModel
 import io.kotlintest.matchers.numerics.shouldBeExactly
+import io.kotlintest.matchers.string.shouldBeEqualIgnoringCase
 import io.kotlintest.shouldBe
 import io.kotlintest.shouldNotBe
 import kotlinx.coroutines.Dispatchers
@@ -22,7 +23,6 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
-import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Rule
 import org.junit.jupiter.api.*
 import org.junit.rules.TestRule
@@ -119,7 +119,7 @@ class TypeConverterUnitTest: KoinTest {
         val expected = "{\"lat\":7.6576,\"lng\":56.4456}"
         val coordinates = Coordinates(lat = 7.6576, lng = 56.4456)
         val json = coordinates.toJsonType()
-        json?.shouldBeEqualTo(expected)
+        json?.shouldBeEqualIgnoringCase(expected)
     }
 
     @Test
@@ -151,6 +151,6 @@ class TypeConverterUnitTest: KoinTest {
     fun `determined the type of class`() {
         val addressType: KClass<Address> = Address::class
         val type = addressType.toCheckClassType()
-        type shouldBeEqualTo "Data"
+        type shouldBeEqualIgnoringCase "Data"
     }
 }

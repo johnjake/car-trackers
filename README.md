@@ -5,11 +5,11 @@ This app is about listing of car owners including personal information of the ow
 For the CarTrack development the following IDE and patterns are used: 
 
 
-    IDE: Android Studio 2020.3.1 Canary 13 
+    IDE: Android Studio 2020.3.1 Canary 14 
     Runtime Version: 11.8.0 (jre)
     VM: OpenJDK 64-Bit
 
-    Gradle Version: 7.0.0-alpha13
+    Gradle Version: 7.0.0-alpha14
     Kotlin Version: 1.4.31
     Gradle Type: DLS
 

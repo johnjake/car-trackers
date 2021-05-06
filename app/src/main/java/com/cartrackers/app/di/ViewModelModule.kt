@@ -1,5 +1,6 @@
 package com.cartrackers.app.di
 
+import com.cartrackers.app.features.movies.vertical.VerticalViewModel
 import com.cartrackers.app.features.home.HomeViewModel as Home
 import com.cartrackers.app.features.intro.ViewModel as Intro
 import com.cartrackers.app.features.track.ViewModel as Track
@@ -24,4 +25,5 @@ val viewModelModule = module {
     viewModel { EditedProfile(repository = get()) }
     viewModel { Countries(repository = get()) }
     viewModel { Register(repository = get()) }
+    viewModel { VerticalViewModel(repository = get()) }
 }

@@ -66,10 +66,12 @@
         <entry key="..\:/car-trackers/app/src/main/res/layout/fragement_details.xml" value="0.5421875" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/fragement_visited.xml" value="0.32447916666666665" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/fragment_cars.xml" value="0.5362318840579711" />
+        <entry key="..\:/car-trackers/app/src/main/res/layout/fragment_edit_profile.xml" value="0.28396739130434784" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/fragment_feed.xml" value="0.5421875" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/fragment_feeds_parent.xml" value="0.5421875" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/fragment_login.xml" value="0.5421875" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/fragment_manage.xml" value="0.5421875" />
+        <entry key="..\:/car-trackers/app/src/main/res/layout/fragment_movies.xml" value="0.37817028985507245" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/fragment_profile_management.xml" value="0.5362318840579711" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/fragment_vehicles.xml" value="0.5362318840579711" />
@@ -78,9 +80,13 @@
         <entry key="..\:/car-trackers/app/src/main/res/layout/item_feed_cars.xml" value="0.5362318840579711" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/item_feed_main.xml" value="0.5421875" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/item_friends_list.xml" value="0.5362318840579711" />
+        <entry key="..\:/car-trackers/app/src/main/res/layout/item_now_showing.xml" value="0.5009057971014492" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/item_profile_header.xml" value="0.5416666666666666" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/item_profile_menu.xml" value="0.5416666666666666" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/item_questions_available.xml" value="0.5416666666666666" />
+        <entry key="..\:/car-trackers/app/src/main/res/layout/item_search_thumbnail.xml" value="0.5009057971014492" />
+        <entry key="..\:/car-trackers/app/src/main/res/layout/item_top_movies.xml" value="0.4542572463768116" />
+        <entry key="..\:/car-trackers/app/src/main/res/layout/item_top_rated_movies.xml" value="0.5009057971014492" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/layout_ripple_effect.xml" value="0.5421875" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/tracker_alert_layout.xml" value="0.5" />
         <entry key="..\:/car-trackers/app/src/main/res/layout/vello_alert_layout.xml" value="0.5421875" />

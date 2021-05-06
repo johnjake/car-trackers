@@ -25,7 +25,8 @@ val networkModule = module {
 }
 
 const val API = "api"
-const val baseUrl = BuildConfig.BASE_URL
+const val baseUrl = BuildConfig.BASE_URL_MOVIES
+const val apiKeys = BuildConfig.API_KEY
 
 fun providesOkHttpClient(): OkHttpClient {
     val logging = HttpLoggingInterceptor()
@@ -48,7 +49,9 @@ fun providesBaseUrl(): String {
     return baseUrl
 }
 
-fun providesRetrofit(@Named("BASE_URL") url: String, okHttpClient: OkHttpClient, gson: Gson): Retrofit {
+fun providesApiKey(): String = apiKeys
+
+fun providesRetrofit(@Named("BASE_URL_MOVIES") url: String, okHttpClient: OkHttpClient, gson: Gson): Retrofit {
     return Retrofit.Builder()
         .baseUrl(url)
         .addConverterFactory(ScalarsConverterFactory.create())

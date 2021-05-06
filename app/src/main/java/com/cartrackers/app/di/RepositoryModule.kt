@@ -10,6 +10,7 @@ import com.cartrackers.app.features.login.Repository as Login
 import com.cartrackers.app.features.profile.edit.Repository as EditProfile
 import com.cartrackers.app.features.country.Repository as Countries
 import com.cartrackers.app.features.profile.register.Repository as Register
+import com.cartrackers.app.features.movies.vertical.Repository as Vertical
 import org.koin.dsl.module
 
 val repositoryModule = module {
@@ -23,4 +24,5 @@ val repositoryModule = module {
     factory { EditProfile(userDao = get()) }
     factory { Countries(dao = get(), mapper = get()) }
     factory { Register(userDao = get(), mapper = get()) }
+    factory { Vertical(api = get(), database = get()) }
 }

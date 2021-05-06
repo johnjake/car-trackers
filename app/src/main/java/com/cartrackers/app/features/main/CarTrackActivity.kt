@@ -45,7 +45,8 @@ class CarTrackActivity: AppCompatActivity() {
                         return true
                     }
                     R.id.profile_stack -> {
-                        CarDialog.builderAlert(binding.root.context, "Under Construction", "Sorry this page is under-construction")
+                        navController.navigate(R.id.movieFragment)
+                        // CarDialog.builderAlert(binding.root.context, "Under Construction", "Sorry this page is under-construction")
                         return true
                     }
                 }
