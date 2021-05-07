@@ -3,10 +3,7 @@ package com.cartrackers.baseplate_persistence
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.cartrackers.baseplate_persistence.dao.CountryDao
-import com.cartrackers.baseplate_persistence.dao.DiscoverDao
-import com.cartrackers.baseplate_persistence.dao.RemoteKeysDao
-import com.cartrackers.baseplate_persistence.dao.UserDao
+import com.cartrackers.baseplate_persistence.dao.*
 import com.cartrackers.baseplate_persistence.model.*
 
 @Database(
@@ -14,9 +11,10 @@ import com.cartrackers.baseplate_persistence.model.*
         DBUser::class,
         DBCountry::class,
         DBDiscover::class,
-        DBRemoteKeys::class
+        DBRemoteKeys::class,
+        DBWeekly::class
                ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 @TypeConverters
@@ -25,4 +23,5 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun countryDao(): CountryDao
     abstract fun discoverDao(): DiscoverDao
     abstract fun remoteKeysDao(): RemoteKeysDao
+    abstract fun weeklyDao(): WeeklyDao
 }

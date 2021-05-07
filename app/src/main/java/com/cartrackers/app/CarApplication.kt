@@ -1,6 +1,7 @@
 package com.cartrackers.app
 
 import android.app.Application
+import android.content.Context
 import androidx.paging.ExperimentalPagingApi
 import com.cartrackers.app.di.*
 import com.cartrackers.baseplate_persistence.module.databaseModule
@@ -13,6 +14,7 @@ class CarApplication: Application() {
     @ExperimentalPagingApi
     override fun onCreate() {
         super.onCreate()
+        CarApplication.appContext = applicationContext
         startKoin {
             androidLogger()
             androidContext(this@CarApplication)
@@ -30,5 +32,9 @@ class CarApplication: Application() {
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
+    }
+
+    companion object {
+        lateinit var appContext: Context
     }
 }

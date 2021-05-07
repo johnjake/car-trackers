@@ -188,7 +188,7 @@ dependencies {
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.2")
     testImplementation("org.testcontainers:testcontainers:1.15.1")
     testImplementation("org.testcontainers:junit-jupiter:1.15.1")
-    testImplementation("androidx.test.ext:junit:1.1.3-alpha05")
+    testImplementation("androidx.test.ext:junit:1.1.3-alpha06")
     testImplementation("org.mockito:mockito-core:3.0.0")
     testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0")
     testImplementation("org.mockito:mockito-inline:3.0.0")

@@ -8,7 +8,6 @@ import androidx.room.withTransaction
 import com.cartrackers.app.BuildConfig
 import com.cartrackers.app.api.ApiServices
 import com.cartrackers.app.data.mapper.MapperMovie
-import com.cartrackers.app.features.movies.PagingPosition
 import com.cartrackers.baseplate_persistence.AppDatabase
 import com.cartrackers.baseplate_persistence.model.DBDiscover
 import com.cartrackers.baseplate_persistence.model.DBRemoteKeys
@@ -17,12 +16,12 @@ import java.io.IOException
 
 private const val startingPage = 1
 
-@OptIn(ExperimentalPagingApi::class)
+@ExperimentalPagingApi
 class SearchMediator(
     private val query: String,
     private val api: ApiServices,
     private val database: AppDatabase
-) : RemoteMediator<Int, DBDiscover>(), PagingPosition {
+) : RemoteMediator<Int, DBDiscover>() {
 
     override suspend fun initialize(): InitializeAction {
         return InitializeAction.LAUNCH_INITIAL_REFRESH
@@ -78,21 +77,21 @@ class SearchMediator(
         }
     }
 
-    override suspend fun getKeyForLastItem(state: PagingState<Int, DBDiscover>): DBRemoteKeys? {
+    suspend fun getKeyForLastItem(state: PagingState<Int, DBDiscover>): DBRemoteKeys? {
         return state.pages.lastOrNull() { it.data.isNotEmpty() }?.data?.lastOrNull()
             ?.let { repo ->
                 database.remoteKeysDao().remoteKeysRepoId(repo.uId)
             }
     }
 
-    override suspend fun getKeyForFirstItem(state: PagingState<Int, DBDiscover>): DBRemoteKeys? {
+    suspend fun getKeyForFirstItem(state: PagingState<Int, DBDiscover>): DBRemoteKeys? {
         return state.pages.firstOrNull { it.data.isNotEmpty() }?.data?.firstOrNull()
             ?.let { repo ->
                 database.remoteKeysDao().remoteKeysRepoId(repo.uId)
             }
     }
 
-    override suspend fun getKeyToCurrentPosition(state: PagingState<Int, DBDiscover>): DBRemoteKeys? {
+    suspend fun getKeyToCurrentPosition(state: PagingState<Int, DBDiscover>): DBRemoteKeys? {
         return state.anchorPosition?.let { position ->
             state.closestItemToPosition(position)?.uId?.let { repoId ->
                 database.remoteKeysDao().remoteKeysRepoId(repoId)

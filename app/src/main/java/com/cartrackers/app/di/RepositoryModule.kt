@@ -1,5 +1,6 @@
 package com.cartrackers.app.di
 
+import androidx.paging.ExperimentalPagingApi
 import com.cartrackers.app.features.home.Repository as Home
 import com.cartrackers.app.features.intro.Repository as Intro
 import com.cartrackers.app.features.track.Repository as Track
@@ -13,6 +14,7 @@ import com.cartrackers.app.features.profile.register.Repository as Register
 import com.cartrackers.app.features.movies.vertical.Repository as Vertical
 import org.koin.dsl.module
 
+@ExperimentalPagingApi
 val repositoryModule = module {
     factory { Home(apiServices = get(), userDao = get(), mapper = get()) }
     factory { Intro(apiServices = get(), userDao = get(), countryDao = get(), mapper = get()) }

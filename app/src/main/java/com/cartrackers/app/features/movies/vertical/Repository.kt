@@ -9,10 +9,10 @@ import com.cartrackers.baseplate_persistence.AppDatabase
 import com.cartrackers.baseplate_persistence.model.DBDiscover
 import kotlinx.coroutines.flow.Flow
 
+@ExperimentalPagingApi
 class Repository(private val api: ApiServices, private val database: AppDatabase) : VerticalDataSource {
     override fun getStreamMovies(): Flow<PagingData<DBDiscover>> {
         val pagingFactory = { database.discoverDao().getDiscoverByPaging() }
-        @OptIn(ExperimentalPagingApi::class)
         return Pager(
             config = PagingConfig(pageSize = pagingSize, enablePlaceholders = false),
             remoteMediator = VerticalMediator(api, database),

@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="165dp"
             android:contentDescription="@string/item_image_movie"
-            android:scaleType="fitCenter"
+            android:scaleType="fitXY"
             app:riv_mutate_background="true"
             tools:ignore="ImageContrastCheck"
             tools:src="@tools:sample/avatars" />
