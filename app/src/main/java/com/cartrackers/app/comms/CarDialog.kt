@@ -7,8 +7,7 @@ import com.cartrackers.app.utils.alert_dialog.TrackerAlertDialog
 
 class CarDialog {
     companion object {
-        fun build(context: Context, title: String, messages: String): Boolean {
-            var value = false
+        fun build(context: Context, title: String, messages: String) {
             val alertDialog = TrackerAlertDialog()
             alertDialog.alertInitialize(
                 context,
@@ -20,18 +19,15 @@ class CarDialog {
                 isNegativeBtnHide = false)
             alertDialog.setPositive("YES", object : ListenerCallBack {
                 override fun onClick(dialog: TrackerAlertDialog) {
-                    value = true
                     dialog.dismiss()
                 }
             })
             alertDialog.setNegative("NO", object : ListenerCallBack {
                 override fun onClick(dialog: TrackerAlertDialog) {
-                    value = false
                     dialog.dismiss()
                 }
             })
             alertDialog.show()
-            return value
         }
 
         fun builderAlert(context: Context, title: String, messages: String) {
