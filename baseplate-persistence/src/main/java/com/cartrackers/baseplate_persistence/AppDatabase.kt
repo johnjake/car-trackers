@@ -15,7 +15,7 @@ import com.cartrackers.baseplate_persistence.model.*
         DBWeekly::class,
         DBWeeklyKeys::class
                ],
-    version = 3,
+    version = 2,
     exportSchema = false
 )
 @TypeConverters

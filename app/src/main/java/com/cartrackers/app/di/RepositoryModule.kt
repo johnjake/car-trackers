@@ -12,6 +12,7 @@ import com.cartrackers.app.features.profile.edit.Repository as EditProfile
 import com.cartrackers.app.features.country.Repository as Countries
 import com.cartrackers.app.features.profile.register.Repository as Register
 import com.cartrackers.app.features.movies.vertical.Repository as Vertical
+import com.cartrackers.app.features.movies.week.Repository as Weekly
 import org.koin.dsl.module
 
 @ExperimentalPagingApi
@@ -27,4 +28,5 @@ val repositoryModule = module {
     factory { Countries(dao = get(), mapper = get()) }
     factory { Register(userDao = get(), mapper = get()) }
     factory { Vertical(api = get(), database = get()) }
+    factory { Weekly(api = get(), database = get()) }
 }
