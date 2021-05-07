@@ -6,9 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.ExperimentalPagingApi
 import androidx.paging.map
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cartrackers.app.data.mapper.MapperMovie
 import com.cartrackers.app.databinding.FragmentMoviesBinding
@@ -39,9 +38,10 @@ class MovieFragment : Fragment() {
         return bind?.root
     }
 
+    @ExperimentalPagingApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initAdapter(view)
+        initAdapter()
 
         stateJob = viewLifecycleOwner.lifecycleScope.launch {
             viewModel.getTopMovies().distinctUntilChanged().collectLatest { data ->
@@ -54,7 +54,7 @@ class MovieFragment : Fragment() {
         }
     }
 
-    private fun initAdapter(view: View) {
+    private fun initAdapter() {
         val decorationStyle = SpacingItemDecoration(2, 75, true)
        binding.apply {
             binding?.listTopMovie?.apply {

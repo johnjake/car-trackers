@@ -16,7 +16,7 @@ import java.io.IOException
 
 private const val startingPage = 1
 
-@OptIn(ExperimentalPagingApi::class)
+@ExperimentalPagingApi
 class SearchMediator(
     private val query: String,
     private val api: ApiServices,

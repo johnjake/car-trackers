@@ -15,13 +15,13 @@ class SearchRepository(
     private val database: AppDatabase
 ) : DataSource {
 
+    @ExperimentalPagingApi
     override fun getMovieSearch(query: String): Flow<PagingData<DBDiscover>> {
 
         val dbQuery = "%${query.replace(' ', '%')}%"
         val pagingFactory = { database.discoverDao().searchDiscoverByPaging(dbQuery) }
 
-        @OptIn(ExperimentalPagingApi::class)
-        return Pager(
+          return Pager(
             config = pagerConfig,
             remoteMediator = mediator(query),
             pagingSourceFactory = pagingFactory
@@ -30,6 +30,7 @@ class SearchRepository(
 
     private val pagerConfig = PagingConfig(pageSize = pagingSize, enablePlaceholders = false)
 
+    @ExperimentalPagingApi
     private fun mediator(query: String): SearchMediator {
         return SearchMediator(query, api, database)
     }
