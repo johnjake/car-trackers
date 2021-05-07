@@ -31,6 +31,12 @@ interface ApiServices {
         @Query("page") pageNumber: Int
     ): MovieMetaData
 
+    @GET("trending/all/week")
+    suspend fun getWeeklyMovies(
+        @Query("api_key") apiKey: String,
+        @Query("page") pageNumber: Int
+    ): MovieMetaData
+
     @GET("search/movie")
     suspend fun getSearchDiscover(
         @Query("api_key") apiKey: String,

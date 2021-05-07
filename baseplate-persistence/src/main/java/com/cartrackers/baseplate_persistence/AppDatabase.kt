@@ -12,9 +12,10 @@ import com.cartrackers.baseplate_persistence.model.*
         DBCountry::class,
         DBDiscover::class,
         DBRemoteKeys::class,
-        DBWeekly::class
+        DBWeekly::class,
+        DBWeeklyKeys::class
                ],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 @TypeConverters
@@ -24,4 +25,5 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun discoverDao(): DiscoverDao
     abstract fun remoteKeysDao(): RemoteKeysDao
     abstract fun weeklyDao(): WeeklyDao
+    abstract fun weeklyKeysDao(): WeeklyKeysDao
 }
