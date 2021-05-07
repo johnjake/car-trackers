@@ -20,7 +20,6 @@ import kotlinx.coroutines.launch
 
 class SplashActivity : AppCompatActivity() {
     private val scope = CoroutineScope(Dispatchers.IO)
-
     private lateinit var binding: ActivitySplashBinding
     private val dialog = PopupDialog( listener = { confirm -> statusConfirmation(confirm) } )
     override fun onCreate(savedInstanceState: Bundle?) {

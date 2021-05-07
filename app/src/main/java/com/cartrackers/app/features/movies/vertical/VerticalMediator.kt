@@ -8,7 +8,7 @@ import androidx.room.withTransaction
 import com.cartrackers.app.BuildConfig
 import com.cartrackers.app.api.ApiServices
 import com.cartrackers.app.data.mapper.MapperMovie
-import com.cartrackers.app.features.movies.PagerItemPosition
+import com.cartrackers.app.bases.PagerItemPosition
 import com.cartrackers.baseplate_persistence.AppDatabase
 import com.cartrackers.baseplate_persistence.model.DBDiscover
 import com.cartrackers.baseplate_persistence.model.DBRemoteKeys
@@ -20,7 +20,7 @@ private const val startingPage = 1
 class VerticalMediator(
     private val api: ApiServices,
     private val database: AppDatabase
-): RemoteMediator<Int, DBDiscover>(), PagerItemPosition<DBDiscover, DBRemoteKeys>  {
+): RemoteMediator<Int, DBDiscover>(), PagerItemPosition<DBDiscover, DBRemoteKeys> {
 
     override suspend fun initialize(): InitializeAction {
         return InitializeAction.LAUNCH_INITIAL_REFRESH

@@ -8,11 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.map
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cartrackers.app.data.mapper.MapperMovie
 import com.cartrackers.app.databinding.FragmentMoviesBinding
 import com.cartrackers.app.features.movies.vertical.VerticalAdapter
 import com.cartrackers.app.features.movies.vertical.VerticalViewModel
+import com.cartrackers.app.widget.SpacingItemDecoration
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -53,15 +55,11 @@ class MovieFragment : Fragment() {
     }
 
     private fun initAdapter(view: View) {
-        resultLayout = LinearLayoutManager(view.context).apply {
-            orientation = LinearLayoutManager.HORIZONTAL
-        }
-        val decoration = DividerItemDecoration(view.context, DividerItemDecoration.VERTICAL)
-        binding.apply {
+        val decorationStyle = SpacingItemDecoration(2, 75, true)
+       binding.apply {
             binding?.listTopMovie?.apply {
-                layoutManager = resultLayout
                 adapter = verticalAdapter
-                addItemDecoration(decoration)
+                addItemDecoration(decorationStyle)
             }
         }
     }

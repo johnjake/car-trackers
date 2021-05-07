@@ -8,7 +8,6 @@ import androidx.room.withTransaction
 import com.cartrackers.app.BuildConfig
 import com.cartrackers.app.api.ApiServices
 import com.cartrackers.app.data.mapper.MapperMovie
-import com.cartrackers.app.features.movies.PagerItemPosition
 import com.cartrackers.baseplate_persistence.AppDatabase
 import com.cartrackers.baseplate_persistence.model.DBDiscover
 import com.cartrackers.baseplate_persistence.model.DBRemoteKeys
