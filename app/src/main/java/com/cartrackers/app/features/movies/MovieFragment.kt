@@ -12,6 +12,8 @@ import androidx.paging.map
 import com.cartrackers.app.R
 import com.cartrackers.app.data.mapper.MapperMovie
 import com.cartrackers.app.databinding.FragmentMoviesBinding
+import com.cartrackers.app.features.movies.upcoming.ComingAdapter
+import com.cartrackers.app.features.movies.upcoming.ComingViewModel
 import com.cartrackers.app.features.movies.vertical.VerticalAdapter
 import com.cartrackers.app.features.movies.vertical.VerticalViewModel
 import com.cartrackers.app.features.movies.week.WeeklyAdapter
@@ -28,10 +30,15 @@ class MovieFragment : Fragment() {
     private var binding: FragmentMoviesBinding? = null
     private val bind get() = binding
     private var stateJob: Job? = null
+    private var weekJob: Job? = null
+    private var comingJob: Job? = null
+    private var topJob: Job? = null
     private val viewModel: VerticalViewModel by inject()
     private val weeklyModel: WeeklyViewModel by inject()
+    private val comingModel: ComingViewModel by inject()
     private val verticalAdapter: VerticalAdapter by lazy { VerticalAdapter() }
     private val weeklyAdapter: WeeklyAdapter by lazy { WeeklyAdapter() }
+    private val comingAdapter: ComingAdapter by lazy { ComingAdapter() }
     private val mapper = MapperMovie.getInstance()
     private val isWeekly = MutableSharedFlow<Boolean>()
     private var observeOnce: Boolean = false
@@ -52,7 +59,9 @@ class MovieFragment : Fragment() {
         initAdapter()
         observeWeekly()
         observerWeeklyMovies(view)
+        observeWeeklyData()
         observeTopMovies()
+        observeUpComingMovies()
         onClickMostPopular(view)
     }
 
@@ -69,7 +78,7 @@ class MovieFragment : Fragment() {
 
     @ExperimentalPagingApi
     private fun observeTopMovies() {
-        stateJob = viewLifecycleOwner.lifecycleScope.launch {
+       topJob = viewLifecycleOwner.lifecycleScope.launch {
             viewModel.getTopMovies().distinctUntilChanged().collectLatest { data ->
                 val dbData = data.map { discover -> mapper.mapFromRoom(discover) }
                 verticalAdapter.submitData(dbData)
@@ -79,20 +88,33 @@ class MovieFragment : Fragment() {
     }
 
     @ExperimentalPagingApi
+    private fun observeUpComingMovies() {
+       comingJob = viewLifecycleOwner.lifecycleScope.launch {
+            comingModel.getTopMovies().distinctUntilChanged().collectLatest { data ->
+                val dbData = data.map { discover -> mapper.upFromRoom(discover) }
+                comingAdapter.submitData(dbData)
+            }
+        }
+    }
+
+    @ExperimentalPagingApi
+    private fun observeWeeklyData() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            weeklyModel.getWeeklyMovies().distinctUntilChanged().collect { data ->
+                val domainData = data.map { weekly -> mapper.weeklyFromRoom(weekly) }
+                weeklyAdapter.submitData(domainData)
+            }
+        }
+    }
+
+    @ExperimentalPagingApi
     private fun observerWeeklyMovies(view: View) {
         binding?.thisWeek?.setOnClickListener {
-            stateJob = viewLifecycleOwner.lifecycleScope.launch {
+            weekJob = viewLifecycleOwner.lifecycleScope.launch {
                 binding?.progressLoader?.visibility = View.VISIBLE
                 binding?.thisWeek?.setTextColor(ContextCompat.getColor(view.context, R.color.pinkOne))
                 binding?.mostPopular?.setTextColor(ContextCompat.getColor(view.context, R.color.textDefaultColor))
                 isWeekly.emit(true)
-                if (!observeOnce) {
-                    observeOnce = true
-                    weeklyModel.getWeeklyMovies().distinctUntilChanged().collect { data ->
-                        val domainData = data.map { weekly -> mapper.weeklyFromRoom(weekly) }
-                        weeklyAdapter.submitData(domainData)
-                    }
-                }
             }
         }
     }
@@ -126,10 +148,25 @@ class MovieFragment : Fragment() {
             adapter = weeklyAdapter
             addItemDecoration(decorationStyle)
         }
+        binding?.listUpComing?.apply {
+            adapter = comingAdapter
+            addItemDecoration(decorationStyle)
+        }
     }
 
     override fun onDestroy() {
         super.onDestroy()
+        comingJob?.cancel()
+        weekJob?.cancel()
+        topJob?.cancel()
+        stateJob?.cancel()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        comingJob?.cancel()
+        weekJob?.cancel()
+        topJob?.cancel()
         stateJob?.cancel()
     }
 }

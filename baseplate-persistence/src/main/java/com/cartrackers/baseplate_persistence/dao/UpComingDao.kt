@@ -18,10 +18,10 @@ abstract class UpComingDao {
     abstract fun insertUpComing(topRated: List<DBUpComing>)
 
     @Query("select * from upcoming_movie group by title")
-    abstract fun getWeeklyStreamByTitle(): Flow<List<DBUpComing>>
+    abstract fun getComingStreamByTitle(): Flow<List<DBUpComing>>
 
     @Query("DELETE FROM upcoming_movie")
-    abstract suspend fun deleteWeekly()
+    abstract suspend fun deleteUpcoming()
 
     @Query("SELECT * FROM upcoming_movie")
     abstract fun getUpComingByPaging(): PagingSource<Int, DBUpComing>

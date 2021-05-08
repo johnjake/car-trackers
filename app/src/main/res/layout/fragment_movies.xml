@@ -236,7 +236,7 @@
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     android:orientation="horizontal"
                     android:id="@+id/listUpComing"
-                    tools:listitem="@layout/item_top_rated_movies">
+                    tools:listitem="@layout/item_upcoming_movies">
                 </androidx.recyclerview.widget.RecyclerView>
 
             </LinearLayout>

@@ -37,6 +37,13 @@ interface ApiServices {
         @Query("page") pageNumber: Int
     ): MovieMetaData
 
+    @GET("movie/upcoming")
+    suspend fun getUpComingMovies(
+        @Query("api_key") apiKey: String,
+        @Query("language") languages: String = "en-US",
+        @Query("page") pageNumber: Int
+    ): MovieMetaData
+
     @GET("search/movie")
     suspend fun getSearchDiscover(
         @Query("api_key") apiKey: String,
