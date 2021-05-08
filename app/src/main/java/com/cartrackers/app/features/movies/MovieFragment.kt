@@ -23,7 +23,6 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.koin.android.ext.android.inject
-import timber.log.Timber
 
 class MovieFragment : Fragment() {
     private var binding: FragmentMoviesBinding? = null
@@ -54,6 +53,10 @@ class MovieFragment : Fragment() {
         observeWeekly()
         observerWeeklyMovies(view)
         observeTopMovies()
+        onClickMostPopular(view)
+    }
+
+    private fun onClickMostPopular(view: View) {
         binding?.mostPopular?.setOnClickListener {
             binding?.progressLoader?.visibility = View.VISIBLE
             runBlocking {
@@ -96,7 +99,7 @@ class MovieFragment : Fragment() {
 
     @FlowPreview
     private fun observeWeekly() {
-        viewLifecycleOwner.lifecycleScope.launch {
+      stateJob = viewLifecycleOwner.lifecycleScope.launch {
             isWeekly
                 .debounce(1000)
                 .collect { weekly ->

@@ -6,7 +6,6 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.cartrackers.baseplate_persistence.model.DBWeeklyKeys
 
-
 @Dao
 interface WeeklyKeysDao {
 

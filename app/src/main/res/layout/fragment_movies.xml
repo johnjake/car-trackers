@@ -212,7 +212,7 @@
                         android:layout_marginTop="@dimen/pixels_8"
                         android:layout_weight="1"
                         android:fontFamily="sans-serif-medium"
-                        android:text="@string/top_categories"
+                        android:text="@string/up_coming"
                         android:textColor="@color/pinkOne"
                         android:textSize="20sp" />
 
@@ -235,7 +235,7 @@
                     android:cacheColorHint="#FFFFFF"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     android:orientation="horizontal"
-                    android:id="@+id/recycleViewTopRated"
+                    android:id="@+id/listUpComing"
                     tools:listitem="@layout/item_top_rated_movies">
                 </androidx.recyclerview.widget.RecyclerView>
 

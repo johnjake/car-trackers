@@ -83,4 +83,5 @@
     <string name="content_item_horizontal">Item movie horizontal</string>
     <string name="best_movie">Best Movie</string>
     <string name="search_movie_content">search movie content</string>
+    <string name="up_coming">Up Coming</string>
 </resources>
