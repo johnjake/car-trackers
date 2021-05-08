@@ -55,7 +55,7 @@ class WeeklyMediator(
     override suspend fun cachedPagingResult(page: Int, loadType: LoadType): MediatorResult {
         try {
             val apiKey = BuildConfig.API_KEY
-            val apiResponse = api.getWeeklyMovies(apiKey = apiKey, page)
+            val apiResponse = api.getWeeklyMovies(apiKey, page)
             val responseItem = apiResponse.results
             val mapper = MapperMovie.getInstance()
             val endOfPaginationReached = responseItem.isEmpty()

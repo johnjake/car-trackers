@@ -35,6 +35,7 @@ class MovieFragment : Fragment() {
     private val weeklyAdapter: WeeklyAdapter by lazy { WeeklyAdapter() }
     private val mapper = MapperMovie.getInstance()
     private val isWeekly = MutableSharedFlow<Boolean>()
+    private var observeOnce: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -78,14 +79,16 @@ class MovieFragment : Fragment() {
     private fun observerWeeklyMovies(view: View) {
         binding?.thisWeek?.setOnClickListener {
             stateJob = viewLifecycleOwner.lifecycleScope.launch {
-                weeklyModel.getWeeklyMovies().distinctUntilChanged().collect { data ->
-                    val domainData = data.map { weekly -> mapper.weeklyFromRoom(weekly) }
-                    domainData.map { Timber.d("weekly: $it") }
-                    //weeklyAdapter.submitData(domainData)
-                    binding?.progressLoader?.visibility = View.VISIBLE
-                    binding?.thisWeek?.setTextColor(ContextCompat.getColor(view.context, R.color.pinkOne))
-                    binding?.mostPopular?.setTextColor(ContextCompat.getColor(view.context, R.color.textDefaultColor))
-                    isWeekly.emit(true)
+                binding?.progressLoader?.visibility = View.VISIBLE
+                binding?.thisWeek?.setTextColor(ContextCompat.getColor(view.context, R.color.pinkOne))
+                binding?.mostPopular?.setTextColor(ContextCompat.getColor(view.context, R.color.textDefaultColor))
+                isWeekly.emit(true)
+                if (!observeOnce) {
+                    observeOnce = true
+                    weeklyModel.getWeeklyMovies().distinctUntilChanged().collect { data ->
+                        val domainData = data.map { weekly -> mapper.weeklyFromRoom(weekly) }
+                        weeklyAdapter.submitData(domainData)
+                    }
                 }
             }
         }
