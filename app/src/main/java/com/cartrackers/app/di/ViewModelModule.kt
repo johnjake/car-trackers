@@ -1,7 +1,9 @@
 package com.cartrackers.app.di
 
 import androidx.paging.ExperimentalPagingApi
+import com.cartrackers.app.features.movies.upcoming.ComingViewModel
 import com.cartrackers.app.features.movies.vertical.VerticalViewModel
+import com.cartrackers.app.features.movies.week.WeeklyViewModel
 import com.cartrackers.app.features.home.HomeViewModel as Home
 import com.cartrackers.app.features.intro.ViewModel as Intro
 import com.cartrackers.app.features.track.ViewModel as Track
@@ -28,4 +30,6 @@ val viewModelModule = module {
     viewModel { Countries(repository = get()) }
     viewModel { Register(repository = get()) }
     viewModel { VerticalViewModel(repository = get()) }
+    viewModel { WeeklyViewModel(repository = get()) }
+    viewModel { ComingViewModel(repository = get()) }
 }

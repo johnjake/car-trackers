@@ -1,6 +1,7 @@
 package com.cartrackers.app.di
 
 import androidx.paging.ExperimentalPagingApi
+import com.cartrackers.app.features.movies.upcoming.ComingRepository
 import com.cartrackers.app.features.home.Repository as Home
 import com.cartrackers.app.features.intro.Repository as Intro
 import com.cartrackers.app.features.track.Repository as Track
@@ -12,6 +13,7 @@ import com.cartrackers.app.features.profile.edit.Repository as EditProfile
 import com.cartrackers.app.features.country.Repository as Countries
 import com.cartrackers.app.features.profile.register.Repository as Register
 import com.cartrackers.app.features.movies.vertical.Repository as Vertical
+import com.cartrackers.app.features.movies.week.Repository as Weekly
 import org.koin.dsl.module
 
 @ExperimentalPagingApi
@@ -27,4 +29,6 @@ val repositoryModule = module {
     factory { Countries(dao = get(), mapper = get()) }
     factory { Register(userDao = get(), mapper = get()) }
     factory { Vertical(api = get(), database = get()) }
+    factory { Weekly(api = get(), database = get()) }
+    factory { ComingRepository(api = get(), database = get()) }
 }

@@ -1,4 +1,4 @@
-package com.cartrackers.app.features.movies.vertical
+package com.cartrackers.app.features.movies.upcoming
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,18 +8,16 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.cartrackers.app.BuildConfig
 import com.cartrackers.app.data.vo.movies.Discover
-import com.cartrackers.app.databinding.ItemTopMoviesBinding
-import com.cartrackers.app.utils.ImageUtils
-import timber.log.Timber
+import com.cartrackers.app.databinding.ItemUpcomingMoviesBinding
 
-class VerticalAdapter : PagingDataAdapter<Discover, VerticalViewHolder>(diffCallBack) {
+class ComingAdapter : PagingDataAdapter<Discover, ComingViewHolder>(diffCallBack) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VerticalViewHolder {
-        val binding = ItemTopMoviesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return VerticalViewHolder(binding)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComingViewHolder {
+        val binding = ItemUpcomingMoviesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ComingViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: VerticalViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ComingViewHolder, position: Int) {
         val currentItem = getItem(position)
         currentItem?.let { holder.bind(it) }
     }
@@ -35,13 +33,13 @@ class VerticalAdapter : PagingDataAdapter<Discover, VerticalViewHolder>(diffCall
     }
 }
 
-class VerticalViewHolder(private val binding: ItemTopMoviesBinding) : RecyclerView.ViewHolder(binding.root) {
+class ComingViewHolder(private val binding: ItemUpcomingMoviesBinding) : RecyclerView.ViewHolder(binding.root) {
     fun bind(movie: Discover) {
         val baseUrl = BuildConfig.BASE_URL_ORIGINAL
         binding.apply {
-            txtMovieTitle.text = movie.original_title
-            txtDate.text = movie.release_date
-            imgView.load(baseUrl+movie.poster_path)
+            textViewTopRated.text = movie.original_title
+            // txtDate.text = movie.release_date
+            imgTopRated.load(baseUrl+movie.poster_path)
         }
     }
 }

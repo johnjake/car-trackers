@@ -64,5 +64,6 @@
     <color name="grayOne">#898f90</color>
     <color name="pinkTwenty">#33ff0058</color>
     <color name="davys_gray">#555555</color>
+    <color name="textDefaultColor">#9b9b9b</color>
 
 </resources>
