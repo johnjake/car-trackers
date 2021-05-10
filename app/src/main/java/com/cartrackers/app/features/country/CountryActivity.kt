@@ -1,5 +1,6 @@
 package com.cartrackers.app.features.country
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -14,12 +15,12 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 
-
 class CountryActivity: AppCompatActivity() {
     private lateinit var binding: ActivityCountryBinding
     private val countryAdapter: CountryAdapter by lazy { CountryAdapter { country -> onClickListener(country) } }
     private lateinit var resultLayout: LinearLayoutManager
     private val viewModel: ViewModel by inject()
+    private lateinit var activityContext: Context
 
     @ExperimentalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +28,7 @@ class CountryActivity: AppCompatActivity() {
         binding = ActivityCountryBinding.inflate(layoutInflater)
         overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right)
         setContentView(binding.root)
-
+        activityContext = binding.root.context
         initAdapter(binding.root)
         setupUi()
     }
