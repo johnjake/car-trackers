@@ -14,7 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.cartrackers.app.data.vo.State
 import com.cartrackers.app.data.vo.User
 import com.cartrackers.app.databinding.FragmentProfileBinding
+import com.cartrackers.app.di.providesSharedUserCount
 import com.cartrackers.app.extension.hideNavigation
+import com.cartrackers.app.extension.shared_login
 import com.cartrackers.app.extension.toAvatar
 import com.cartrackers.app.features.country.CountryActivity
 import com.cartrackers.app.utils.alert_dialog.ListenerCallBack
@@ -119,7 +121,12 @@ class ProfileFragment: Fragment() {
         stateJob?.cancel()
     }
 
+    private fun persistToSharedPref(userId: Int) {
+        context?.let { providesSharedUserCount(it, shared_login, userId) }
+    }
+
     private fun launchActivity() {
+        persistToSharedPref(0)
         activity?.finish()
         val intent = Intent(activity, CountryActivity::class.java)
         startActivity(intent)

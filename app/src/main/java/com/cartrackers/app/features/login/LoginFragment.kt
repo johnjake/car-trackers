@@ -19,6 +19,8 @@ import com.cartrackers.app.extension.shared_login
 import com.cartrackers.app.extension.toast
 import com.cartrackers.app.features.main.CarTrackActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -31,6 +33,7 @@ class LoginFragment: Fragment() {
     private var isEmailFormat: Boolean = false
     private var isPasswordFormat: Boolean = false
     private val viewModel: LoginViewModel by inject()
+    private var userIdFlow = MutableSharedFlow<Int>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,21 +44,17 @@ class LoginFragment: Fragment() {
         return bind?.root
     }
 
+    @FlowPreview
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         activity?.overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right)
         hideNavigation()
-
+        val loginId = providesSharedPrefGetCount(view.context, shared_login)
+        handleSharedPref(loginId ?: 0)
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.userState.collect { state ->
                 handleStateFlow(state)
             }
-        }
-
-        val sharedId = providesSharedPrefGetCount(view.context, shared_login) ?: 0
-      //  val sharedUser = providesSharedGetUserInput(view.context, shared_username)
-        if(sharedId>0 ) {
-
         }
     }
 
@@ -90,6 +89,15 @@ class LoginFragment: Fragment() {
             context?.let { CarDialog.builderAlert(it,
                 "Credential",
                 "Invalid username or password!") }
+        }
+    }
+
+    @FlowPreview
+    private fun handleSharedPref(loginId: Int) {
+        if (loginId > 0) {
+            val args = LoginFragmentDirections.actionLoginToMain(loginId)
+            view?.findNavController()?.navigate(args)
+            CarTrackActivity.onBackPress.value = true
         }
     }
 
