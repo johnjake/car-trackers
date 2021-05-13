@@ -110,9 +110,9 @@ dependencies {
     implementation("javax.inject:javax.inject:1")
 
     // implementation ("androidx.room:room-coroutines:2.1.0-alpha04")
-    implementation("androidx.room:room-runtime:2.4.0-alpha01")
-    implementation("androidx.room:room-ktx:2.4.0-alpha01")
-    kapt("androidx.room:room-compiler:2.4.0-alpha01")
+    implementation("androidx.room:room-runtime:2.4.0-alpha02")
+    implementation("androidx.room:room-ktx:2.4.0-alpha02")
+    kapt("androidx.room:room-compiler:2.4.0-alpha02")
 
     // Dependency injection
     // Koin main features for Android (Scope,ViewModel ...)
@@ -151,17 +151,18 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:1.0.0-alpha10")
 
     // google maps
-    implementation("com.google.android.gms:play-services-maps:17.0.0")
+    implementation("com.google.android.gms:play-services-maps:17.0.1")
 
     // LifeCycle
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1")
-    implementation("androidx.lifecycle:lifecycle-common-java8:2.3.1")
-    implementation("androidx.lifecycle:lifecycle-service:2.3.1")
-    implementation("androidx.lifecycle:lifecycle-process:2.3.1")
-    implementation("androidx.lifecycle:lifecycle-reactivestreams-ktx:2.3.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0-alpha01")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.0-alpha01")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0-alpha01")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.4.0-alpha01")
+    implementation("androidx.lifecycle:lifecycle-common-java8:2.4.0-alpha01")
+    implementation("androidx.lifecycle:lifecycle-service:2.4.0-alpha01")
+    implementation("androidx.lifecycle:lifecycle-process:2.4.0-alpha01")
+    implementation("androidx.lifecycle:lifecycle-reactivestreams-ktx:2.4.0-alpha01")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha04")
 
     // rxBinding
     implementation("com.jakewharton.rxbinding3:rxbinding:3.1.0")
@@ -179,7 +180,7 @@ dependencies {
     implementation("io.coil-kt:coil:1.0.0")
 
     // paging
-    implementation("androidx.paging:paging-runtime-ktx:3.0.0-rc01")
+    implementation("androidx.paging:paging-runtime-ktx:3.0.0")
 
     // testImplementation("junit:junit:4.13.2")
     testImplementation("junit:junit:4.13.2")

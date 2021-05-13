@@ -40,6 +40,6 @@ data class DBWeekly(
         release_date = ""
     )
     companion object {
-        const val table_name = "movie_weekly"
+        const val table_name = "weekly_movie"
     }
 }

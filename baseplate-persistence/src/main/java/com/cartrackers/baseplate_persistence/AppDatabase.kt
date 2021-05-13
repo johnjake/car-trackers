@@ -17,7 +17,7 @@ import com.cartrackers.baseplate_persistence.model.*
         DBUpComing::class,
         DBUpComingKeys::class
                ],
-    version = 5,
+    version = 1,
     exportSchema = false
 )
 @TypeConverters

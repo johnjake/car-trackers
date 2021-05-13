@@ -34,6 +34,7 @@ interface ApiServices {
     @GET("trending/all/week")
     suspend fun getWeeklyMovies(
         @Query("api_key") apiKey: String,
+        @Query("language") languages: String = "en-US",
         @Query("page") pageNumber: Int
     ): MovieMetaData
 

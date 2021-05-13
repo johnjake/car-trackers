@@ -23,7 +23,6 @@ import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import org.koin.android.ext.android.inject
 
 class MovieFragment : Fragment() {
@@ -33,6 +32,7 @@ class MovieFragment : Fragment() {
     private var weekJob: Job? = null
     private var comingJob: Job? = null
     private var topJob: Job? = null
+    private var loadJob: Job? = null
     private val viewModel: VerticalViewModel by inject()
     private val weeklyModel: WeeklyViewModel by inject()
     private val comingModel: ComingViewModel by inject()
@@ -41,7 +41,7 @@ class MovieFragment : Fragment() {
     private val comingAdapter: ComingAdapter by lazy { ComingAdapter() }
     private val mapper = MapperMovie.getInstance()
     private val isWeekly = MutableSharedFlow<Boolean>()
-    private var observeOnce: Boolean = false
+    private var isLoading = MutableSharedFlow<Boolean>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,6 +57,7 @@ class MovieFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
+        observerLoading()
         observeWeekly()
         observerWeeklyMovies(view)
         observeWeeklyData()
@@ -65,20 +66,26 @@ class MovieFragment : Fragment() {
         onClickMostPopular(view)
     }
 
+    override fun onPause() {
+        super.onPause()
+        loadJob?.cancel()
+    }
+
     private fun onClickMostPopular(view: View) {
         binding?.mostPopular?.setOnClickListener {
             binding?.progressLoader?.visibility = View.VISIBLE
-            runBlocking {
+            viewLifecycleOwner.lifecycleScope.launch {
                 binding?.thisWeek?.setTextColor(ContextCompat.getColor(view.context, R.color.textDefaultColor))
                 binding?.mostPopular?.setTextColor(ContextCompat.getColor(view.context, R.color.pinkOne))
                 isWeekly.emit(false)
+                isLoading.emit(true)
             }
         }
     }
 
     @ExperimentalPagingApi
     private fun observeTopMovies() {
-       topJob = viewLifecycleOwner.lifecycleScope.launch {
+        topJob = viewLifecycleOwner.lifecycleScope.launch {
             viewModel.getTopMovies().distinctUntilChanged().collectLatest { data ->
                 val dbData = data.map { discover -> mapper.mapFromRoom(discover) }
                 verticalAdapter.submitData(dbData)
@@ -89,7 +96,7 @@ class MovieFragment : Fragment() {
 
     @ExperimentalPagingApi
     private fun observeUpComingMovies() {
-       comingJob = viewLifecycleOwner.lifecycleScope.launch {
+        comingJob = viewLifecycleOwner.lifecycleScope.launch {
             comingModel.getTopMovies().distinctUntilChanged().collectLatest { data ->
                 val dbData = data.map { discover -> mapper.upFromRoom(discover) }
                 comingAdapter.submitData(dbData)
@@ -114,6 +121,7 @@ class MovieFragment : Fragment() {
                 binding?.progressLoader?.visibility = View.VISIBLE
                 binding?.thisWeek?.setTextColor(ContextCompat.getColor(view.context, R.color.pinkOne))
                 binding?.mostPopular?.setTextColor(ContextCompat.getColor(view.context, R.color.textDefaultColor))
+                isLoading.emit(true)
                 isWeekly.emit(true)
             }
         }
@@ -121,20 +129,31 @@ class MovieFragment : Fragment() {
 
     @FlowPreview
     private fun observeWeekly() {
-      stateJob = viewLifecycleOwner.lifecycleScope.launch {
+        stateJob = viewLifecycleOwner.lifecycleScope.launch {
             isWeekly
-                .debounce(1000)
+                .debounce(500)
                 .collect { weekly ->
-                      if(weekly) {
-                         binding?.listTopMovie?.visibility = View.GONE
-                         binding?.listThisWeek?.visibility = View.VISIBLE
-                         binding?.progressLoader?.visibility = View.GONE
-                     } else {
-                         binding?.listTopMovie?.visibility = View.VISIBLE
-                         binding?.listThisWeek?.visibility = View.GONE
-                         binding?.progressLoader?.visibility = View.GONE
-                     }
+                    if(weekly) {
+                        binding?.listTopMovie?.visibility = View.GONE
+                        binding?.listThisWeek?.visibility = View.VISIBLE
+                        binding?.progressLoader?.visibility = View.GONE
+                        isLoading.emit(false)
+                    } else {
+                        binding?.listTopMovie?.visibility = View.VISIBLE
+                        binding?.listThisWeek?.visibility = View.GONE
+                        binding?.progressLoader?.visibility = View.GONE
+                        isLoading.emit(false)
+                    }
                 }
+        }
+    }
+
+    @FlowPreview
+    private fun observerLoading() {
+        loadJob = lifecycleScope.launch {
+            isLoading.collect {
+                showLoading(it)
+            }
         }
     }
 
@@ -168,5 +187,17 @@ class MovieFragment : Fragment() {
         weekJob?.cancel()
         topJob?.cancel()
         stateJob?.cancel()
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        when (isLoading) {
+            true -> showAnimation(R.raw.loading)
+        }
+    }
+
+    private fun showAnimation(animationResource: Int) {
+        binding?.progressLoader?.visibility = View.VISIBLE
+        binding?.progressLoader?.setAnimation(animationResource)
+        binding?.progressLoader?.playAnimation()
     }
 }

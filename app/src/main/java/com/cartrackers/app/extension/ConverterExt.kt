@@ -45,7 +45,7 @@ inline fun<reified T: Any?> String.toListType(): List<T> {
     return Gson().fromJson(this, object : TypeToken<List<T?>?>() {}.type)
 }
 
-inline fun<reified T: Any?> String.toTypeList(): List<User> {
+inline fun<reified T: Any?> String.toTypeList(): List<T> {
     val gson = Gson()
     val type: Type = object : TypeToken<List<User?>?>() {}.type
     return gson.fromJson(this, type)
