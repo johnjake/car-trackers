@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.map
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.cartrackers.app.R
 import com.cartrackers.app.data.mapper.MapperMovie
 import com.cartrackers.app.databinding.FragmentMoviesBinding
@@ -16,14 +18,17 @@ import com.cartrackers.app.features.movies.upcoming.ComingAdapter
 import com.cartrackers.app.features.movies.upcoming.ComingViewModel
 import com.cartrackers.app.features.movies.vertical.VerticalAdapter
 import com.cartrackers.app.features.movies.vertical.VerticalViewModel
+import com.cartrackers.app.features.movies.view_upcoming.ViewUpComingFragment
 import com.cartrackers.app.features.movies.week.WeeklyAdapter
 import com.cartrackers.app.features.movies.week.WeeklyViewModel
 import com.cartrackers.app.widget.SpacingItemDecoration
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
+import timber.log.Timber
 
 class MovieFragment : Fragment() {
     private var binding: FragmentMoviesBinding? = null
@@ -56,7 +61,7 @@ class MovieFragment : Fragment() {
     @ExperimentalPagingApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initAdapter()
+        initAdapter(view)
         observerLoading()
         observeWeekly()
         observerWeeklyMovies(view)
@@ -64,6 +69,16 @@ class MovieFragment : Fragment() {
         observeTopMovies()
         observeUpComingMovies()
         onClickMostPopular(view)
+        setupViewUpComing(view)
+    }
+
+    private fun setupViewUpComing(view: View) {
+        binding?.seeAllBottom?.setOnClickListener {
+            lifecycleScope.launch {
+                isLoading.emit(false)
+            }
+            view.findNavController().navigate(R.id.action_movie_main_view_upcoming)
+        }
     }
 
     override fun onPause() {
@@ -96,7 +111,7 @@ class MovieFragment : Fragment() {
 
     @ExperimentalPagingApi
     private fun observeUpComingMovies() {
-        comingJob = viewLifecycleOwner.lifecycleScope.launch {
+        comingJob = viewLifecycleOwner.lifecycleScope.launch() {
             comingModel.getTopMovies().distinctUntilChanged().collectLatest { data ->
                 val dbData = data.map { discover -> mapper.upFromRoom(discover) }
                 comingAdapter.submitData(dbData)
@@ -106,7 +121,7 @@ class MovieFragment : Fragment() {
 
     @ExperimentalPagingApi
     private fun observeWeeklyData() {
-        viewLifecycleOwner.lifecycleScope.launch {
+        weekJob = viewLifecycleOwner.lifecycleScope.launch() {
             weeklyModel.getWeeklyMovies().distinctUntilChanged().collect { data ->
                 val domainData = data.map { weekly -> mapper.weeklyFromRoom(weekly) }
                 weeklyAdapter.submitData(domainData)
@@ -157,7 +172,11 @@ class MovieFragment : Fragment() {
         }
     }
 
-    private fun initAdapter() {
+    private fun initAdapter(view: View) {
+        val resultLayout = LinearLayoutManager(view.context).apply {
+            orientation = LinearLayoutManager.HORIZONTAL
+        }
+
         val decorationStyle = SpacingItemDecoration(2, 75, true)
         binding?.listTopMovie?.apply {
             adapter = verticalAdapter
@@ -168,17 +187,9 @@ class MovieFragment : Fragment() {
             addItemDecoration(decorationStyle)
         }
         binding?.listUpComing?.apply {
+            layoutManager = resultLayout
             adapter = comingAdapter
-            addItemDecoration(decorationStyle)
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        comingJob?.cancel()
-        weekJob?.cancel()
-        topJob?.cancel()
-        stateJob?.cancel()
     }
 
     override fun onDestroyView() {
@@ -187,6 +198,8 @@ class MovieFragment : Fragment() {
         weekJob?.cancel()
         topJob?.cancel()
         stateJob?.cancel()
+        loadJob?.cancel()
+        Timber.d("ON DESTROY VIEW")
     }
 
     private fun showLoading(isLoading: Boolean) {

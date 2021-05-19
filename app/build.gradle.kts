@@ -87,7 +87,7 @@ dependencies {
     implementation("com.android.support:support-annotations:28.0.0")
     implementation("androidx.annotation:annotation:1.2.0")
 
-    // stdlib
+    // stdlib --> koin issue No virtual method elapsedNow-UwyO8pc()D
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.4.32")
 
     implementation("androidx.core:core-ktx:1.3.2")
@@ -182,6 +182,9 @@ dependencies {
     // paging
     implementation("androidx.paging:paging-runtime-ktx:3.0.0")
 
+    //slider
+    implementation("com.google.android.material:material:1.4.0-beta01")
+
     // testImplementation("junit:junit:4.13.2")
     testImplementation("junit:junit:4.13.2")
     testImplementation("io.mockk:mockk:1.10.0")
@@ -190,7 +193,7 @@ dependencies {
     testImplementation("org.testcontainers:testcontainers:1.15.1")
     testImplementation("org.testcontainers:junit-jupiter:1.15.1")
     testImplementation("androidx.test.ext:junit:1.1.3-alpha06")
-    testImplementation("org.mockito:mockito-core:3.0.0")
+    testImplementation("org.mockito:mockito-core:3.3.3")
     testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0")
     testImplementation("org.mockito:mockito-inline:3.0.0")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.0")

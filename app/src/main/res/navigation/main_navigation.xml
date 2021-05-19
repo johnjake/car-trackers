@@ -121,6 +121,16 @@
         android:name="com.cartrackers.app.features.movies.MovieFragment"
         android:label="MovieFragment"
         tools:layout="@layout/fragment_movies"
+        >
+        <action
+            android:id="@+id/action_movie_main_view_upcoming"
+            app:destination="@id/allUpComingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/allUpComingFragment"
+        android:name="com.cartrackers.app.features.movies.view_upcoming.ViewUpComingFragment"
+        android:label="ViewUpComingFragment"
+        tools:layout="@layout/fragment_view_upcoming"
         />
 
 </navigation>
