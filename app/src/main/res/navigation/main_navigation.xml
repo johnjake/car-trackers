@@ -125,12 +125,21 @@
         <action
             android:id="@+id/action_movie_main_view_upcoming"
             app:destination="@id/allUpComingFragment" />
+        <action
+            android:id="@+id/action_to_search_discover"
+            app:destination="@id/searchDiscoverFragment" />
     </fragment>
     <fragment
         android:id="@+id/allUpComingFragment"
         android:name="com.cartrackers.app.features.movies.view_upcoming.ViewUpComingFragment"
         android:label="ViewUpComingFragment"
         tools:layout="@layout/fragment_view_upcoming"
+        />
+    <fragment
+        android:id="@+id/searchDiscoverFragment"
+        android:name="com.cartrackers.app.features.movies.search.SearchDiscoverFragment"
+        android:label="SearchDiscoverFragment"
+        tools:layout="@layout/fragment_discover_search"
         />
 
 </navigation>

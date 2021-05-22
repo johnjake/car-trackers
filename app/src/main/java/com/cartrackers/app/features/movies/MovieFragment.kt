@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.paging.ExperimentalPagingApi
+import androidx.paging.PagingData
 import androidx.paging.map
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cartrackers.app.R
@@ -22,16 +23,17 @@ import com.cartrackers.app.features.movies.view_upcoming.ViewUpComingFragment
 import com.cartrackers.app.features.movies.week.WeeklyAdapter
 import com.cartrackers.app.features.movies.week.WeeklyViewModel
 import com.cartrackers.app.widget.SpacingItemDecoration
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.Job
+import com.cartrackers.baseplate_persistence.model.DBUpComing
+import com.cartrackers.baseplate_persistence.model.DBWeekly
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import timber.log.Timber
+import java.util.concurrent.atomic.AtomicBoolean
 
 class MovieFragment : Fragment() {
     private var binding: FragmentMoviesBinding? = null
+    private var views: View? = null
     private val bind get() = binding
     private var stateJob: Job? = null
     private var weekJob: Job? = null
@@ -54,6 +56,7 @@ class MovieFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMoviesBinding.inflate(inflater, container, false)
+        views = bind?.root?.rootView
         return bind?.root
     }
 
@@ -62,14 +65,27 @@ class MovieFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAdapter(view)
-        observerLoading()
-        observeWeekly()
-        observerWeeklyMovies(view)
-        observeWeeklyData()
         observeTopMovies()
+        observeWeeklyData()
         observeUpComingMovies()
         onClickMostPopular(view)
         setupViewUpComing(view)
+        setupSearchCinema(view)
+    }
+
+    @FlowPreview
+    @ExperimentalPagingApi
+    override fun onResume() {
+        super.onResume()
+        observerLoading()
+        observeWeekly()
+        views?.let { observerWeeklyMovies(it) }
+    }
+
+    private fun setupSearchCinema(view: View) {
+        binding?.searchCinema?.setOnClickListener {
+            view.findNavController().navigate(R.id.action_to_search_discover)
+        }
     }
 
     private fun setupViewUpComing(view: View) {
@@ -100,8 +116,10 @@ class MovieFragment : Fragment() {
 
     @ExperimentalPagingApi
     private fun observeTopMovies() {
-        topJob = viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.getTopMovies().distinctUntilChanged().collectLatest { data ->
+        topJob = lifecycleScope.launch {
+            viewModel.getTopMovies()
+                .distinctUntilChanged()
+                .collectLatest { data ->
                 val dbData = data.map { discover -> mapper.mapFromRoom(discover) }
                 verticalAdapter.submitData(dbData)
                 isWeekly.emit(false)
@@ -111,8 +129,10 @@ class MovieFragment : Fragment() {
 
     @ExperimentalPagingApi
     private fun observeUpComingMovies() {
-        comingJob = viewLifecycleOwner.lifecycleScope.launch() {
-            comingModel.getTopMovies().distinctUntilChanged().collectLatest { data ->
+        comingJob = lifecycleScope.launch() {
+            comingModel.getTopMovies()
+                .buffer()
+                .distinctUntilChanged().collectLatest { data ->
                 val dbData = data.map { discover -> mapper.upFromRoom(discover) }
                 comingAdapter.submitData(dbData)
             }
@@ -121,8 +141,10 @@ class MovieFragment : Fragment() {
 
     @ExperimentalPagingApi
     private fun observeWeeklyData() {
-        weekJob = viewLifecycleOwner.lifecycleScope.launch() {
-            weeklyModel.getWeeklyMovies().distinctUntilChanged().collect { data ->
+        weekJob = lifecycleScope.launch() {
+            weeklyModel.getWeeklyMovies()
+                .buffer()
+                .distinctUntilChanged().collect { data ->
                 val domainData = data.map { weekly -> mapper.weeklyFromRoom(weekly) }
                 weeklyAdapter.submitData(domainData)
             }
@@ -192,8 +214,8 @@ class MovieFragment : Fragment() {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
+    override fun onDestroy() {
+        super.onDestroy()
         comingJob?.cancel()
         weekJob?.cancel()
         topJob?.cancel()

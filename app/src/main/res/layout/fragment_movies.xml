@@ -191,6 +191,8 @@
                         android:id="@+id/listThisWeek"
                         tools:listitem="@layout/item_top_movies">
                     </androidx.recyclerview.widget.RecyclerView>
+
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
 

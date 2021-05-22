@@ -185,6 +185,9 @@ dependencies {
     //slider
     implementation("com.google.android.material:material:1.4.0-beta01")
 
+    //google map services
+    implementation ("com.google.maps:google-maps-services:0.15.4")
+
     // testImplementation("junit:junit:4.13.2")
     testImplementation("junit:junit:4.13.2")
     testImplementation("io.mockk:mockk:1.10.0")

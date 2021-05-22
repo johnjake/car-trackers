@@ -84,4 +84,5 @@
     <string name="best_movie">Best Movie</string>
     <string name="search_movie_content">search movie content</string>
     <string name="up_coming">Up Coming</string>
+    <string name="no_results">No Results</string>
 </resources>
