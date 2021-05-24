@@ -85,4 +85,7 @@
     <string name="search_movie_content">search movie content</string>
     <string name="up_coming">Up Coming</string>
     <string name="no_results">No Results</string>
+    <string name="rating_65">6.5</string>
+    <string name="date_release">1986-08-08</string>
+    <string name="story">Story</string>
 </resources>

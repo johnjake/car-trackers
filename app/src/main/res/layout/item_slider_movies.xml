@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/pixels_4"
+    android:layout_marginStart="@dimen/pixels_4"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackgroundBorderless">
+
+    <TextView
+        android:id="@+id/movieTitle"
+        style="@style/StyleSubTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="155dp"
+        android:layout_marginTop="8dp"
+        android:lines="2"
+        android:maxLines="2"
+        android:text="@string/movie_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@id/cardViewItem"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/releaseData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="155dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="@string/date_release"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/cardViewItem"
+        app:layout_constraintTop_toBottomOf="@id/movieTitle" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewItem"
+        android:layout_width="145dp"
+        android:layout_height="220dp"
+        app:cardCornerRadius="@dimen/pixels_8"
+        android:layout_marginStart="@dimen/pixels_6"
+        android:layout_marginEnd="@dimen/pixels_6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgTopRated"
+            android:layout_width="145dp"
+            android:layout_height="220dp"
+            android:contentDescription="@string/content_item_horizontal"
+            android:scaleType="centerCrop"
+            tools:ignore="VectorDrawableCompat,ImageContrastCheck"
+            tools:src="@tools:sample/avatars" />
+
+    </androidx.cardview.widget.CardView>
+
+
+    <RatingBar
+        android:id="@+id/sliderRatingBar"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:progressTint="#ffba49"
+        android:rating="5"
+        android:stepSize="0.5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.031"
+        app:layout_constraintStart_toEndOf="@+id/cardViewItem"
+        app:layout_constraintTop_toBottomOf="@id/movieTitle" />
+
+    <TextView
+        android:id="@+id/slideRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/rating_65"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintStart_toEndOf="@+id/sliderRatingBar"
+        app:layout_constraintTop_toBottomOf="@+id/releaseData" />
+
+    <TextView
+        android:id="@+id/movieSynapses"
+        android:layout_width="215dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/pixels_4"
+        android:layout_marginEnd="@dimen/pixels_16"
+        android:justificationMode="inter_word"
+        android:text="@string/story"
+        android:fontFamily="@font/inter_regular"
+        android:textSize="12sp"
+        app:autoSizeMinTextSize="12sp"
+        app:autoSizeStepGranularity="2sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/pixels_2"
+        android:maxLines="7"
+        android:lines="7"
+        app:layout_constraintHorizontal_bias="0.026"
+        app:layout_constraintStart_toEndOf="@+id/cardViewItem"
+        app:layout_constraintTop_toBottomOf="@id/sliderRatingBar" />
+</androidx.constraintlayout.widget.ConstraintLayout>

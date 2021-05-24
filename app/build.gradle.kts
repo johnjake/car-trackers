@@ -90,8 +90,8 @@ dependencies {
     // stdlib --> koin issue No virtual method elapsedNow-UwyO8pc()D
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.4.32")
 
-    implementation("androidx.core:core-ktx:1.3.2")
-    implementation("androidx.appcompat:appcompat:1.2.0")
+    implementation("androidx.core:core-ktx:1.5.0")
+    implementation("androidx.appcompat:appcompat:1.3.0")
     implementation("com.google.android.material:material:1.3.0")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation("com.android.support:design:30.0.0")
@@ -101,7 +101,7 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
 
     // CircleIndicator
-    // implementation ("me.relex:circleindicator:2.1.4")
+    implementation ("me.relex:circleindicator:2.1.6")
 
     // sharedPreferrences
     implementation("androidx.preference:preference-ktx:1.1.1")

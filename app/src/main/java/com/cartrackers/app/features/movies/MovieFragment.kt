@@ -1,5 +1,6 @@
 package com.cartrackers.app.features.movies
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,9 +13,14 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.PagingData
 import androidx.paging.map
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager.widget.ViewPager
 import com.cartrackers.app.R
 import com.cartrackers.app.data.mapper.MapperMovie
+import com.cartrackers.app.data.vo.State
+import com.cartrackers.app.data.vo.movies.Discover
 import com.cartrackers.app.databinding.FragmentMoviesBinding
+import com.cartrackers.app.features.movies.slider.SliderAdapter
+import com.cartrackers.app.features.movies.slider.SliderViewModel
 import com.cartrackers.app.features.movies.upcoming.ComingAdapter
 import com.cartrackers.app.features.movies.upcoming.ComingViewModel
 import com.cartrackers.app.features.movies.vertical.VerticalAdapter
@@ -29,6 +35,7 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 import org.koin.android.ext.android.inject
 import timber.log.Timber
+import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 
 class MovieFragment : Fragment() {
@@ -43,9 +50,11 @@ class MovieFragment : Fragment() {
     private val viewModel: VerticalViewModel by inject()
     private val weeklyModel: WeeklyViewModel by inject()
     private val comingModel: ComingViewModel by inject()
+    private val sliderModel: SliderViewModel by inject()
     private val verticalAdapter: VerticalAdapter by lazy { VerticalAdapter() }
     private val weeklyAdapter: WeeklyAdapter by lazy { WeeklyAdapter() }
     private val comingAdapter: ComingAdapter by lazy { ComingAdapter() }
+    private val sliderAdapter: SliderAdapter by lazy { context?.let { SliderAdapter(it) }!! }
     private val mapper = MapperMovie.getInstance()
     private val isWeekly = MutableSharedFlow<Boolean>()
     private var isLoading = MutableSharedFlow<Boolean>()
@@ -68,9 +77,41 @@ class MovieFragment : Fragment() {
         observeTopMovies()
         observeWeeklyData()
         observeUpComingMovies()
+        observerSliderData()
         onClickMostPopular(view)
         setupViewUpComing(view)
         setupSearchCinema(view)
+    }
+
+    private fun observerSliderData() {
+        lifecycleScope.launch {
+           sliderModel.movieState.collect { state ->
+                handleSliderState(state)
+           }
+        }
+    }
+
+    private fun handleSliderState(state: State<List<Discover>>) {
+        when(state) {
+            is State.Data -> handleSuccess(state.data)
+            is State.Error -> handleFailed(state.error)
+            else -> Timber.e("An error occurred during query request!")
+        }
+    }
+
+    private fun handleFailed(error: Throwable) {
+        Timber.e("Error: ${error.message}")
+    }
+
+    private fun handleSuccess(data: List<Discover>) {
+        if(data.isNotEmpty()) {
+           initSlider(data.take(10))
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        sliderModel.getSliderDiscover()
     }
 
     @FlowPreview
@@ -234,5 +275,26 @@ class MovieFragment : Fragment() {
         binding?.progressLoader?.visibility = View.VISIBLE
         binding?.progressLoader?.setAnimation(animationResource)
         binding?.progressLoader?.playAnimation()
+    }
+
+    private fun initSlider(list: List<Discover>) {
+        val pager = binding?.cinemaPager!!
+        sliderAdapter.dataSource = list
+        pager.adapter = sliderAdapter
+        val timer = Timer()
+        timer.scheduleAtFixedRate(activity?.let { SliderTimer(it, pager, list) }, 4000, 6000)
+        binding?.cinemaTab?.setupWithViewPager(binding?.cinemaPager, true)
+    }
+
+    internal class SliderTimer(private val activity: Activity,
+                               private val sliderPager: ViewPager,
+                               private val lstSlider: List<Discover>) : TimerTask() {
+        override fun run() {
+            activity.runOnUiThread(Runnable {
+                if (sliderPager.currentItem < lstSlider.size - 1) {
+                    sliderPager.currentItem = sliderPager.currentItem + 1
+                } else sliderPager.currentItem = 0
+            })
+        }
     }
 }

@@ -2,6 +2,7 @@ package com.cartrackers.app.di
 
 import androidx.paging.ExperimentalPagingApi
 import com.cartrackers.app.features.movies.search.SearchRepository
+import com.cartrackers.app.features.movies.slider.SliderRepository
 import com.cartrackers.app.features.movies.upcoming.ComingRepository
 import com.cartrackers.app.features.movies.view_upcoming.ComingAllRepository
 import com.cartrackers.app.features.home.Repository as Home
@@ -35,4 +36,5 @@ val repositoryModule = module {
     factory { ComingRepository(api = get(), database = get()) }
     factory { ComingAllRepository(api = get(), database = get()) }
     factory { SearchRepository(api = get(), database = get()) }
+    factory { SliderRepository(api = get()) }
 }
