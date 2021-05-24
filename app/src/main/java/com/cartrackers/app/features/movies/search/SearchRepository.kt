@@ -20,7 +20,6 @@ class SearchRepository(
 
         val dbQuery = "%${query.replace(' ', '%')}%"
         val pagingFactory = { database.discoverDao().searchDiscoverByPaging(dbQuery) }
-
           return Pager(
             config = pagerConfig,
             remoteMediator = mediator(query),

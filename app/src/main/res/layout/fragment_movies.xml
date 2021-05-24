@@ -41,8 +41,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginStart="14dp"
-                android:layout_marginEnd="15dp">
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp">
 
 
 
@@ -83,16 +83,18 @@
                     <androidx.viewpager.widget.ViewPager
                         android:id="@+id/cinemaPager"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="252dp"
                         android:background="@drawable/black_gradient_appbar_background"
                         android:labelFor="@id/today_movie"
-                        tools:ignore="SpeakableTextPresentCheck" />
+                        tools:ignore="SpeakableTextPresentCheck"
+                        />
 
                     <com.google.android.material.tabs.TabLayout
                         android:id="@+id/cinemaTab"
                         android:layout_width="match_parent"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom"
+                        android:layout_marginTop="@dimen/pixels_8"
                         android:layout_marginStart="@dimen/pixels_8"
                         android:layout_marginEnd="@dimen/pixels_8"
                         android:background="@drawable/black_gradient_background"
@@ -151,14 +153,17 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/pixels_8">
 
-                    <ProgressBar
+                    <com.airbnb.lottie.LottieAnimationView
                         android:id="@+id/progress_loader"
-                        style="?android:attr/progressBarStyle"
-                        android:layout_width="@dimen/pixels_76"
-                        android:layout_height="@dimen/pixels_76"
-                        android:layout_marginTop="@dimen/pixels_182"
-                        android:layout_marginEnd="@dimen/pixels_66"
-                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:visibility="visible"
+                        app:lottie_autoPlay="true"
+                        app:lottie_loop="true"
+                        app:lottie_scale="0.2"
+                        app:lottie_speed="3"
                         app:layout_constraintEnd_toEndOf="@+id/listTopMovie"
                         app:layout_constraintStart_toStartOf="@+id/listTopMovie"
                         app:layout_constraintTop_toTopOf="parent"
@@ -182,12 +187,14 @@
                         android:layout_marginTop="@dimen/pixels_8"
                         android:orientation="vertical"
                         android:cacheColorHint="#FFFFFF"
+                        android:visibility="gone"
                         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                         app:spanCount="2"
-                        android:visibility="gone"
                         android:id="@+id/listThisWeek"
                         tools:listitem="@layout/item_top_movies">
                     </androidx.recyclerview.widget.RecyclerView>
+
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
 

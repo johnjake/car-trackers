@@ -1,6 +1,7 @@
 package com.cartrackers.app.utils
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.paging.ExperimentalPagingApi
 import com.cartrackers.app.CoroutineTestRule
 import com.cartrackers.app.data.vo.Address
 import com.cartrackers.app.data.vo.Coordinates
@@ -53,6 +54,7 @@ class TypeConverterUnitTest: KoinTest {
     private lateinit var userList: List<User>
     private lateinit var userString: String
 
+    @ExperimentalPagingApi
     @ExperimentalCoroutinesApi
     @BeforeEach
     fun initialized() {

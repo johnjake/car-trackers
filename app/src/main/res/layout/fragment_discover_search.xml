@@ -35,6 +35,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/topGuideline" />
 
+    <EditText
+        android:id="@+id/country"
+        style="@style/StyleEditText"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="2dp"
+        android:layout_marginStart="@dimen/pixels_18"
+        android:layout_marginEnd="@dimen/pixels_66"
+        android:drawableEnd="@drawable/ic_globe"
+        android:hint="@string/search"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/listUpcomingView"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        tools:ignore="Autofill" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/topGuideline"
         android:layout_width="wrap_content"
@@ -57,14 +71,14 @@
         app:layout_constraintGuide_end="16dp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/mapList"
+        android:id="@+id/listUpcomingView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/pixels_25"
+        android:layout_marginTop="@dimen/pixels_55"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/item_feed_main" />
+        tools:listitem="@layout/item_discover_search" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

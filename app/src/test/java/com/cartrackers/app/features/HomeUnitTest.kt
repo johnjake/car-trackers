@@ -1,6 +1,7 @@
 package com.cartrackers.app.features
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.paging.ExperimentalPagingApi
 import com.cartrackers.app.CoroutineTestRule
 import com.cartrackers.app.data.vo.State
 import com.cartrackers.app.data.vo.User
@@ -44,6 +45,7 @@ class HomeUnitTest: KoinTest {
 
     private lateinit var userList: List<User>
 
+    @ExperimentalPagingApi
     @BeforeEach
     fun initialized() {
         /** for dependency injection **/

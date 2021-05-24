@@ -41,14 +41,14 @@ dependencies {
     implementation("com.google.android.material:material:1.3.0")
 
     //room
-    implementation ("androidx.room:room-ktx:2.4.0-alpha01")
-    implementation ("androidx.room:room-runtime:2.4.0-alpha01")
-    implementation ("androidx.room:room-rxjava2:2.4.0-alpha01")
-    kapt ("androidx.room:room-compiler:2.4.0-alpha01")
+    implementation ("androidx.room:room-ktx:2.4.0-alpha02")
+    implementation ("androidx.room:room-runtime:2.4.0-alpha02")
+    implementation ("androidx.room:room-rxjava2:2.4.0-alpha02")
+    kapt ("androidx.room:room-compiler:2.4.0-alpha02")
 
     implementation("com.google.code.gson:gson:2.8.6")
 
-    implementation ("androidx.paging:paging-runtime-ktx:3.0.0-rc01")
+    implementation ("androidx.paging:paging-runtime-ktx:3.0.0")
 
     //Dependency injection
     implementation ("io.insert-koin:koin-android:3.0.1")

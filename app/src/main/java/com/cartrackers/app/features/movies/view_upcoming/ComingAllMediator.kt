@@ -1,4 +1,4 @@
-package com.cartrackers.app.features.movies.upcoming
+package com.cartrackers.app.features.movies.view_upcoming
 
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
@@ -16,16 +16,10 @@ import retrofit2.HttpException
 import java.io.IOException
 
 @ExperimentalPagingApi
-class  ComingMediator(
+class ComingAllMediator(
     private val api: ApiServices,
     private val database: AppDatabase
-) : RemoteMediator<Int, DBUpComing>(),
-    PagerItemPosition<DBUpComing, DBUpComingKeys> {
-
-    override suspend fun initialize(): InitializeAction {
-        return InitializeAction.LAUNCH_INITIAL_REFRESH
-    }
-
+) : RemoteMediator<Int, DBUpComing>(), PagerItemPosition<DBUpComing, DBUpComingKeys> {
     override suspend fun load(
         loadType: LoadType,
         state: PagingState<Int, DBUpComing>

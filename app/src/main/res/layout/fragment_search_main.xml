@@ -115,7 +115,23 @@
             android:textCursorDrawable="@drawable/default_cursor"
             android:textSize="15sp" />
 
+
+
     </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/emptyList"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/no_results"
+        android:textStyle="bold"
+        android:fontFamily="@font/inter_semi_bold"
+        android:textSize="16sp"
+        android:visibility="gone"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toStartOf="@id/rightGuideline"
+        app:layout_constraintStart_toStartOf="@id/leftGuideline" />
 
     <LinearLayout
         android:id="@+id/resultsGrp"
@@ -165,17 +181,26 @@
                 />
         </LinearLayout>
 
-
-
-
-
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/resultsView"
-            android:visibility="visible"
+            android:layout_marginTop="@dimen/pixels_18"
+            android:id="@+id/listSearchResult"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:visibility="visible"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_home_search_main" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/progress_loader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="250dp"
+            android:layout_marginBottom="10dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_scale="0.2"
+            app:lottie_speed="3"
+            />
     </LinearLayout>
 
 

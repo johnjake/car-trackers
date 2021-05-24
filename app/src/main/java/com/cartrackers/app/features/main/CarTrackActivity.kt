@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.NavHostFragment
 import com.cartrackers.app.R
 import com.cartrackers.app.comms.CarDialog

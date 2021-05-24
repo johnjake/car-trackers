@@ -14,7 +14,7 @@ class CarApplication: Application() {
     @ExperimentalPagingApi
     override fun onCreate() {
         super.onCreate()
-        CarApplication.appContext = applicationContext
+        appContext = applicationContext
         startKoin {
             androidLogger()
             androidContext(this@CarApplication)

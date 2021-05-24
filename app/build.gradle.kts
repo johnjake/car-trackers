@@ -87,11 +87,11 @@ dependencies {
     implementation("com.android.support:support-annotations:28.0.0")
     implementation("androidx.annotation:annotation:1.2.0")
 
-    // stdlib
+    // stdlib --> koin issue No virtual method elapsedNow-UwyO8pc()D
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.4.32")
 
-    implementation("androidx.core:core-ktx:1.3.2")
-    implementation("androidx.appcompat:appcompat:1.2.0")
+    implementation("androidx.core:core-ktx:1.5.0")
+    implementation("androidx.appcompat:appcompat:1.3.0")
     implementation("com.google.android.material:material:1.3.0")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation("com.android.support:design:30.0.0")
@@ -101,7 +101,7 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
 
     // CircleIndicator
-    // implementation ("me.relex:circleindicator:2.1.4")
+    implementation ("me.relex:circleindicator:2.1.6")
 
     // sharedPreferrences
     implementation("androidx.preference:preference-ktx:1.1.1")
@@ -110,9 +110,9 @@ dependencies {
     implementation("javax.inject:javax.inject:1")
 
     // implementation ("androidx.room:room-coroutines:2.1.0-alpha04")
-    implementation("androidx.room:room-runtime:2.4.0-alpha01")
-    implementation("androidx.room:room-ktx:2.4.0-alpha01")
-    kapt("androidx.room:room-compiler:2.4.0-alpha01")
+    implementation("androidx.room:room-runtime:2.4.0-alpha02")
+    implementation("androidx.room:room-ktx:2.4.0-alpha02")
+    kapt("androidx.room:room-compiler:2.4.0-alpha02")
 
     // Dependency injection
     // Koin main features for Android (Scope,ViewModel ...)
@@ -151,17 +151,18 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:1.0.0-alpha10")
 
     // google maps
-    implementation("com.google.android.gms:play-services-maps:17.0.0")
+    implementation("com.google.android.gms:play-services-maps:17.0.1")
 
     // LifeCycle
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1")
-    implementation("androidx.lifecycle:lifecycle-common-java8:2.3.1")
-    implementation("androidx.lifecycle:lifecycle-service:2.3.1")
-    implementation("androidx.lifecycle:lifecycle-process:2.3.1")
-    implementation("androidx.lifecycle:lifecycle-reactivestreams-ktx:2.3.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0-alpha01")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.0-alpha01")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0-alpha01")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.4.0-alpha01")
+    implementation("androidx.lifecycle:lifecycle-common-java8:2.4.0-alpha01")
+    implementation("androidx.lifecycle:lifecycle-service:2.4.0-alpha01")
+    implementation("androidx.lifecycle:lifecycle-process:2.4.0-alpha01")
+    implementation("androidx.lifecycle:lifecycle-reactivestreams-ktx:2.4.0-alpha01")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha04")
 
     // rxBinding
     implementation("com.jakewharton.rxbinding3:rxbinding:3.1.0")
@@ -179,7 +180,13 @@ dependencies {
     implementation("io.coil-kt:coil:1.0.0")
 
     // paging
-    implementation("androidx.paging:paging-runtime-ktx:3.0.0-rc01")
+    implementation("androidx.paging:paging-runtime-ktx:3.0.0")
+
+    //slider
+    implementation("com.google.android.material:material:1.4.0-beta01")
+
+    //google map services
+    implementation ("com.google.maps:google-maps-services:0.15.4")
 
     // testImplementation("junit:junit:4.13.2")
     testImplementation("junit:junit:4.13.2")
@@ -189,7 +196,7 @@ dependencies {
     testImplementation("org.testcontainers:testcontainers:1.15.1")
     testImplementation("org.testcontainers:junit-jupiter:1.15.1")
     testImplementation("androidx.test.ext:junit:1.1.3-alpha06")
-    testImplementation("org.mockito:mockito-core:3.0.0")
+    testImplementation("org.mockito:mockito-core:3.3.3")
     testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0")
     testImplementation("org.mockito:mockito-inline:3.0.0")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.0")

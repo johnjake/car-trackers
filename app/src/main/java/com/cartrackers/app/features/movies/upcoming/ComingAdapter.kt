@@ -20,6 +20,7 @@ class ComingAdapter : PagingDataAdapter<Discover, ComingViewHolder>(diffCallBack
     override fun onBindViewHolder(holder: ComingViewHolder, position: Int) {
         val currentItem = getItem(position)
         currentItem?.let { holder.bind(it) }
+
     }
 
     companion object {

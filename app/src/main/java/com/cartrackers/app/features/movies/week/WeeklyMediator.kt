@@ -15,11 +15,12 @@ import com.cartrackers.baseplate_persistence.model.DBWeeklyKeys
 import retrofit2.HttpException
 import java.io.IOException
 
+private const val startingPage = 1
 @ExperimentalPagingApi
 class WeeklyMediator(
     private val api: ApiServices,
     private val database: AppDatabase
-) : RemoteMediator<Int, DBWeekly>(), PagerItemPosition<DBWeekly, DBWeeklyKeys> {
+): RemoteMediator<Int, DBWeekly>(), PagerItemPosition<DBWeekly, DBWeeklyKeys> {
 
     override suspend fun initialize(): InitializeAction {
         return InitializeAction.LAUNCH_INITIAL_REFRESH
@@ -29,6 +30,7 @@ class WeeklyMediator(
         loadType: LoadType,
         state: PagingState<Int, DBWeekly>
     ): MediatorResult {
+
         val page = when (loadType) {
             LoadType.REFRESH -> {
                 val remoteKeys = getKeyToCurrentPosition(state)
@@ -55,14 +57,14 @@ class WeeklyMediator(
     override suspend fun cachedPagingResult(page: Int, loadType: LoadType): MediatorResult {
         try {
             val apiKey = BuildConfig.API_KEY
-            val apiResponse = api.getWeeklyMovies(apiKey, page)
+            val apiResponse = api.getWeeklyMovies(apiKey = apiKey, "eng-US", page)
             val responseItem = apiResponse.results
             val mapper = MapperMovie.getInstance()
             val endOfPaginationReached = responseItem.isEmpty()
             database.withTransaction {
                 if (loadType == LoadType.REFRESH) {
-                    database.weeklyKeysDao().clearRemoteKeys()
-                    database.weeklyDao().deleteWeekly()
+                    database.remoteKeysDao().clearRemoteKeys()
+                    database.discoverDao().deleteDiscover()
                 }
                 val prevKeys = if (page == startingPage) null else page - 1
                 val nextKeys = if (endOfPaginationReached) null else page + 1
@@ -101,9 +103,5 @@ class WeeklyMediator(
         return state.pages.firstOrNull { it.data.isNotEmpty() }?.data?.firstOrNull()?.let { it ->
             database.weeklyKeysDao().remoteKeysRepoId(it.id)
         }
-    }
-
-    companion object {
-        const val startingPage = 1
     }
 }

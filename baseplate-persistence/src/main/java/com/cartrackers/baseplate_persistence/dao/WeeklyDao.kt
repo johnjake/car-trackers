@@ -17,12 +17,12 @@ abstract class WeeklyDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insertWeekly(topRated: List<DBWeekly>)
 
-    @Query("select * from movie_weekly group by title")
+    @Query("select * from weekly_movie group by title")
     abstract fun getWeeklyStreamByTitle(): Flow<List<DBWeekly>>
 
-    @Query("DELETE FROM movie_weekly")
+    @Query("DELETE FROM weekly_movie")
     abstract suspend fun deleteWeekly()
 
-    @Query("SELECT * FROM movie_weekly")
+    @Query("SELECT * FROM weekly_movie")
     abstract fun getDiscoverByPaging(): PagingSource<Int, DBWeekly>
 }
