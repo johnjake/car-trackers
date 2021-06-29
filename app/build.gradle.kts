@@ -3,6 +3,7 @@ import com.cartrackers.app.Config.androidMinSdk
 import com.cartrackers.app.Config.androidTargetSdk
 import com.cartrackers.app.Config.androidVerCode
 import com.cartrackers.app.Config.androidVerName
+import com.cartrackers.app.Config.workVersion
 import java.util.Properties
 
 plugins {
@@ -187,6 +188,19 @@ dependencies {
 
     //google map services
     implementation ("com.google.maps:google-maps-services:0.15.4")
+
+    //inspector
+    // Kotlin + coroutines
+    implementation("androidx.work:work-runtime-ktx:$workVersion")
+
+    // optional - GCMNetworkManager support
+    implementation("androidx.work:work-gcm:$workVersion")
+
+    // optional - Test helpers
+    androidTestImplementation("androidx.work:work-testing:$workVersion")
+
+    // optional - Multiprocess support
+    implementation ("androidx.work:work-multiprocess:$workVersion")
 
     // testImplementation("junit:junit:4.13.2")
     testImplementation("junit:junit:4.13.2")
